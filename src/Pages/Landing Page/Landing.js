@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './LandingPage.css';
 import { Carousel } from 'react-bootstrap'
+import Header from '../Header';
 import axios from 'axios';
 
 class Landing extends Component {
@@ -21,6 +22,7 @@ class Landing extends Component {
   render() {
     return (
       <div className='landing-main'>
+        <Header/>
         <Carousel>
           <Carousel.Item>
             <img width={900} height={500} alt="900x500" src="http://placehold.it/900x500" />
