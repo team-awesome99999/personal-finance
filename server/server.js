@@ -7,6 +7,9 @@ const ctrl = require('./controller.js');
 let {SERVER_PORT,CONNECTION_STRING,SESSION_SECRET} = process.env;
 
 const app = express();
+
+app.use(express.json());
+
 app.use(express.static(__dirname+'/../build'))
 app.use(session({
     resave: true,
@@ -18,6 +21,8 @@ massive(CONNECTION_STRING).then(db=>{
     app.set('db',db)
     console.log(`db connected using massive`)
 })
+
+app.post('auth/signup', ctrl.signup);
 
 
 app.listen(SERVER_PORT,()=>{
