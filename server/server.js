@@ -23,7 +23,7 @@ massive(CONNECTION_STRING).then(db=>{
 })
 
 app.post('/auth/signup', ctrl.signup);
-app.get('/auth/login', ctrl.login);
+app.post('/auth/login', ctrl.login);
 
 
 app.listen(SERVER_PORT,()=>{

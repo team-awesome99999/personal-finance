@@ -21,12 +21,11 @@ module.exports = {
     const { email, password } = req.body;
     const db = req.app.get('db');
     let user = await db.find_user([ email ]);
-    console.log("User: ", user);
     if(!user[0]) {
       res.status(401).send({ loggedIn: false, message: 'Email not found' });
     } else {
-      let checkPassword = bcrypt.compareSync( password, user[0].password );
-      if(checkPassword) {
+      let result = bcrypt.compareSync( password, user[0].password );
+      if(result) {
         req.session.user = { email: user[0].email, id: user[0].id };
         return res.status(200).send({ loggedIn: true, message: 'Login Successful', id: user[0].id, firstname: user[0].firstname, lastname: user[0].lastname, email: user[0].email });
       } else {
