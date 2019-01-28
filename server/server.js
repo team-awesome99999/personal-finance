@@ -22,7 +22,7 @@ massive(CONNECTION_STRING).then(db=>{
     console.log(`db connected using massive`)
 })
 
-app.post('auth/signup', ctrl.signup);
+app.post('/auth/signup', ctrl.signup);
 
 
 app.listen(SERVER_PORT,()=>{
