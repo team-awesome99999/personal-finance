@@ -16,6 +16,7 @@ export default class AccountList extends Component {
     }
     
     render() {
+        console.log(this.state.accountinfo)
         let accounts = this.state.accountinfo.map((account) => {
             return(<AccountComponent 
                 name={account.name}
