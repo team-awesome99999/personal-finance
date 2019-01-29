@@ -1,2 +1,2 @@
-SELECT * FROM balances
-WHERE accountid = $1;
+select balances.balance, balances.entrydate, balances.accountid, accounts.userid, accounts.name from balances, accounts
+WHERE accounts.userid = $1;
