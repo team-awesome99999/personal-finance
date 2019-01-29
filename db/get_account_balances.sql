@@ -1,2 +1,3 @@
-select balances.balance, balances.entrydate, balances.accountid, accounts.userid, accounts.name from balances, accounts
+select balances.accountid, balances.balance, balances.entrydate from balances
+JOIN accounts ON balances.accountid = accounts.id
 WHERE accounts.userid = $1;
