@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import Login from './Landing Page/Login'
-import { withRouter } from 'react-router-dom'
 
 class Header extends Component {
 
@@ -18,9 +17,9 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <Navbar>
+        <Navbar className='header'>
           <Navbar.Header>
-            <Navbar.Brand>Financial Stuff</Navbar.Brand>
+            <Navbar.Brand>Asset Tracker</Navbar.Brand>
           </Navbar.Header>
           {this.state.showLogin ?
           <Login showLoginFn={this.showLogin}/>
@@ -35,4 +34,4 @@ class Header extends Component {
   }
 }
 
-export default withRouter(Header);
+export default Header;

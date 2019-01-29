@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, Button, FormGroup, FormControl, Tooltip } from 'react-bootstrap';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom'
 
 class Login extends Component {
 
@@ -20,6 +21,8 @@ class Login extends Component {
         email: '',
         password: ''
       })
+      //ONCE HOME PAGE IS BUILT, THE LOGIN CAN PUSH USER THERE WITH COMMENT BELOW
+      // this.props.history.push('/home');
     } catch(error) {
       if(error.response.data.message === 'Email not found') {
         this.setState({ emailValidation: 'error' })
@@ -27,8 +30,6 @@ class Login extends Component {
         this.setState({ passwordValidation: 'error' })
       }
     }
-    //ONCE HOME PAGE IS BUILT, THE LOGIN CAN PUSH USER THERE WITH COMMENT BELOW
-    // this.props.history.push('/home');
   }
 
   render() {
@@ -70,4 +71,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

@@ -1,3 +1,16 @@
-.landing-main {
-   
+.header {
+  margin: 0;
+}
+
+.landing-carousel {
+  margin: 0 auto;
+}
+
+.text-box {
+  border-radius: 5px;
+  width: 80%;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  margin: 0 auto;
+  background-color: rgba(46, 49, 49, .8);
 }
