@@ -1,0 +1,40 @@
+button{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 40px;
+}
+.all-accounts{
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+.account{
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, #ffffff 0%, #ebebeb 100%);
+    flex-direction: row;
+    width: 80%;
+    margin-top: 80px;
+}
+.iconx{
+    transform: rotate(45deg);
+    width: 50px;
+    transition: .5s;
+    margin-top: -25px
+}
+.iconactive{
+    transform: none;
+}
+.history{
+    height: 500px;
+    background: linear-gradient(to bottom, #ffffff 0%, #ebebeb 100%);
+    transition: .5s;
+    color: black;
+    width: 80%;
+    display: flex
+}
+.notvisible{
+    height: 0px;
+    color: white
+}

@@ -23,9 +23,10 @@ massive(CONNECTION_STRING).then(db=>{
 })
 
 app.post('/auth/signup', ctrl.signup);
+app.post('/auth/login', ctrl.login);
 app.get('/accounts', ctrl.getAccounts)
 
 
 app.listen(SERVER_PORT,()=>{
-    console.log(`Listening on Port: ${SERVER_PORT}`)
+    console.log(`${SERVER_PORT} tiny robots doing your bidding.`)
 })

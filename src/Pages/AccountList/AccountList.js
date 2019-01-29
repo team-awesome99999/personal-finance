@@ -4,7 +4,11 @@ import AccountComponent from './AccountComponent'
 
 export default class AccountList extends Component {
     state = {
-        accountinfo: [],
+        accountinfo: [{
+            name: "Steve Erwin",
+            currentTotal: 2949345,
+            history: [1,2,3,4,5,6,6,7,8,9]
+        },{name: "Luke Skywalker", currentTotal: 900000, history: [90000, 57685, 200, 6]}],
         switch: true
     }
     componentDidMount() {
