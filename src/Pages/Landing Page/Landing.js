@@ -14,7 +14,7 @@ class Landing extends Component {
 
   signup = async () => {
     const { firstname, lastname, email, password } = this.state;
-    let res = await axios.post('/auth/signup', { firstname, lastname, email, password })
+    await axios.post('/auth/signup', { firstname, lastname, email, password })
     this.setState({
       firstname: '',
       lastname: '',
