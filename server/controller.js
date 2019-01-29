@@ -43,5 +43,16 @@ module.exports = {
     await db.add_balance([ newAccount[0].id, currentBalance, date ]);
     let response = await db.all_accounts([ +userid ]);
     res.status(200).send({ response })
-  }
+  },
+  getAccountInfo: async (req,res)=>{
+    const user = req.session.user
+    const db = req.app.get('db')
+
+    if(user){
+      let accountInfo = await db.get_account_balance([user])
+      res.status(200).send(accountInfo)
+    } else {
+      res.status(401).send(console.log('user not found please try again'))
+    }
+  },
 }

@@ -25,6 +25,7 @@ massive(CONNECTION_STRING).then(db=>{
 app.post('/auth/signup', ctrl.signup);
 app.post('/auth/login', ctrl.login);
 app.post('/api/newaccount', ctrl.newAccount);
+app.get('/api/get-account',ctrl.getAccountInfo);
 
 
 app.listen(SERVER_PORT,()=>{

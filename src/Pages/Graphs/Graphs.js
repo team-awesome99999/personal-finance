@@ -13,12 +13,14 @@ class Graphs extends Component{
     }
 
     //grab two arrays from db
-    //one is 
+    //one is for account balance, other is for accountDate
 
     componentDidMount(){
         axios.get(`/api/get-account`)
              .then(res=>{
+                 console.log(res)
                 this.setState({accountBalance:res.data.balance, accountDate: res.data.date})
+                console.log(res)
              })
     }
 
