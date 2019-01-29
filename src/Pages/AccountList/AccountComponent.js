@@ -20,19 +20,31 @@ export default class AccountComponent extends Component {
     }
 
     render() {
-        console.log(this.props);
-      
+      let {balances} = this.props
+      let newBalances = [...balances]
+      let currentBalance = newBalances.pop()
+      console.log(currentBalance);
+      let history = balances.map((balance)=>{
+        return(
+          <div>
+            <h2>{balance.entrydate}</h2>
+            <h2>{balance.balance}</h2>
+          </div>
+        )
+
+      })
+      console.log(history)
         
 
         return (
             <div className="all-accounts">
                 <div className="account">
                     <h2>{this.props.name}</h2>
-                    <h2>${}</h2>
+                    <h2>${currentBalance.balance}</h2>
                     <p>{this.props.date}</p>
                 </div>
                 <div className={this.state.switch ? "history notvisible" : "history"}>
-                    {/* <h3>{history}</h3> */}
+                    <h3>{history}</h3>
                 <AddBalance accountid={ this.props.accountid}/>
                 </div>
                 <img src={littleicon} onClick={() => this.switch()} className={this.state.switch ? "iconx" : "iconx iconactive"} ></img>
