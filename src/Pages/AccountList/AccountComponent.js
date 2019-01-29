@@ -18,6 +18,7 @@ export default class AccountComponent extends Component {
                 <div className="account">
                     <h2>{this.props.name}</h2>
                     <h2>${this.props.currentTotal}</h2>
+                    <p>{this.props.date}</p>
                 </div>
                 <div className={this.state.switch ? "history notvisible" : "history"}>
                     <h3>{this.props.history}</h3>

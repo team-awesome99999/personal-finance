@@ -4,15 +4,12 @@ import AccountComponent from './AccountComponent'
 
 export default class AccountList extends Component {
     state = {
-        accountinfo: [{
-            name: "Steve Erwin",
-            currentTotal: 2949345,
-            history: [1,2,3,4,5,6,6,7,8,9]
-        },{name: "Luke Skywalker", currentTotal: 900000, history: [90000, 57685, 200, 6]}],
+        accountinfo: [],
         switch: true
     }
     componentDidMount() {
         axios.get('/accounts').then((res) => {
+            console.log(res.data)
             this.setState({
                 accountinfo: res.data
             })
@@ -24,7 +21,8 @@ export default class AccountList extends Component {
         let accounts = this.state.accountinfo.map((account) => {
             return(<AccountComponent 
                 name={account.name}
-                currentTotal={account.currentTotal}
+                currentTotal={account.balance}
+                date={account.entrydate}
                 history={account.history}
             />)
         })

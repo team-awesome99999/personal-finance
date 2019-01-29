@@ -43,5 +43,16 @@ module.exports = {
         return res.status(401).send({ loggedIn: false, message: 'Incorrect Password'});
       }
     }
+  },
+  newAccount: async (req, res) => {
+    const { userid, name, currentBalance } = req.body
+    const date = new Date();
+    const db = req.app.get('db');
+    //add new account
+    let newAccount = await db.add_account([ +userid, name ]);
+    // add first balance to the new account
+    await db.add_balance([ newAccount[0].id, currentBalance, date ]);
+    let response = await db.all_accounts([ +userid ]);
+    res.status(200).send({ response })
   }
 }
