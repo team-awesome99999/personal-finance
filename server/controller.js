@@ -60,7 +60,8 @@ module.exports = {
     const db = req.app.get('db')
 
     if(user){
-      let accountInfo = await db.get_account_balance([user])
+      let accountInfo = await db.get_account_balance([user.id])
+      console.log(user,user.id,accountInfo)
       res.status(200).send(accountInfo)
     } else {
       res.status(401).send(console.log('user not found please try again'))

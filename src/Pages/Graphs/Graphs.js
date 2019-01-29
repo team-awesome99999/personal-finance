@@ -19,8 +19,8 @@ class Graphs extends Component{
         axios.get(`/api/get-account`)
              .then(res=>{
                  console.log(res)
-                this.setState({accountBalance:res.data.balance, accountDate: res.data.date})
-                console.log(res)
+                this.setState({accountBalance:res.data.balance, accountDate: res.data.entryDate})
+                console.log(res,this.state)
              })
     }
 
@@ -35,20 +35,20 @@ class Graphs extends Component{
     }
 
     render(){
-        let displayBalance=this.state.accountBalance.map((bal,id)=>{
-            return(
-                <div className='accountBalance-parent' key={id}>
+        // let displayBalance=this.state.accountBalance.map((bal,id)=>{
+        //     return(
+        //         <div className='accountBalance-parent' key={id}>
 
-                </div>
-            )
-        })
-        let displayDate=this.state.accountDate.map((date,id)=>{
-            return(
-                <div className='accountdate-parent' key={id}>
+        //         </div>
+        //     )
+        // })
+        // let displayDate=this.state.accountDate.map((date,id)=>{
+        //     return(
+        //         <div className='accountdate-parent' key={id}>
 
-                </div>
-            )
-        })
+        //         </div>
+        //     )
+        // })
         return(
             <div className='graphs-parent'>
                 <input type='number' value={this.state.total} onChange={(e)=>this.updateTotal(e.target.value)} />
