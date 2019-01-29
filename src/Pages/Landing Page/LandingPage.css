@@ -16,8 +16,25 @@
   background-color: rgba(46, 49, 49, .8);
 }
 
+/* signup page */
 .signup-box {
   width: 70%; 
   padding: 50px;
   margin: 0 auto;
 }
+
+/* Icons page */
+.icon-box {
+  display: flex;
+  justify-content: center
+}
+
+.icons {
+  margin: 0 70px 0 70px;
+  font-size: 100px;
+}
+
+.icons-green {
+  color: green;
+}
+
