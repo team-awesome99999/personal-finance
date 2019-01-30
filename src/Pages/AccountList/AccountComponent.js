@@ -14,7 +14,7 @@ export default class AccountComponent extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-      if(prevState !== this.state.accountInfo) {
+      if(prevState.accountInfo !== this.state.accountInfo) {
         console.log('updating?')
       }
     }
@@ -22,8 +22,7 @@ export default class AccountComponent extends Component {
     render() {
       let {balances} = this.props
       let newBalances = [...balances]
-      let currentBalance = newBalances.shift()
-      console.log(currentBalance);
+      let currentBalance = newBalances.shift();
       let history = balances.map((balance,index)=>{
         return(
           <div key={index + balance}>
@@ -33,22 +32,20 @@ export default class AccountComponent extends Component {
         )
 
       })
-      console.log(history)
-        
-
+    
         return (
-            <div className="all-accounts">
-                <div className="account">
-                    <h2>{this.props.name}</h2>
-                    <h2>${currentBalance.balance}</h2>
-                    <p>{this.props.date}</p>
-                </div>
-                <div className={this.state.switch ? "history notvisible" : "history"}>
-                    <h3>{history}</h3>
-                <AddBalance accountid={ this.props.accountid}/>
-                </div>
-                <img src={littleicon} onClick={() => this.switch()} className={this.state.switch ? "iconx" : "iconx iconactive"} ></img>
+          <div className="all-accounts">
+            <div className="account">
+              <h2>{this.props.name}</h2>
+              <h2>{currentBalance ? `$ + ${currentBalance.balance}` : null}</h2>
+              <p>{this.props.date}</p>
             </div>
+            <div className={this.state.switch ? "history notvisible" : "history"}>
+              <h3>{history}</h3>
+            <AddBalance accountid={ this.props.accountid}/>
+            </div>
+            <img src={littleicon} onClick={() => this.switch()} className={this.state.switch ? "iconx" : "iconx iconactive"} ></img>
+          </div>
         )
     }
 }

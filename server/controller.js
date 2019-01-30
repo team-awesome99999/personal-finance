@@ -44,6 +44,19 @@ module.exports = {
       }
     }
   },
+  getSession: async (req, res) => {
+    const db = req.app.get('db');
+    if(req.session.user) {
+      let user = await db.find_user([ req.session.user.email ]);
+      return res.status(200).send({ loggedIn: true, message: 'User is logged in!', email: user[0].email, id: user[0].id, firstname: user[0].firstname, lastname: user[0].lastname })
+    } else {
+      return res.status(401).send({ loggedIn: false, message: "Please log in."})
+    }
+  },
+  logout: (req, res) => {
+    req.session.destroy();
+    res.status(200).send({ loggedIn: false });
+  },
   newAccount: async (req, res) => {
     const { userid, name, currentBalance } = req.body
     const date = new Date();
