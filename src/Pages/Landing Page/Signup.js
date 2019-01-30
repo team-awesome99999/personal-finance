@@ -87,7 +87,7 @@ class Signup extends Component {
               placeholder="Password"
               onKeyUp={event => {
                 if (event.key === 'Enter') {
-                  this.login()
+                  this.signup()
                 }
               }}
               />
