@@ -14,6 +14,7 @@ export default class AccountComponent extends Component {
             switch: !this.state.switch
         })
     }
+    
 
     componentDidUpdate(prevProps, prevState) {
       if(prevState.accountInfo !== this.state.accountInfo) {
