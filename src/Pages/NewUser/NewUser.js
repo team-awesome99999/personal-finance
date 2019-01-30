@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom'
 
 class NewUser extends Component {
   state = {
@@ -26,6 +27,7 @@ class NewUser extends Component {
           placeholder="Current Balance"
           type="number"/>
         <button onClick={ () => this.addAccount() }>Add New Account</button>
+        <Link to="/accounts">Next</Link>
       </div>
     );
   }
