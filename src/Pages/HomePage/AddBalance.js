@@ -12,7 +12,7 @@ class AddBalance extends Component {
 
   addBalance = async(accountid) => {
     const { newBalance, date } = this.state;
-    let res = await axios.post('/api/newbalance', { accountid, newBalance, date } );
+    await axios.post('/api/newbalance', { accountid, newBalance, date } );
     //res.data returns an object with an array of all of the balances for this particular account
     this.setState({
       newBalance: '',
