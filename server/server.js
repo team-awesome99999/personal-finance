@@ -24,13 +24,9 @@ massive(CONNECTION_STRING).then(db=>{
 
 app.post('/auth/signup', ctrl.signup);
 app.post('/auth/login', ctrl.login);
-app.get('/accounts', ctrl.getAccounts)
+app.get('/accounts', ctrl.getAccounts);
 app.post('/api/newaccount', ctrl.newAccount);
-<<<<<<< HEAD
-app.get('/api/get-account',ctrl.getAccountInfo);
-=======
 app.post('/api/newbalance', ctrl.newBalance);
->>>>>>> e45b52bf529b9479102c9baa7a08a0635b7f5de8
 
 
 app.listen(SERVER_PORT,()=>{

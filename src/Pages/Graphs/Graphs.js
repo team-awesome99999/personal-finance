@@ -2,46 +2,76 @@ import React,{Component} from 'react';
 import axios from 'axios';
 import Plot from 'react-plotly.js';
 import {connect} from 'react-redux';
+import moment from 'moment';
 
 class Graphs extends Component{
     state={
         total:7,
         assets:10,
         debts:30,
-        accountBalance:[],
-        accountDate:[]
+        accounts:[],
+        balances:[]
     }
 
     //grab two arrays from db
     //one is for account balance, other is for accountDate
 
     componentDidMount(){
-        axios.get(`/api/get-account`)
+        axios.get(`/accounts`)
              .then(res=>{
                  console.log(res)
-                this.setState({accountBalance:res.data.balance, accountDate: res.data.entryDate})
+                this.setState({accounts: res.data.accounts, balances: res.data.balances})
                 console.log(res,this.state)
              })
     }
 
-    updateTotal=(val)=>{
-        this.setState({total:val})
-    }
-    updateAssets=(val)=>{
-        this.setState({assets:val})
-    }
-    updateDebts=(val)=>{
-        this.setState({debts:val})
-    }
+    // updateTotal=(val)=>{
+    //     this.setState({total:val})
+    // }
+    // updateAssets=(val)=>{
+    //     this.setState({assets:val})
+    // }
+    // updateDebts=(val)=>{
+    //     this.setState({debts:val})
+    // }
 
     render(){
-        // let displayBalance=this.state.accountBalance.map((bal,id)=>{
-        //     return(
-        //         <div className='accountBalance-parent' key={id}>
+        let displayBalance=this.state.accounts.map((acct,id)=>{
+            let newBalances=this.state.balances.filter((bal,id)=>{
+                if(acct.id===bal.accountid){
+                    return true
+                } else {
+                     return false
+                }
+            })
+            let ex = newBalances.map((val,id)=>{
+                return moment(val.entrydate).format("YYYY MMM Do")
+            })
+            let whyy = newBalances.map((val,id)=>{
+                return parseFloat(val.balance)
+            })
+            // console.log(newBalances,ex,whyy)
+            return(
+                <div className='accountBalance-parent' key={id}>
 
-        //         </div>
-        //     )
-        // })
+                    <Plot 
+                    
+                        data={[
+                            {
+                                //date value from mapped array inside of x
+                                x: [ex],
+                                //specified value from mapped array
+                                y: [whyy],
+                                type: 'scatter',
+                                mode: 'lines+points',
+                                marker: {color: 'green'},
+                            },
+                            ]}
+                            layout={ {width: 640, height: 480, title: 'Debts and Assets'} }
+                    />
+                </div>
+            )
+        })
         // let displayDate=this.state.accountDate.map((date,id)=>{
         //     return(
         //         <div className='accountdate-parent' key={id}>
@@ -51,40 +81,11 @@ class Graphs extends Component{
         // })
         return(
             <div className='graphs-parent'>
-                <input type='number' value={this.state.total} onChange={(e)=>this.updateTotal(e.target.value)} />
+                {/* <input type='number' value={this.state.total} onChange={(e)=>this.updateTotal(e.target.value)} />
                 <input type='number' value={this.state.assets} onChange={(e)=>this.updateAssets(e.target.value)} />
-                <input type='number' value={this.state.debts} onChange={(e)=>this.updateDebts(e.target.value)} />
+                <input type='number' value={this.state.debts} onChange={(e)=>this.updateDebts(e.target.value)} /> */}
 
-                <Plot
-                    data={[
-                    {
-                        //date value from mapped array inside of x
-                        x: [1,2,3],
-                        //specified value from mapped array
-                        y: [this.state.total,this.state.total,this.state.total],
-                        type: 'scatter',
-                        mode: 'lines+points',
-                        marker: {color: 'green'},
-                    },
-                    {
-                        x: [1,2,3],
-                        y: [this.state.assets,this.state.assets,this.state.assets],
-                        type: 'scatter',
-                        mode: 'lines+points',
-                        marker: {color: 'blue'},
-                    },
-                    {
-                        x: [1, 2, 3],
-                        y: [this.state.debts,this.state.debts,this.state.debts],
-                        type: 'scatter',
-                        mode: 'lines+points',
-                        marker: {color: 'red'},
-                      },
-                    ]}
-                    layout={ {width: 640, height: 480, title: 'Debts and Assets'} }
-
-                    
-                />
+                {displayBalance}
             </div>
         )
     }
