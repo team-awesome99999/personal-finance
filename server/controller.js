@@ -95,5 +95,16 @@ module.exports = {
     let newBalance = await db.update_balance([ id, balance, date ]);
     let balances = await db.get_account_balances([ newBalance[0].accountid ]);
     res.status(200).send(balances);
+  },
+  deleteBalance: async (req, res) => {
+    const db = req.app.get('db');
+    await db.delete_balance([ +req.params.id ]);
+    if(req.session.user) {
+    const { id } = req.session.user;
+      let balances = await db.get_account_balances([ id ]);
+      return res.status(200).send(balances);
+    } else {
+      return res.status(200).send('success deleting!')
+    }
   }
 }

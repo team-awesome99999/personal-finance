@@ -3,6 +3,7 @@ import './AccountList.css'
 import littleicon from './../../_ionicons_svg_ios-close-circle-outline.svg'
 import AddBalance from '../HomePage/AddBalance';
 import EditButton from '../AccountList/EditButton';
+import DeleteBalance from './DeleteBalance'
 
 export default class AccountComponent extends Component {
     state = {
@@ -35,6 +36,9 @@ export default class AccountComponent extends Component {
                   balanceid={balance.id}
                   date={balance.entrydate}
                   balance={balance.balance}/>
+                <DeleteBalance 
+                  balanceid={balance.id}
+                  />
               </div>
             </div>
           </div>
