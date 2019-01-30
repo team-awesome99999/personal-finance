@@ -59,7 +59,7 @@ class Graphs extends Component{
                         data={[
                             {
                                 //date value from mapped array inside of x
-                                x: x_axis,
+                                x: x_axis.reverse(),
                                 //specified value from mapped array
                                 y: y_axis,
                                 type: 'scatter',
