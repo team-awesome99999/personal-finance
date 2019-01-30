@@ -40,7 +40,7 @@ class AddBalance extends Component {
             placeholder="Date of new balance"
             />
           <FormControl.Feedback/>
-          <Button onClick={ ()=>this.addBalance(this.props.accountid) }>Submit</Button>
+          <Button className='btn btn-success' onClick={ ()=>this.addBalance(this.props.accountid) }>Submit</Button>
         </FormGroup>{' '}
       </div>
     );

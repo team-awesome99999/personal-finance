@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button } from 'react-bootstrap';
 
 class DeleteAccount extends Component {
 
@@ -11,7 +10,7 @@ class DeleteAccount extends Component {
   render() {
     return (
       <div onClick={() => this.deleteAccount(this.props.accountid)}>
-        <i class="fas fa-trash-alt"></i>
+        <i className="fas fa-trash-alt"></i>
 
       </div>
     );
