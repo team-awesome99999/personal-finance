@@ -20,7 +20,8 @@ app.use(session({
 massive(CONNECTION_STRING).then(db=>{
     app.set('db',db)
     console.log(`db connected using massive`)
-})
+}) 
+//test
 
 app.post('/auth/signup', ctrl.signup);
 app.post('/auth/login', ctrl.login);

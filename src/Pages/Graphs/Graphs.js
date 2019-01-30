@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 import Plot from 'react-plotly.js';
-import {connect} from 'react-redux';
 import moment from 'moment';
 
 class Graphs extends Component{

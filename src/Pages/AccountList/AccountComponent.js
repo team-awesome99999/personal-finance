@@ -15,12 +15,6 @@ export default class AccountComponent extends Component {
         })
     }
 
-    componentDidUpdate(prevProps, prevState) {
-      if(prevState.accountInfo !== this.state.accountInfo) {
-        console.log('updating?')
-      }
-    }
-
     render() {
       let {balances} = this.props
       let newBalances = [...balances]
