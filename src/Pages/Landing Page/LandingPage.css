@@ -38,3 +38,7 @@
   color: green;
 }
 
+.site-name {
+  cursor: pointer;
+}
+

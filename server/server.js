@@ -24,9 +24,14 @@ massive(CONNECTION_STRING).then(db=>{
 
 app.post('/auth/signup', ctrl.signup);
 app.post('/auth/login', ctrl.login);
-app.get('/accounts', ctrl.getAccounts);
+app.get('/auth/logout', ctrl.logout);
+app.get('/getsession', ctrl.getSession);
+app.get('/accounts', ctrl.getAccounts)
 app.post('/api/newaccount', ctrl.newAccount);
 app.post('/api/newbalance', ctrl.newBalance);
+app.put('/api/editbalance', ctrl.editBalance);
+app.delete('/api/deletebalance/:id', ctrl.deleteBalance);
+app.delete('/api/deleteaccount/:id', ctrl.deleteAccount);
 
 
 app.listen(SERVER_PORT,()=>{

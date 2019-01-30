@@ -44,6 +44,19 @@ module.exports = {
       }
     }
   },
+  getSession: async (req, res) => {
+    const db = req.app.get('db');
+    if(req.session.user) {
+      let user = await db.find_user([ req.session.user.email ]);
+      return res.status(200).send({ loggedIn: true, message: 'User is logged in!', email: user[0].email, id: user[0].id, firstname: user[0].firstname, lastname: user[0].lastname })
+    } else {
+      return res.status(401).send({ loggedIn: false, message: "Please log in."})
+    }
+  },
+  logout: (req, res) => {
+    req.session.destroy();
+    res.status(200).send({ loggedIn: false });
+  },
   newAccount: async (req, res) => {
     const {  name, currentBalance } = req.body
     const {id} = req.session.user
@@ -76,5 +89,34 @@ module.exports = {
     await db.add_balance([ accountid, newBalance, date ])
     let balances = await db.get_account_balances([ accountid ]);
     res.status(200).send(balances);
+  },
+  editBalance: async (req, res) => {
+    const { id, date, balance } = req.body;
+    const db = req.app.get('db');
+    let newBalance = await db.update_balance([ id, balance, date ]);
+    let balances = await db.get_account_balances([ newBalance[0].accountid ]);
+    res.status(200).send(balances);
+  },
+  deleteBalance: async (req, res) => {
+    const db = req.app.get('db');
+    await db.delete_balance([ +req.params.id ]);
+    if(req.session.user) {
+    const { id } = req.session.user;
+      let balances = await db.get_account_balances([ id ]);
+      return res.status(200).send(balances);
+    } else {
+      return res.status(200).send('success deleting one balance!')
+    }
+  },
+  deleteAccount: async (req, res) => {
+    const db = req.app.get('db');
+    await db.delete_account([ +req.params.id ]);
+    if(req.session.user) {
+      const { id } = req.session.user;
+        let balances = await db.get_all_accounts([ id ]);
+        return res.status(200).send(balances);
+      } else {
+        return res.status(200).send('success deleting account!')
+      }
   }
 }
