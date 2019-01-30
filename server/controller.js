@@ -22,7 +22,6 @@ module.exports = {
       if (req.session.user) {
         let accounts = await db.get_all_accounts(req.session.user.id)
         let balances = await db.get_account_balances([ req.session.user.id ])
-        console.log(req.session.user)
         res.status(200).send({accounts, balances})
       } else {
           res.status(401).send('Please log in')
@@ -58,14 +57,15 @@ module.exports = {
     res.status(200).send({ loggedIn: false });
   },
   newAccount: async (req, res) => {
-    const { userid, name, currentBalance } = req.body
+    const {  name, currentBalance } = req.body
+    const {id} = req.session.user
     const date = new Date();
     const db = req.app.get('db');
     //add new account
-    let newAccount = await db.add_account([ +userid, name ]);
+    let newAccount = await db.add_account([ id, name ]);
     // add first balance to the new account
     await db.add_balance([ newAccount[0].id, currentBalance, date ]);
-    let response = await db.all_accounts([ +userid ]);
+    let response = await db.all_accounts( id );
     res.status(200).send({ response })
   },
 
@@ -75,7 +75,6 @@ module.exports = {
 
     if(user){
       let accountInfo = await db.get_account_balances([user.id])
-      console.log(user,user.id,accountInfo)
       res.status(200).send(accountInfo)
     } else {
       res.status(401).send(console.log('user not found please try again'))

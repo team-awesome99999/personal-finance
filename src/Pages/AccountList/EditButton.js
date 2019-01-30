@@ -40,8 +40,8 @@ class EditButton extends Component {
             <Button onClick={ () => this.saveEdits(this.props.balanceid) }>Save</Button>
             <Button onClick={ () => this.setState({ editing: !this.state.editing })} variant="link">Cancel</Button>
           </Form> 
-        : 
-        <Button onClick={ () => this.setState({ editing: !this.state.editing }) }>Edit</Button> 
+        :  
+        <i onClick={ () => this.setState({ editing: !this.state.editing }) } className="fas fa-pencil-alt"></i>
         }
       </div>
     );

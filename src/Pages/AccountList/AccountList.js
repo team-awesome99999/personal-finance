@@ -22,7 +22,7 @@ export default class AccountList extends Component {
     axios.get(`/accounts`)
          .then(res=>{
            this.setState({
-             acconts: res.data.accounts,
+             accounts: res.data.accounts,
              balances: res.data.balances
            })
          })
@@ -46,7 +46,7 @@ export default class AccountList extends Component {
             accountid={account.id}
             balances={balances}
           />
-          <DeleteAccount accountid={account.id}/>
+          
 
         </div>
       )
@@ -54,7 +54,7 @@ export default class AccountList extends Component {
     return (
       <div>
         <Header />
-        <div className="accountbox">
+        <div className="all-accounts">
           <h1>Your accounts</h1>
           {accounts}
         </div>
