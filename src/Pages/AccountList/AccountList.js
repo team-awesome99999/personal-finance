@@ -43,7 +43,7 @@ export default class AccountList extends Component {
     return (
       <div>
         <Header />
-        <div className="accountbox">
+        <div className="all-accounts">
           <h1>Your accounts</h1>
           {accounts}
         </div>

@@ -40,18 +40,20 @@ export default class AccountComponent extends Component {
 
 
         return (
-            <div className="all-accounts">
+            <div className="everyAccount">
                 <div className="account">
                     <h2>{this.props.name}</h2>
                     <h2>${currentBalance.balance}</h2>
                 </div>
                 <div className={this.state.switch ? "history notvisible" : "history"}>
-                    <h3 className={this.state.switch ? "history hidden" : "history"} >{history}</h3>
-                    <div className={this.state.switch ? "history hidden" : "history"}>
-                    <AddBalance accountid={this.props.accountid} />
+                    <h3 className={this.state.switch ? "history hidden" : "history details numbers"} >{history}</h3>
+                    <div className={this.state.switch ? "history hidden" : "history details"}>
+                        <AddBalance accountid={this.props.accountid} />
                     </div>
                 </div>
-                <img src={littleicon} onClick={() => this.switch()} className={this.state.switch ? "iconx" : "iconx iconactive"} ></img>
+                <div onClick={() => this.switch()} className="circle">
+                    <i className={this.state.switch ? "iconx fas fa-plus" : "fas fa-plus iconx iconactive"}></i>
+                </div>
             </div>
         )
     }
