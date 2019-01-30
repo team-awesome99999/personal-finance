@@ -19,7 +19,7 @@ class Header extends Component {
       getCurrentUser(res.data.id);
       this.setState({ loggedIn: true })
     } catch(error) {
-      console.log(error.response.data);
+      this.props.history.push('/');
     }
   }
 

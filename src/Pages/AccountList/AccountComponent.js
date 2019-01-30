@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './AccountList.css'
-import littleicon from './../../_ionicons_svg_ios-close-circle-outline.svg'
 import AddBalance from '../HomePage/AddBalance';
 import moment from 'moment'
 import EditButton from '../AccountList/EditButton';
@@ -18,17 +17,10 @@ export default class AccountComponent extends Component {
     }
     
 
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState !== this.state.accountInfo) {
-            console.log('updating?')
-        }
-    }
-
     render() {
         let { balances } = this.props
         let newBalances = [...balances]
         let currentBalance = newBalances.shift()
-        console.log(currentBalance);
         let history = balances.map((balance, index) => {
             return (
                 <div key={balance.id} className="accounthistory">
