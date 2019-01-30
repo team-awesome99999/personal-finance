@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import NewUser from '../NewUser/NewUser';
 import Header from '../Header';
-import {Graphs} from '../Graphs/Graphs.js';
+import Graphs from '../Graphs/Graphs.js';
 
 class HomePage extends Component {
   render() {
@@ -9,6 +9,7 @@ class HomePage extends Component {
       <div>
         <Header/>
         <NewUser />
+        <Graphs />
       </div>
     );
   }

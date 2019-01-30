@@ -67,7 +67,7 @@ class Graphs extends Component{
                                 marker: {color: 'green'},
                             },
                             ]}
-                            layout={ {width: 640, height: 480, title: 'Debts and Assets'} }
+                            layout={ {width: 640, height: 480, title: acct.name} }
                     />
                 </div>
             )
