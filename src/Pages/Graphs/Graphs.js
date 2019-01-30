@@ -44,13 +44,13 @@ class Graphs extends Component{
                      return false
                 }
             })
-            let ex = newBalances.map((val,id)=>{
+            let x_axis = newBalances.map((val,id)=>{
                 return moment(val.entrydate).format("YYYY MMM Do")
             })
-            let whyy = newBalances.map((val,id)=>{
+            let y_axis = newBalances.map((val,id)=>{
                 return parseFloat(val.balance)
             })
-            console.log(newBalances,ex,whyy)
+            console.log(newBalances)
             return(
                 <div className='accountBalance-parent' key={id}>
 
@@ -59,9 +59,9 @@ class Graphs extends Component{
                         data={[
                             {
                                 //date value from mapped array inside of x
-                                x: ex,
+                                x: x_axis,
                                 //specified value from mapped array
-                                y: whyy,
+                                y: y_axis,
                                 type: 'scatter',
                                 mode: 'lines+points',
                                 marker: {color: 'green'},
