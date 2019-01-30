@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './AccountList.css'
 import littleicon from './../../_ionicons_svg_ios-close-circle-outline.svg'
 import AddBalance from '../HomePage/AddBalance';
+import EditButton from '../AccountList/EditButton';
 
 export default class AccountComponent extends Component {
     state = {
@@ -25,9 +26,13 @@ export default class AccountComponent extends Component {
       let currentBalance = newBalances.shift();
       let history = balances.map((balance,index)=>{
         return(
-          <div key={index + balance}>
+          <div key={balance.id}>
             <h2>{balance.entrydate}</h2>
             <h2>{balance.balance}</h2>
+            <EditButton 
+              balanceid={balance.id}
+              date={balance.entrydate}
+              balance={balance.balance}/>
           </div>
         )
 
