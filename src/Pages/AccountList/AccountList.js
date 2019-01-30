@@ -18,6 +18,15 @@ export default class AccountList extends Component {
       })
     })
   }
+  componentDidUpdate(){
+    axios.get(`/accounts`)
+         .then(res=>{
+           this.setState({
+             acconts: res.data.accounts,
+             balances: res.data.balances
+           })
+         })
+  }
 
   render() {
 
