@@ -24,7 +24,7 @@ massive(CONNECTION_STRING).then(db=>{
 
 app.post('/auth/signup', ctrl.signup);
 app.post('/auth/login', ctrl.login);
-app.get('/accounts', ctrl.getAccounts)
+app.get('/accounts', ctrl.getAccounts);
 app.post('/api/newaccount', ctrl.newAccount);
 app.post('/api/newbalance', ctrl.newBalance);
 
