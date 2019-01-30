@@ -26,7 +26,7 @@ export default class AccountComponent extends Component {
       console.log(currentBalance);
       let history = balances.map((balance)=>{
         return(
-          <div>
+          <div className="accounthistory">
             <h2>{balance.entrydate}</h2>
             <h2>{balance.balance}</h2>
           </div>
