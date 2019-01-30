@@ -24,9 +24,13 @@ massive(CONNECTION_STRING).then(db=>{
 
 app.post('/auth/signup', ctrl.signup);
 app.post('/auth/login', ctrl.login);
+<<<<<<< HEAD
 app.get('/auth/logout', ctrl.logout);
 app.get('/getsession', ctrl.getSession);
 app.get('/accounts', ctrl.getAccounts)
+=======
+app.get('/accounts', ctrl.getAccounts);
+>>>>>>> 2236477a93ec02bb606e7440f47691e31ea3c8bd
 app.post('/api/newaccount', ctrl.newAccount);
 app.post('/api/newbalance', ctrl.newBalance);
 app.put('/api/editbalance', ctrl.editBalance);
