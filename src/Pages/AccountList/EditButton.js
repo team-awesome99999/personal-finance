@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
-import { Button, FormGroup, FormControl } from 'react-bootstrap';
+import { Button, Form, FormGroup, FormControl } from 'react-bootstrap';
+import axios from 'axios';
 
 class EditButton extends Component {
 
@@ -10,33 +11,38 @@ class EditButton extends Component {
     balance: this.props.balance
   }
 
-  editingMode = () => {
-    this.setState({ editing: !this.state.editing })
+  saveEdits = async(id) => {
+    const { date, balance } = this.state;
+    await axios.put('/api/editbalance', { id, date, balance });
+    this.setState({ date: '', balance: '' });
   }
 
   render() {
     return (
       <div>
-        <Button onClick={ () => this.editingMode() }>Edit</Button>
         { this.state.editing ? 
-          <div>
-            <FormControl>
-              <FormGroup
+          <Form>
+            <FormGroup>
+              <FormControl
                 autoFocus
                 value={ this.state.date }
                 placeholder="Edit date"
                 onChange={ (e) => this.setState({ date: e.target.value }) }
               />
-            </FormControl>
-            <FormControl>
-              <FormGroup
+            </FormGroup>
+            <FormGroup>
+              <FormControl
                 value={ this.state.balance }
                 placeholder="Edit balance"
                 onChange={ (e) => this.setState({ balance: e.target.value }) }
               />
-            </FormControl> 
-          </div> 
-        : null }
+            </FormGroup>
+            <Button onClick={ () => this.saveEdits(this.props.balanceid) }>Save</Button>
+            <Button onClick={ () => this.setState({ editing: !this.state.editing })} variant="link">Cancel</Button>
+          </Form> 
+        : 
+        <Button onClick={ () => this.setState({ editing: !this.state.editing }) }>Edit</Button> 
+        }
       </div>
     );
   }

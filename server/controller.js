@@ -74,5 +74,12 @@ module.exports = {
     await db.add_balance([ accountid, newBalance, date ])
     let balances = await db.get_account_balances([ accountid ]);
     res.status(200).send(balances);
+  },
+  editBalance: async (req, res) => {
+    const { id, date, balance } = req.body;
+    const db = req.app.get('db');
+    let newBalance = await db.update_balance([ id, balance, date ]);
+    let balances = await db.get_account_balances([ newBalance[0].accountid ]);
+    res.status(200).send(balances);
   }
 }

@@ -29,6 +29,7 @@ app.get('/getsession', ctrl.getSession);
 app.get('/accounts', ctrl.getAccounts)
 app.post('/api/newaccount', ctrl.newAccount);
 app.post('/api/newbalance', ctrl.newBalance);
+app.put('/api/editbalance', ctrl.editBalance);
 
 
 app.listen(SERVER_PORT,()=>{
