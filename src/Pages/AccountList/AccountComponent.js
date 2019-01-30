@@ -22,13 +22,15 @@ export default class AccountComponent extends Component {
     render() {
       let {balances} = this.props
       let newBalances = [...balances]
-      let currentBalance = newBalances.pop()
+      let currentBalance = newBalances.shift()
       console.log(currentBalance);
-      let history = balances.map((balance)=>{
+      let history = balances.map((balance,index)=>{
         return(
-          <div>
+          <div className="accounthistory">
+          <div key={index + balance}>
             <h2>{balance.entrydate}</h2>
             <h2>{balance.balance}</h2>
+          </div>
           </div>
         )
 

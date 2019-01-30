@@ -34,6 +34,13 @@ button{
     width: 80%;
     display: flex
 }
+.accounthistory{
+    display: flex;
+    justify-content: space-between
+}
+.inputs{
+    display: none
+}
 .notvisible{
     height: 0px;
     color: white

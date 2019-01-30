@@ -20,7 +20,7 @@ export default class AccountList extends Component {
 
   render() {
 
-    let accounts = this.state.accounts.map((account) => {
+    let accounts = this.state.accounts.map((account, index) => {
       let balances = this.state.balances.filter((balance) => {
         if (balance.accountid === account.id) {
           return true
@@ -29,7 +29,7 @@ export default class AccountList extends Component {
         }
       })
       return (
-        <div>
+        <div key={index + account.id}>
           <p>{account.balance}</p>
           <AccountComponent
             name={account.name}
