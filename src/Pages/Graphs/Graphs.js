@@ -50,7 +50,7 @@ class Graphs extends Component{
             let whyy = newBalances.map((val,id)=>{
                 return parseFloat(val.balance)
             })
-            // console.log(newBalances,ex,whyy)
+            console.log(newBalances,ex,whyy)
             return(
                 <div className='accountBalance-parent' key={id}>
 
@@ -59,9 +59,9 @@ class Graphs extends Component{
                         data={[
                             {
                                 //date value from mapped array inside of x
-                                x: [ex],
+                                x: ex,
                                 //specified value from mapped array
-                                y: [whyy],
+                                y: whyy,
                                 type: 'scatter',
                                 mode: 'lines+points',
                                 marker: {color: 'green'},
@@ -72,18 +72,9 @@ class Graphs extends Component{
                 </div>
             )
         })
-        // let displayDate=this.state.accountDate.map((date,id)=>{
-        //     return(
-        //         <div className='accountdate-parent' key={id}>
-
-        //         </div>
-        //     )
-        // })
         return(
             <div className='graphs-parent'>
-                {/* <input type='number' value={this.state.total} onChange={(e)=>this.updateTotal(e.target.value)} />
-                <input type='number' value={this.state.assets} onChange={(e)=>this.updateAssets(e.target.value)} />
-                <input type='number' value={this.state.debts} onChange={(e)=>this.updateDebts(e.target.value)} /> */}
+                
 
                 {displayBalance}
             </div>
