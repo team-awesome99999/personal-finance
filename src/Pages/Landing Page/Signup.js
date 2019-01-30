@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Form, FormGroup, FormControl, Button, HelpBlock, Tooltip } from 'react-bootstrap'
+import { withRouter } from 'react-router-dom'
+import { getCurrentUser } from '../../dux/reducer';
+import { connect } from 'react-redux'; 
 
 class Signup extends Component {
   state = {
@@ -30,6 +33,7 @@ class Signup extends Component {
         email: '',
         password: ''
       })
+      this.props.history.push('/home');
     } catch(error) {
       if(error.response.data.message === 'Email already exists') {
         this.setState({ validateEmail: 'error'})
@@ -97,4 +101,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+export default withRouter(connect(null, {getCurrentUser})(Signup));
