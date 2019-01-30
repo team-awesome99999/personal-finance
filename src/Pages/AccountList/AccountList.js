@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import AccountComponent from './AccountComponent'
 import Header from '../Header';
+import DeleteAccount from '../AccountList/DeleteAccount';
 
 export default class AccountList extends Component {
   state = {
@@ -36,6 +37,7 @@ export default class AccountList extends Component {
             accountid={account.id}
             balances={balances}
           />
+          <DeleteAccount accountid={account.id}/>
 
         </div>
       )

@@ -31,6 +31,7 @@ app.post('/api/newaccount', ctrl.newAccount);
 app.post('/api/newbalance', ctrl.newBalance);
 app.put('/api/editbalance', ctrl.editBalance);
 app.delete('/api/deletebalance/:id', ctrl.deleteBalance);
+app.delete('/api/deleteaccount/:id', ctrl.deleteAccount);
 
 
 app.listen(SERVER_PORT,()=>{

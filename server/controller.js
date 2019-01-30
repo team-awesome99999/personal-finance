@@ -104,7 +104,18 @@ module.exports = {
       let balances = await db.get_account_balances([ id ]);
       return res.status(200).send(balances);
     } else {
-      return res.status(200).send('success deleting!')
+      return res.status(200).send('success deleting one balance!')
     }
+  },
+  deleteAccount: async (req, res) => {
+    const db = req.app.get('db');
+    await db.delete_account([ +req.params.id ]);
+    if(req.session.user) {
+      const { id } = req.session.user;
+        let balances = await db.get_all_accounts([ id ]);
+        return res.status(200).send(balances);
+      } else {
+        return res.status(200).send('success deleting account!')
+      }
   }
 }
