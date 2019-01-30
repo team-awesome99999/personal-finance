@@ -22,7 +22,7 @@ export default class AccountList extends Component {
     axios.get(`/accounts`)
          .then(res=>{
            this.setState({
-             acconts: res.data.accounts,
+             accounts: res.data.accounts,
              balances: res.data.balances
            })
          })
