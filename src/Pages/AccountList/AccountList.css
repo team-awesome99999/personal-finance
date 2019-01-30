@@ -1,42 +1,91 @@
+body{
+    background: linear-gradient(to bottom, #ffffff 0%, #d6d6d6 100%);
+    background-attachment: fixed
+}
 button{
     border-radius: 50%;
     width: 50px;
     height: 50px;
     font-size: 40px;
 }
+svg{
+    stroke: red;
+    fill: red
+}
 .all-accounts{
     display: flex;
     flex-direction: column;
-    align-items: center
+    align-items: center;
+    background: rgb(255, 255, 255);
+    width: 90%;
+    height: 100%;
+    min-height: 100vh;
+    margin-left: 5%;
+    box-shadow: 0px 0px 10px 10px rgba(165, 165, 165, 0.048);
 }
 .account{
     display: flex;
     justify-content: space-between;
-    background: linear-gradient(to bottom, #ffffff 0%, #ebebeb 100%);
+    background: rgb(255, 255, 255);
     flex-direction: row;
-    width: 80%;
-    margin-top: 80px;
+    width: 100%;
+    margin-top: 50px;
+    border-bottom-style: solid;
+    border-bottom-color: #d6d6d6;
+    border-bottom-width: 1px
+}
+.everyAccount{
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+.fas{
+    font-size: 25px;
 }
 .iconx{
-    transform: rotate(45deg);
-    width: 50px;
     transition: .5s;
-    margin-top: -25px
+}
+.circle{
+    background: rgb(255, 255, 255);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: -25px;
+    border-bottom: rgb(221, 221, 221);
+    border-bottom-width: 1px;
+    border-bottom-style: solid
 }
 .iconactive{
-    transform: none;
+    transform: rotate(45deg);
 }
 .history{
     height: 500px;
-    background: linear-gradient(to bottom, #ffffff 0%, #ebebeb 100%);
+    background: white;
     transition: .5s;
     color: black;
-    width: 80%;
-    display: flex
+    width: 100%;
+    display: flex;
+    flex-direction: column
 }
-.accounthistory{
+.details{
+    background: none;
+    width: 100%;
+    align-items: center
+}
+
+.historydisplay{
     display: flex;
     justify-content: space-between
+}
+
+.numbers{
+    justify-content: space-between;
+    align-items: unset
 }
 .inputs{
     display: none
@@ -44,4 +93,11 @@ button{
 .notvisible{
     height: 0px;
     color: white
+}
+h2{
+    font-size: 25px
+}
+.btn{
+    width: 100%;
+    font-size: 20px
 }

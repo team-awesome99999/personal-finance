@@ -7,9 +7,9 @@ import axios from 'axios';
 class AddBalance extends Component {
   state = {
     newBalance: '',
-    date: ''
+    date: '',
+    switch: true
   }
-
   addBalance = async(accountid) => {
     const { newBalance, date } = this.state;
     await axios.post('/api/newbalance', { accountid, newBalance, date } );
@@ -22,7 +22,7 @@ class AddBalance extends Component {
 
   render() {
     return (
-      <div>
+      <div className={this.state.switch ? "history notvisible" : "history"}>
         <FormGroup validationState={this.state.validateFirst}>
           <FormControl 
             autoFocus

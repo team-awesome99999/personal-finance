@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import axios from 'axios';
 import Plot from 'react-plotly.js';
 import moment from 'moment';
+import { Carousel } from 'react-bootstrap';
 
 class Graphs extends Component{
     state={
@@ -35,47 +36,57 @@ class Graphs extends Component{
     // }
 
     render(){
-        let displayBalance=this.state.accounts.map((acct,id)=>{
-            let newBalances=this.state.balances.filter((bal,id)=>{
-                if(acct.id===bal.accountid){
-                    return true
-                } else {
-                     return false
-                }
-            })
-            let ex = newBalances.map((val,id)=>{
-                return moment(val.entrydate).format("YYYY MMM Do")
-            })
-            let whyy = newBalances.map((val,id)=>{
-                return parseFloat(val.balance)
-            })
-            console.log(newBalances,ex,whyy)
-            return(
-                <div className='accountBalance-parent' key={id}>
+      let displayBalance=this.state.accounts.map((acct,id)=>{
+        let newBalances=this.state.balances.filter((bal,id)=>{
+          if(acct.id===bal.accountid){
+            return true
+          } else {
+            return false
+          }
+        })
+        let x_axis = newBalances.map((val,id)=>{
+          return moment(val.entrydate).format("YYYY MMM Do")
+        })
+        let y_axis = newBalances.map((val,id)=>{
+          return parseFloat(val.balance)
+        })
+        console.log("new balances", newBalances)
+        
+        return(
+          <div className='accountBalance-parent' key={id}>
 
                     <Plot 
                     
-                        data={[
-                            {
-                                //date value from mapped array inside of x
-                                x: ex,
-                                //specified value from mapped array
-                                y: whyy,
-                                type: 'scatter',
-                                mode: 'lines+points',
-                                marker: {color: 'green'},
-                            },
-                            ]}
-                            layout={ {width: 640, height: 480, title: 'Debts and Assets'} }
+                    data={[
+                      {
+                        //date value from mapped array inside of x
+                        x: x_axis.reverse(),
+                        //specified value from mapped array
+                        y: y_axis,
+                        type: 'scatter',
+                        mode: 'lines+points',
+                        marker: {color: 'green'},
+                      },
+                    ]}
+                    layout={ {width: 640, height: 480, title: acct.name} }
                     />
                 </div>
             )
-        })
-        return(
+          })
+          
+          let carouselItems = displayBalance.map(graph => {
+            return(
+              <Carousel.Item>
+                <div className='landing-carousel' width={900} height={500} alt="900x500">{graph}</div>
+              </Carousel.Item>
+            )
+          })
+          
+          
+          console.log(displayBalance, "Display balance");
+          return(
             <div className='graphs-parent'>
-                
-
-                {displayBalance}
+                <Carousel>{carouselItems}</Carousel>
             </div>
         )
     }

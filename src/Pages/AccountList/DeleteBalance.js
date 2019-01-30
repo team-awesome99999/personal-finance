@@ -10,8 +10,8 @@ class DeleteBalance extends Component {
 
   render() {
     return (
-      <div>
-        <Button onClick={ () => this.deleteBalance(this.props.balanceid) }>Delete</Button>
+      <div onClick={ () => this.deleteBalance(this.props.balanceid) }>
+        <i className="fas fa-trash-alt"></i>
       </div>
     );
   }

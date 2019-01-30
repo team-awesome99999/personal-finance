@@ -10,8 +10,9 @@ class DeleteAccount extends Component {
 
   render() {
     return (
-      <div>
-        <Button onClick={ () => this.deleteAccount(this.props.accountid) }>Delete</Button>
+      <div onClick={() => this.deleteAccount(this.props.accountid)}>
+        <i class="fas fa-trash-alt"></i>
+
       </div>
     );
   }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { connect } from 'react-redux';
 import {Link} from 'react-router-dom'
 
 class NewUser extends Component {
@@ -11,7 +10,7 @@ class NewUser extends Component {
 
   addAccount = async() => {
     const { accountName, currentBalance } = this.state;
-    let res = await axios.post('/api/newaccount', { userid: this.props.userid, name: accountName, currentBalance: currentBalance });
+    let res = await axios.post('/api/newaccount', { name: accountName, currentBalance: currentBalance });
     console.log(res.data);
   }
 
@@ -33,10 +32,6 @@ class NewUser extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    userid: state.userid
-  }
-}
 
-export default connect(mapStateToProps)(NewUser);
+
+export default NewUser;
