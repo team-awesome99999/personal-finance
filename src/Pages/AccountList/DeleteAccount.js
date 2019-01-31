@@ -9,7 +9,7 @@ class DeleteAccount extends Component {
 
   render() {
     return (
-      <div onClick={() => this.deleteAccount(this.props.accountid)}>
+      <div className="trashIcon" onClick={() => this.deleteAccount(this.props.accountid)}>
         <i className="fas fa-trash-alt"></i>
 
       </div>

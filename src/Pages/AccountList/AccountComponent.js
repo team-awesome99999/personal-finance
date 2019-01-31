@@ -25,8 +25,8 @@ export default class AccountComponent extends Component {
             return (
                 <div key={balance.id} className="accounthistory">
                     <div className="historydisplay" key={index + balance}>
-                        <h2>{moment(balance.entrydate).subtract(6, 'days').calendar()}</h2>
-                        <h2>${balance.balance}</h2>
+                        <h2 className="dateTime">{moment(balance.entrydate).subtract(6, 'days').calendar()}</h2>
+                        <h2 className="historyBalance">${balance.balance}</h2>
                         <EditButton
                             balanceid={balance.id}
                             date={balance.entrydate}
@@ -44,10 +44,10 @@ export default class AccountComponent extends Component {
         return (
             <div className="everyAccount">
                 <div className="account">
-                    <h2>{this.props.name}</h2>
-                    <h2>{currentBalance ? `$ ${currentBalance.balance}` : null}</h2>
-                    <DeleteAccount accountid={this.props.accountid}/>
+                    <h2 className="accountName">{this.props.name}</h2>
+                    <h2 className="accountBalance">{currentBalance ? `$ ${currentBalance.balance}` : null}</h2>
                 </div>
+                    <DeleteAccount accountid={this.props.accountid}/>
                 <div className={this.state.switch ? "history notvisible" : "history"}>
                     <h3 className={this.state.switch ? "history hidden" : "history details numbers"} >{history}</h3>
                     <div className={this.state.switch ? "history hidden" : "history details"}>

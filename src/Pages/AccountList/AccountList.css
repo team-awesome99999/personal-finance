@@ -24,24 +24,58 @@ svg{
     box-shadow: 0px 0px 10px 10px rgba(165, 165, 165, 0.048);
 }
 .account{
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
     justify-content: space-between;
     background: rgb(255, 255, 255);
     flex-direction: row;
-    width: 100%;
+    width: 80%;
     margin-top: 50px;
     border-bottom-style: solid;
     border-bottom-color: #d6d6d6;
-    border-bottom-width: 1px
+    border-bottom-width: 1px;
+    height: 50px;
+}
+.accountName{
+    grid-column: 1/2;
+    margin: 0;
+    justify-self: left;
+    font-size: 20px;
+}
+.accountBalance{
+    grid-column: 3/4;
+    margin: 0;
+    color: #5cb85c;
+    font-size: 30px;
+    justify-self: right
+}
+.trashIcon{
+    position: relative;
+    left: 40%;
+    bottom: 100px;
+    display: block;
+    opacity: 0;
 }
 .everyAccount{
-    width: 1000px;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center
 }
 .fas{
     font-size: 25px;
+}
+.fa-trash-alt{
+    color: rgb(172, 172, 172);
+}
+.everyAccount:hover .trashIcon {
+    display: block;
+    opacity: 100;
+}
+.fa-pencil-alt{
+    color: rgb(172, 172, 172);
 }
 .iconx{
     transition: .5s;
@@ -68,7 +102,7 @@ svg{
     background: white;
     transition: .5s;
     color: black;
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-direction: column
 }
@@ -76,17 +110,35 @@ svg{
     background: none;
     width: 100%;
     align-items: center;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .historydisplay{
-    display: flex;
-    justify-content: space-between
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
 }
-
 .numbers{
-    justify-content: space-between;
-    align-items: unset
+    align-items: unset;
+}
+.dateTime{
+    grid-column: 1/3;
+    justify-self: left;
+    font-size: 15px;
+    margin: 0;
+    color: rgb(172, 172, 172);
+}
+.historyBalance{
+    grid-column: 4/6;
+    justify-self: left;
+    margin: 0;
+}
+.editButton{
+    grid-column: 7
+}
+.deleteBalance{
+    grid-column: 8
 }
 .inputs{
     display: none
