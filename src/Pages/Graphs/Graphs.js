@@ -7,13 +7,11 @@ import { Carousel } from 'react-bootstrap';
 
 class Graphs extends Component{
     state={
-        total:7,
-        assets:10,
-        debts:30,
         accounts:[],
         balances:[],
         index: 0,
-        direction: null
+        direction: null,
+        total:[]
     }
 
     //grab two arrays from db
@@ -26,7 +24,14 @@ class Graphs extends Component{
                 this.setState({accounts: res.data.accounts, balances: res.data.balances})
                 // console.log(res,this.state)
              })
+        axios.get(`/api/getbalances`)
+             .then(res=>{
+               console.log(res)
+               this.setState({total:res.data})
+               console.log(this.state.total)
+             })
     }
+
 
     handleSelect = (selectedIndex, e) => {
       this.setState({
@@ -46,6 +51,14 @@ class Graphs extends Component{
     // }
 
     render(){
+
+      // let totals = this.state.total.reduce((totals,item)=>{
+      //   console.log(totals,item)
+      //   totals[item.balance] = item.value; 
+      //   console.log(totals)
+      //   return totals
+      // },{})
+
       let displayBalance=this.state.accounts.map((acct,id)=>{
         let newBalances=this.state.balances.filter((bal,id)=>{
           if(acct.id===bal.accountid){
@@ -54,10 +67,10 @@ class Graphs extends Component{
             return false
           }
         })
-        let x_axis = newBalances.map((val,id)=>{
+        const x_axis = newBalances.map((val,id)=>{
           return moment(val.entrydate).format("YYYY MMM Do")
         })
-        let y_axis = newBalances.map((val,id)=>{
+        const y_axis = newBalances.map((val,id)=>{
           return parseFloat(val.balance)
         })
         // console.log("new balances", newBalances)
@@ -83,6 +96,44 @@ class Graphs extends Component{
                 </div>
             )
           })
+
+          let whateverthefuck = this.state.accounts.map((acct,id)=>{
+            let newBalances=this.state.balances.filter((bal,id)=>{
+              if(acct.id===bal.accountid){
+                return true
+              } else {
+                return false
+              }
+            })
+            const x_axis = newBalances.map((val,id)=>{
+              return moment(val.entrydate).format("YYYY MMM Do")
+            })
+            const y_axis = newBalances.map((val,id)=>{
+              return parseFloat(val.balance)
+            })
+            // console.log("new balances", newBalances)
+            
+            return
+                          {
+                            //date value from mapped array inside of x
+                            x: x_axis.reverse(),
+                            //specified value from mapped array
+                            y: y_axis,
+                            type: 'scatter',
+                            mode: 'lines+points',
+                            marker: {color: 'green'}
+                          }
+              })
+
+
+              console.log(whateverthefuck)
+          let grandMasterTotal = 
+            <Plot 
+              data={[
+                {whateverthefuck}
+              ]}
+              layout={{width:1000, height: 650, title: 'Total Accounts and Balances'}}
+            />
           
           let carouselItems = displayBalance.map(graph => {
             return(
@@ -96,12 +147,13 @@ class Graphs extends Component{
           // console.log(displayBalance, "Display balance");
           return(
             <div className='graphs-parent'>
-                <Carousel
+                {grandMasterTotal}
+                {/* <Carousel
                   activeIndex={index}
                   direction={direction}
                   onSelect={this.handleSelect}
                   >
-                  {carouselItems}</Carousel>
+                  {carouselItems}</Carousel> */}
             </div>
         )
     }

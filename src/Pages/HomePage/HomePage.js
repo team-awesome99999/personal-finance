@@ -10,14 +10,14 @@ class HomePage extends Component {
   state={}
   async componentDidMount(){
     let res = await axios.get(`/accounts`)
-    console.log(res)
+    // console.log(res)
     this.props.getAccount(res.data)
-    console.log(getAccount())
+    // console.log(getAccount())
   }
   
   render() {
     let {userAccount} = this.props
-    console.log(userAccount)
+    // console.log(userAccount)
     return (
       <div>
         {
