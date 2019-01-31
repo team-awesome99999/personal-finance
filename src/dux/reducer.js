@@ -1,5 +1,6 @@
 const initialState={
   userid: '',
+  firstname: '',
   accountBalance: {},
   accountDates: {}
 }

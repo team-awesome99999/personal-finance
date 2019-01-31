@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import Login from './Landing Page/Login'
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
@@ -9,7 +8,6 @@ import { getCurrentUser } from '../dux/reducer';
 class Header extends Component {
 
   state = {
-    showLogin: false,
     loggedIn: false
   }
 
@@ -37,24 +35,6 @@ class Header extends Component {
   render() {
     return (
       <div>
-        {/* navbar if user is NOT logged in */}
-        {!this.state.loggedIn ?
-          <Navbar className='header'>
-            <Navbar.Header>
-              <Navbar.Brand>
-                Asset Tracker
-              </Navbar.Brand>
-            </Navbar.Header>
-            {this.state.showLogin ?
-              <Login showLoginFn={this.showLogin}/>
-            : 
-              <Nav pullRight>
-                <NavItem onClick={() => this.showLogin() }>Login</NavItem>
-              </Nav>
-            }
-          </Navbar>
-        : 
-        // Navbar if user IS logged in
         <Navbar className='header'>
           <Navbar.Header>
             <Navbar.Brand
@@ -64,8 +44,6 @@ class Header extends Component {
             </Navbar.Brand>
           </Navbar.Header>
           <Nav pullRight>
-            <NavItem onClick={ () => this.props.history.push('/accounts') }  >Accounts</NavItem>
-            <NavItem onClick={ () => this.props.history.push('/home') }  >Graphs</NavItem>
             <NavItem onClick={ () => this.logout() }>Logout</NavItem>
           </Nav>
         </Navbar>

@@ -7,8 +7,8 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <Header/>
         <NewUser />
+        <Header/>
         <Graphs />
       </div>
     );
