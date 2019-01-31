@@ -47,7 +47,6 @@ class Header extends Component {
             <NavItem onClick={ () => this.logout() }>Logout</NavItem>
           </Nav>
         </Navbar>
-        }
       </div>
     );
   }
