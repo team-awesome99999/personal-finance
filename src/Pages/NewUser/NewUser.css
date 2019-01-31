@@ -14,6 +14,7 @@
   margin-left: 10px;
   height: 300px;
   width: 400px;
+  border-radius: 6px;
 }
 
 .new-account-icon {
@@ -36,6 +37,7 @@
   cursor: pointer;
 }
 .newaccountbutton {
+  cursor: pointer;
   background-image: none;
   background-color: green;
   width: 80px;
