@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Form, FormGroup, FormControl } from 'react-bootstrap';
+import { Form, FormGroup, FormControl, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
+import './NewUser.css'
 
 class AddAccount extends Component {
   state = {
     accountName: '',
     currentBalance: '',
     validateName: null,
-    validateBalance: null
+    validateBalance: null,
+    openForm: false
   }
 
   addAccount = async() => {
@@ -26,30 +29,36 @@ class AddAccount extends Component {
 
   render() {
     return (
-      <div className='new-account-form'>
-        <p>Add New Account</p>
-        <Form>
-          <FormGroup validationState={this.state.validateName}>
-            <FormControl 
-              autoFocus
-              onChange={ (e) => this.setState({ accountName: e.target.value, validateName: null })}
-              value={this.state.accountName}
-              placeholder="New Account Name"
-              type="text"
-              />
+      <div className='new-account'>
+        <button className="new-account-icon"><i class="fas fa-plus"></i></button>
+        <div className='new-account-form'>
+          <p>Add New Account</p>
+          <Form>
+            <FormGroup validationState={this.state.validateName}>
+              <FormControl 
+                autoFocus
+                onChange={ (e) => this.setState({ accountName: e.target.value, validateName: null })}
+                value={this.state.accountName}
+                placeholder="New Account Name"
+                type="text"
+                />
+                <FormControl.Feedback/>
+            </FormGroup>{' '}
+            <FormGroup validationState={this.state.validateBalance}>
+              <FormControl 
+                onChange={ (e) => this.setState({ currentBalance: e.target.value, validateBalance: null })}
+                value={this.state.currentBalance}
+                placeholder="Current Balance"
+                type="number"
+                />
               <FormControl.Feedback/>
-          </FormGroup>{' '}
-          <FormGroup validationState={this.state.validateBalance}>
-            <FormControl 
-              onChange={ (e) => this.setState({ currentBalance: e.target.value, validateBalance: null })}
-              value={this.state.currentBalance}
-              placeholder="Current Account Balance"
-              type="number"
-              />
-            <FormControl.Feedback/>
-          </FormGroup>{' '}
-          <button onClick={ () => this.addAccount() }>Save</button>
-        </Form>
+            </FormGroup>{' '}
+            <Button className='newaccountbutton' onClick={ () => this.addAccount() }>Save</Button>
+          </Form>
+        </div>
+        <div className='next-link'>
+          <Link className='link' to="/accounts">Next</Link>
+        </div>
       </div>
     );
   }
