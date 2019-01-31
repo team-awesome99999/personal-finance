@@ -39,7 +39,6 @@ export default class AccountComponent extends Component {
                     </div>
                 </div>
             )
-
         })
 
 
