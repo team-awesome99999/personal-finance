@@ -19,7 +19,7 @@ class EditButton extends Component {
 
   render() {
     return (
-      <div>
+      <div className="editButton">
         { this.state.editing ? 
           <Form>
             <FormGroup>
