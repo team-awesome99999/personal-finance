@@ -1,0 +1,49 @@
+
+.new-account {
+  width: 60%;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.new-account-form {
+  border: 1px rgb(243, 243, 243) solid;
+  box-shadow: 3px 3px 11px 0px rgba(189,189,189,0.65);
+  background-color: white;
+  padding: 40px 60px 40px 60px;
+  margin-left: 10px;
+  height: 300px;
+  width: 400px;
+  border-radius: 6px;
+}
+
+.new-account-icon {
+  font-size: 32px;
+  color: green;
+  cursor: pointer;
+  border: none;
+  box-shadow: 3px 3px 11px 0px rgba(189,189,189,0.65);
+}
+
+.next-link {
+  display: flex;
+  align-items: flex-end;
+}
+
+.link {
+  padding: 20px;
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+.newaccountbutton {
+  cursor: pointer;
+  background-image: none;
+  background-color: green;
+  width: 80px;
+  height: 40px;
+  border: none;
+  color: white;
+}
+
+

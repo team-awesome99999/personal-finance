@@ -40,14 +40,13 @@ class Header extends Component {
             <Navbar.Brand
               onClick={ () => this.props.history.push('/home') }  
               className='site-name'>
-              Asset Tracker
+              Trassets
             </Navbar.Brand>
           </Navbar.Header>
           <Nav pullRight>
             <NavItem onClick={ () => this.logout() }>Logout</NavItem>
           </Nav>
         </Navbar>
-        }
       </div>
     );
   }
