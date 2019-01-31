@@ -93,7 +93,7 @@ class Signup extends Component {
               />
               <FormControl.Feedback/>
           </FormGroup>{' '}
-          <Button onClick={ () => this.signup() }>Register</Button>
+          <Button className='btn btn-primary' onClick={ () => this.signup() }>Register</Button>
           {this.state.fieldsRequired ?  <HelpBlock>All fields required</HelpBlock> : null }
         </Form>
       </div>

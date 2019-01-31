@@ -75,7 +75,8 @@ svg{
 .details{
     background: none;
     width: 100%;
-    align-items: center
+    align-items: center;
+    overflow: scroll;
 }
 
 .historydisplay{

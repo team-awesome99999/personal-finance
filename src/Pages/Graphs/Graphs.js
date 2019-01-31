@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import './Graphs.css';
 import axios from 'axios';
 import Plot from 'react-plotly.js';
 import moment from 'moment';
@@ -10,7 +11,9 @@ class Graphs extends Component{
         assets:10,
         debts:30,
         accounts:[],
-        balances:[]
+        balances:[],
+        index: 0,
+        direction: null
     }
 
     //grab two arrays from db
@@ -23,6 +26,13 @@ class Graphs extends Component{
                 this.setState({accounts: res.data.accounts, balances: res.data.balances})
                 console.log(res,this.state)
              })
+    }
+
+    handleSelect = (selectedIndex, e) => {
+      this.setState({
+        index: selectedIndex,
+        direction: e.direction,
+      });
     }
 
     // updateTotal=(val)=>{
@@ -68,7 +78,7 @@ class Graphs extends Component{
                         marker: {color: 'green'},
                       },
                     ]}
-                    layout={ {width: 640, height: 480, title: acct.name} }
+                    layout={ {width: 1000, height: 650, title: acct.name} }
                     />
                 </div>
             )
@@ -77,16 +87,21 @@ class Graphs extends Component{
           let carouselItems = displayBalance.map(graph => {
             return(
               <Carousel.Item>
-                <div className='landing-carousel' width={900} height={500} alt="900x500">{graph}</div>
+                <div className='landing-carousel' alt="900x500">{graph}</div>
               </Carousel.Item>
             )
           })
           
-          
+          const { index, direction } = this.state;
           console.log(displayBalance, "Display balance");
           return(
             <div className='graphs-parent'>
-                <Carousel>{carouselItems}</Carousel>
+                <Carousel
+                  activeIndex={index}
+                  direction={direction}
+                  onSelect={this.handleSelect}
+                  >
+                  {carouselItems}</Carousel>
             </div>
         )
     }
