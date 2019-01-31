@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom'
+import { connect } from 'react-redux'
 
 class NewUser extends Component {
   state = {
@@ -11,12 +12,12 @@ class NewUser extends Component {
   addAccount = async() => {
     const { accountName, currentBalance } = this.state;
     let res = await axios.post('/api/newaccount', { name: accountName, currentBalance: currentBalance });
-    console.log(res.data);
   }
 
   render() {
     return (
       <div>
+        <h3>{this.props.userid ? "Welcome " + this.props.firstname + "!" : "Welcome!"}</h3>
         <input
           onChange={ (e) => this.setState({ accountName: e.target.value })}
           placeholder="Account Name" 
@@ -32,6 +33,10 @@ class NewUser extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    firstname: state.firstname
+  }
+}
 
-
-export default NewUser;
+export default connect(mapStateToProps)(NewUser);
