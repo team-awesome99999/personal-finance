@@ -20,15 +20,7 @@ class Graphs extends Component{
     componentDidMount(){
         axios.get(`/accounts`)
              .then(res=>{
-                //  console.log(res)
                 this.setState({accounts: res.data.accounts, balances: res.data.balances})
-                // console.log(res,this.state)
-             })
-        axios.get(`/api/getbalances`)
-             .then(res=>{
-               console.log(res)
-               this.setState({total:res.data})
-               console.log(this.state.total)
              })
     }
 
@@ -40,24 +32,10 @@ class Graphs extends Component{
       });
     }
 
-    // updateTotal=(val)=>{
-    //     this.setState({total:val})
-    // }
-    // updateAssets=(val)=>{
-    //     this.setState({assets:val})
-    // }
-    // updateDebts=(val)=>{
-    //     this.setState({debts:val})
-    // }
+ 
 
     render(){
 
-      // let totals = this.state.total.reduce((totals,item)=>{
-      //   console.log(totals,item)
-      //   totals[item.balance] = item.value; 
-      //   console.log(totals)
-      //   return totals
-      // },{})
 
       let displayBalance=this.state.accounts.map((acct,id)=>{
         let newBalances=this.state.balances.filter((bal,id)=>{
@@ -97,7 +75,7 @@ class Graphs extends Component{
             )
           })
 
-          let whateverthefuck = this.state.accounts.map((acct,id)=>{
+          let groupOfAccounts = this.state.accounts.map((acct,id)=>{
             let newBalances=this.state.balances.filter((bal,id)=>{
               if(acct.id===bal.accountid){
                 return true
@@ -113,8 +91,8 @@ class Graphs extends Component{
             })
             // console.log("new balances", newBalances)
             
-            return
-                          {
+            return{
+                          
                             //date value from mapped array inside of x
                             x: x_axis.reverse(),
                             //specified value from mapped array
@@ -125,15 +103,16 @@ class Graphs extends Component{
                           }
               })
 
-
-              console.log(whateverthefuck)
           let grandMasterTotal = 
+          <Carousel.Item>
+            
             <Plot 
-              data={[
-                {whateverthefuck}
-              ]}
+              data={
+                groupOfAccounts
+              }
               layout={{width:1000, height: 650, title: 'Total Accounts and Balances'}}
-            />
+              />
+              </Carousel.Item>
           
           let carouselItems = displayBalance.map(graph => {
             return(
@@ -142,18 +121,20 @@ class Graphs extends Component{
               </Carousel.Item>
             )
           })
+
+          
           
           const { index, direction } = this.state;
           // console.log(displayBalance, "Display balance");
           return(
             <div className='graphs-parent'>
-                {grandMasterTotal}
-                {/* <Carousel
+                <Carousel
                   activeIndex={index}
                   direction={direction}
                   onSelect={this.handleSelect}
                   >
-                  {carouselItems}</Carousel> */}
+                  {grandMasterTotal}
+                  {carouselItems}</Carousel>
             </div>
         )
     }
@@ -161,79 +142,3 @@ class Graphs extends Component{
 
 export default Graphs;
 
-
-
-//   <Plot 
-//                   useResizeHandler={true}
-//                   data={[
-//                     {
-//                       x: dateArray,
-//                       y: expectedRemaining,
-//                       type: 'scatter',
-//                       mode: 'Line Dash',
-//                       marker: {color: 'blue'},
-//                       name: 'expected'
-//                     },
-//                     {
-//                       x: dateArray,
-//                       y: actualRemaining,
-//                       type: 'scatter',
-//                       mode: 'Line Dash',
-//                       marker: {color: 'green'},
-//                       name: 'actual'
-//                     }
-//                     ]}
-//                     layout={
-//                     {
-//                       width: document.documentElement.clientWidth / 2, 
-//                       height: document.documentElement.clientHeight / 2, 
-//                       title: 'Progress chart', 
-//                       yaxis: { title: 'Hours' }, 
-//                       showlegend: true, 
-//                       legend: {x:1, y:1, xanchor:'auto'}, 
-//                       displayModeBar:false}
-//                     } 
-//                     config={{displayModeBar: false}}/>
-//                   </div>
-//                 </div>
-
-
-
-// let dateArray = this.props.tableArray.map(obj => {
-//     return moment(obj.date).format();
-//   })
-//   let expectedRemaining = this.props.tableArray.map(obj => {
-//     return Number((obj.remaining_expected).toFixed(2));
-//   })
-//   let actualRemaining = this.props.tableArray.filter(obj => {
-//     if(obj.remaining_actual !== "") {
-//     return true;
-//     } else {return false}
-//   }).map(obj => {
-//     return Number((obj.remaining_actual).toFixed(2));
-//   })
-
-
-
-
-
-
-
-
-
-
-
-
-
-// PIE CHART
-// data={[
-//     {
-//         values:[this.state.total,this.state.assets,this.state.debts],
-//         type: 'pie',
-//         marker: {color: 'green'},
-//     },
-//     {type: 'pie', x: [1, 2, 3], y: [2, 5, 3]},
-//     ]}
-//     layout={ {width: 640, height: 480, title: 'Debts and Assets'} }
-
-    
