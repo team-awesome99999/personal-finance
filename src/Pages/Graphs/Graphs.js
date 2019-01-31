@@ -22,9 +22,9 @@ class Graphs extends Component{
     componentDidMount(){
         axios.get(`/accounts`)
              .then(res=>{
-                 console.log(res)
+                //  console.log(res)
                 this.setState({accounts: res.data.accounts, balances: res.data.balances})
-                console.log(res,this.state)
+                // console.log(res,this.state)
              })
     }
 
@@ -60,7 +60,7 @@ class Graphs extends Component{
         let y_axis = newBalances.map((val,id)=>{
           return parseFloat(val.balance)
         })
-        console.log("new balances", newBalances)
+        // console.log("new balances", newBalances)
         
         return(
           <div className='accountBalance-parent' key={id}>
@@ -93,7 +93,7 @@ class Graphs extends Component{
           })
           
           const { index, direction } = this.state;
-          console.log(displayBalance, "Display balance");
+          // console.log(displayBalance, "Display balance");
           return(
             <div className='graphs-parent'>
                 <Carousel
