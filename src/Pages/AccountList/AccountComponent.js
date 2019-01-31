@@ -15,7 +15,7 @@ export default class AccountComponent extends Component {
             switch: !this.state.switch
         })
     }
-    
+
 
     render() {
         let { balances } = this.props
@@ -27,13 +27,15 @@ export default class AccountComponent extends Component {
                     <div className="historydisplay" key={index + balance}>
                         <h2 className="dateTime">{moment(balance.entrydate).subtract(6, 'days').calendar()}</h2>
                         <h2 className="historyBalance">${balance.balance}</h2>
-                        <EditButton
-                            balanceid={balance.id}
-                            date={balance.entrydate}
-                            balance={balance.balance} />
-                        <DeleteBalance
-                            balanceid={balance.id}
-                        />
+                        <div className="iconbuttons">
+                            <EditButton
+                                balanceid={balance.id}
+                                date={balance.entrydate}
+                                balance={balance.balance} />
+                            <DeleteBalance
+                                balanceid={balance.id}
+                            />
+                        </div>
                     </div>
                 </div>
             )
@@ -47,7 +49,7 @@ export default class AccountComponent extends Component {
                     <h2 className="accountName">{this.props.name}</h2>
                     <h2 className="accountBalance">{currentBalance ? `$ ${currentBalance.balance}` : null}</h2>
                 </div>
-                    <DeleteAccount accountid={this.props.accountid}/>
+                <DeleteAccount accountid={this.props.accountid} />
                 <div className={this.state.switch ? "history notvisible" : "history"}>
                     <h3 className={this.state.switch ? "history hidden" : "history details numbers"} >{history}</h3>
                     <div className={this.state.switch ? "history hidden" : "history details"}>
