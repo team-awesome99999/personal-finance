@@ -1,7 +1,6 @@
 const initialState={
-  userid: '',
-  accountBalance: {},
-  accountDates: {}
+  userAccount:{},
+  userid: ''
 }
 
 // ACTION CONSTANTS
@@ -16,13 +15,10 @@ export function getCurrentUser({ userid }) {
   }
 }
 
-export function getAccount({ balances, entrydate }) {
+export function getAccount(userInfo) {
   return {
     type: GET_ACCOUNT,
-    payload: {
-      balances,
-      entrydate
-    }
+    payload: userInfo
   }
 }
 
@@ -32,7 +28,7 @@ function reducer(state=initialState,action){
       case GET_CURRENT_USER:
         return { ...state, userid: action.payload}
       case GET_ACCOUNT:
-        return { ...state, accountBalance: this.payload.balances, accountDates: this.payload.entrydate };
+        return { ...state, userAccount: action.payload };
       default: return state
    }
 }
