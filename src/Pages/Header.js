@@ -42,7 +42,7 @@ class Header extends Component {
           <Navbar className='header'>
             <Navbar.Header>
               <Navbar.Brand>
-                Asset Tracker
+                Trassets
               </Navbar.Brand>
             </Navbar.Header>
             {this.state.showLogin ?
