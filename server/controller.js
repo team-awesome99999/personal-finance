@@ -52,6 +52,16 @@ module.exports = {
       return res.status(401).send({ loggedIn: false, message: "Please log in."})
     }
   },
+  getAccountBalances: async(req,res)=>{
+    const db=req.app.get('db')
+    const user = req.session.user
+    if(user){
+      let allBalances = await db.lifetime_balances_graph([user.id])
+      res.status(200).send(allBalances)
+    } else{
+      res.status(401).send(console.log('error no user info found'))
+    }
+  },
   logout: (req, res) => {
     req.session.destroy();
     res.status(200).send({ loggedIn: false });
