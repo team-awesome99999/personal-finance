@@ -4,6 +4,7 @@ import axios from 'axios';
 import Plot from 'react-plotly.js';
 import moment from 'moment';
 import { Carousel } from 'react-bootstrap';
+import AddBalance from '../HomePage/AddBalance';
 
 class Graphs extends Component {
   state = {
@@ -67,9 +68,9 @@ class Graphs extends Component {
                 marker: { color: 'green' },
               },
             ]}
-            layout={{ title: 'Total Accounts and Balances', autosize: true }}
+            layout={{ title: acct.name, autosize: true }}
             useResizeHandle={true}
-            style={{ width: "100%", height: "100%" }}
+            style={{ width: "80%", height: "100%" }}
             config={{ responsive: true }}
             />
         </div>
@@ -130,17 +131,20 @@ class Graphs extends Component {
 
 
     const { index, direction } = this.state;
-    // console.log(displayBalance, "Display balance");
+
     return (
-      <div className='graphs-parent'>
-        <Carousel
-          activeIndex={index}
-          direction={direction}
-          onSelect={this.handleSelect}
-          >
-          {grandMasterTotal}
-          {carouselItems}
-        </Carousel>
+      <div>
+        <div className='graphs-parent'>
+          <Carousel
+            activeIndex={index}
+            direction={direction}
+            onSelect={this.handleSelect}
+            >
+            {grandMasterTotal}
+            {carouselItems}
+          </Carousel>
+        </div>
+        <AddBalance />
       </div>
     )
   }
