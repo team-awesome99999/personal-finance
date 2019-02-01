@@ -113,7 +113,7 @@ class Graphs extends Component {
             }
             layout={{ title: 'Total Accounts and Balances', autosize: true }}
             useResizeHandle={true}
-            style={{ width: "100%", height: "100%" }}
+            style={{ width: "80%", height: "100%" }}
             config={{ responsive: true }}
           />
         </div>
