@@ -4,3 +4,21 @@
 .carousel-control.right {
   background-image: none;
 }
+
+.graphs-parent {
+  display: flex;
+  justify-content: center;
+}
+
+.plot-parent {
+  height: 500px;
+}
+
+.c-item {
+  height: 50em;
+  margin: 0;
+}
+
+.carousel {
+  width: 80%;
+}
