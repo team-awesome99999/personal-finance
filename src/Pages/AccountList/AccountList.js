@@ -65,7 +65,3 @@ export default class AccountList extends Component {
     )
   }
 }
-
-
-// SELECT * FROM balances
-// WHERE accountid = $1
