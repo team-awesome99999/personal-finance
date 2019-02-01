@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Form, FormGroup, FormControl, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom'
 import './NewUser.css'
 
 class AddAccount extends Component {
@@ -30,7 +29,12 @@ class AddAccount extends Component {
   render() {
     return (
       <div className='new-account'>
-        <button className="new-account-icon"><i class="fas fa-plus"></i></button>
+        <button onClick={ () => this.setState({ openForm: !this.state.openForm }) } className="new-account-icon"><i class="fas fa-plus"></i></button>
+        { !this.state.openForm ? 
+        <div className='new-account-closed'>
+          <p>Add New Account</p>
+        </div>
+        :
         <div className='new-account-form'>
           <p>Add New Account</p>
           <Form>
@@ -56,9 +60,7 @@ class AddAccount extends Component {
             <Button className='newaccountbutton' onClick={ () => this.addAccount() }>Save</Button>
           </Form>
         </div>
-        <div className='next-link'>
-          <Link className='link' to="/accounts">Next</Link>
-        </div>
+        }
       </div>
     );
   }
