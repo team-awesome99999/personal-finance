@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Form, FormGroup, FormControl, Button } from 'react-bootstrap';
 import './NewUser.css'
+import { withRouter } from 'react-router-dom';
 
 class AddAccount extends Component {
   state = {
@@ -24,19 +25,20 @@ class AddAccount extends Component {
       accountName: '',
       currentBalance: ''
     })
+    this.props.history.push('/accounts')
   }
 
   render() {
     return (
       <div className='new-account'>
-        <button onClick={ () => this.setState({ openForm: !this.state.openForm }) } className="new-account-icon"><i class="fas fa-plus"></i></button>
+        <button onClick={ () => this.setState({ openForm: !this.state.openForm }) } className="new-account-icon"><i className="fas fa-plus"></i></button>
         { !this.state.openForm ? 
         <div className='new-account-closed'>
-          <p>Add New Account</p>
+          <h4>Add New Account</h4>
         </div>
         :
         <div className='new-account-form'>
-          <p>Add New Account</p>
+          <h4>Add New Account</h4>
           <Form>
             <FormGroup validationState={this.state.validateName}>
               <FormControl 
@@ -66,4 +68,4 @@ class AddAccount extends Component {
   }
 }
 
-export default AddAccount;
+export default withRouter(AddAccount);
