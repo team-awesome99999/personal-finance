@@ -114,9 +114,9 @@ class Graphs extends Component{
               />
               </Carousel.Item>
           
-          let carouselItems = displayBalance.map(graph => {
+          let carouselItems = displayBalance.map((graph, i) => {
             return(
-              <Carousel.Item>
+              <Carousel.Item key={i} >
                 <div className='landing-carousel' alt="900x500">{graph}</div>
               </Carousel.Item>
             )

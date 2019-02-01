@@ -1,19 +1,52 @@
-
-.new-account {
-  width: 60%;
+.new-user {
   display: flex;
   margin: 0 auto;
+  width: 60%;
+}
+
+.new-user-title {
   margin-top: 40px;
+  margin-bottom: 40px;
+  color: green;
+  letter-spacing: 1.5px;
+}
+
+.about {
+  font-size: 15px;
+}
+
+.happyman {
+  margin-top: 40px;
+  height: 700px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 11px 0px rgba(189,189,189,0.65);
+}
+.new-account {
+  width: 100%;
+  display: flex;
+  margin: 40px 40px 40px 0;
 }
 
 .new-account-form {
   border: 1px rgb(243, 243, 243) solid;
   box-shadow: 3px 3px 11px 0px rgba(189,189,189,0.65);
   background-color: white;
-  padding: 40px 60px 40px 60px;
+  padding: 30px 50px 30px 50px;
   margin-left: 10px;
-  height: 300px;
-  width: 400px;
+  height: 230px;
+  width: 370px;
+  border-radius: 6px;
+  transition: height .2s ease-in-out;
+}
+
+.new-account-closed {
+  border: 1px rgb(243, 243, 243) solid;
+  box-shadow: 3px 3px 11px 0px rgba(189,189,189,0.65);
+  background-color: white;
+  padding: 30px 50px 30px 50px;
+  margin-left: 10px;
+  height: 100px;
+  width: 370px;
   border-radius: 6px;
 }
 
@@ -23,6 +56,10 @@
   cursor: pointer;
   border: none;
   box-shadow: 3px 3px 11px 0px rgba(189,189,189,0.65);
+}
+
+.new-account-icon:focus {
+  outline: none;
 }
 
 .next-link {
@@ -36,6 +73,7 @@
   color: black;
   cursor: pointer;
 }
+
 .newaccountbutton {
   cursor: pointer;
   background-image: none;
