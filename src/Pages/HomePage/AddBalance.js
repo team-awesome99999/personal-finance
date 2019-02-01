@@ -9,10 +9,18 @@ class AddBalance extends Component {
   state = {
     newBalance: '',
     date: moment(new Date()).format('YYYY-MM-DD'),
-    switch: true
+    switch: true,
+    validateBalance: null,
+    validateDate: null
   }
   addBalance = async (accountid) => {
     const { newBalance, date } = this.state;
+    //error handling (will not let user submit with empty inputs)
+    if(newBalance.length === 0) {
+      return this.setState({ validateBalance: 'error' })
+    } else if(date.length === 0) {
+      return this.setState({ validateDate: 'error' })
+    }
     await axios.post('/api/newbalance', { accountid, newBalance, date });
     //res.data returns an object with an array of all of the balances for this particular account
     this.setState({
@@ -25,20 +33,20 @@ class AddBalance extends Component {
     return (
       <div className={this.state.switch ? "history notvisible" : "history"}>
           <Form inline>
-            <FormGroup validationState={this.state.validateFirst}>
+            <FormGroup validationState={this.state.validateBalance}>
               <FormControl
                 autoFocus
-                onChange={(e) => this.setState({ newBalance: e.target.value })}
+                onChange={(e) => this.setState({ newBalance: e.target.value, validateBalance: null })}
                 value={this.state.newBalance}
                 placeholder="New Balance"
                 className="newbalanceinput"
                 />
               <FormControl.Feedback />
             </FormGroup>{' '}
-            <FormGroup validationState={this.state.validateFirst}>
+            <FormGroup validationState={this.state.validateDate}>
               <FormControl
                 type='date'
-                onChange={(e) => this.setState({ date: e.target.value })}
+                onChange={(e) => this.setState({ date: e.target.value, validateDate: null })}
                 value={this.state.date}
                 placeholder="Date of new balance"
                 className="newbalanceinput"
