@@ -15,10 +15,12 @@
 }
 
 .c-item {
+  display: flex;
+  justify-content: center;
   height: 50em;
   margin: 0;
 }
 
 .carousel {
-  width: 80%;
+  width: 100%;
 }
