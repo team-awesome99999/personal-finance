@@ -19,7 +19,7 @@ class Header extends Component {
       let res = await axios.get('/getsession');
       getCurrentUser(res.data.id);
       this.setState({ loggedIn: true })
-    } catch(error) {
+    } catch (error) {
       this.props.history.push('/');
     }
   }
@@ -43,34 +43,35 @@ class Header extends Component {
           <Navbar bg="dark" variant="dark">
             <Navbar.Header>
               <Navbar.Brand>
+                <img className="trassetLogo" alt="logo" src={logo}></img>
                 Trassets
               </Navbar.Brand>
             </Navbar.Header>
             {this.state.showLogin ?
-              <Login showLoginFn={this.showLogin}/>
-            : 
+              <Login showLoginFn={this.showLogin} />
+              :
               <Nav pullRight>
-                <NavItem onClick={() => this.showLogin() }>Login</NavItem>
+                <NavItem onClick={() => this.showLogin()}>Login</NavItem>
               </Nav>
             }
           </Navbar>
-        : 
-        // Navbar if user IS logged in
-        <Navbar className='header'>
+          :
+          // Navbar if user IS logged in
+          <Navbar className='header'>
             <Navbar.Brand
-              onClick={ () => this.props.history.push('/home') }  
+              onClick={() => this.props.history.push('/home')}
               className='site-name'>
               <img className="trassetLogo" alt="logo" src={logo}></img>
               Trassets
             </Navbar.Brand>
-          <Navbar.Header>
-          </Navbar.Header>
-          <Nav pullRight>
-            <NavItem onClick={ () => this.props.history.push('/accounts') }  >Accounts</NavItem>
-            <NavItem onClick={ () => this.props.history.push('/home') }  >Graphs</NavItem>
-            <NavItem onClick={ () => this.logout() }>Logout</NavItem>
-          </Nav>
-        </Navbar>
+            <Navbar.Header>
+            </Navbar.Header>
+            <Nav pullRight>
+              <NavItem onClick={() => this.props.history.push('/accounts')}  >Accounts</NavItem>
+              <NavItem onClick={() => this.props.history.push('/home')}  >Graphs</NavItem>
+              <NavItem onClick={() => this.logout()}>Logout</NavItem>
+            </Nav>
+          </Navbar>
         }
       </div>
     );
