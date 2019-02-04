@@ -35,7 +35,7 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <Navbar className='header'>
+        <Navbar className='nav-color'>
           <Navbar.Header>
             <Navbar.Brand
               onClick={ () => this.props.history.push('/home') }  

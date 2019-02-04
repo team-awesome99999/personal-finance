@@ -1,6 +1,6 @@
 body{
-    background: linear-gradient(to bottom, #ffffff 0%, #d6d6d6 100%);
-    background-attachment: fixed
+    /* background: linear-gradient(to bottom, #ffffff 0%, #d6d6d6 100%); */ 
+    /* background-attachment: fixed */
 }
 button{
     border-radius: 50%;

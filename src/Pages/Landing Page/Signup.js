@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Form, FormGroup, FormControl, Button, HelpBlock, Tooltip } from 'react-bootstrap'
+import { Form, FormGroup, FormControl, HelpBlock, Tooltip } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
 import { getCurrentUser } from '../../dux/reducer';
 import { connect } from 'react-redux'; 
@@ -51,7 +51,7 @@ class Signup extends Component {
   render() {
     return (
       <div className='signup-box'>
-        <Form inline>
+        <Form className='signup-form'>
           <FormGroup validationState={this.state.validateFirst}>
             <FormControl 
               autoFocus
@@ -93,7 +93,7 @@ class Signup extends Component {
               />
               <FormControl.Feedback/>
           </FormGroup>{' '}
-          <Button className='btn btn-primary' onClick={ () => this.signup() }>Register</Button>
+          <button className='register-btn btn btn-primary' onClick={ () => this.signup() }>Register</button>
           {this.state.fieldsRequired ?  <HelpBlock>All fields required</HelpBlock> : null }
         </Form>
       </div>
