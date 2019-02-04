@@ -110,7 +110,6 @@ class Graphs extends Component {
         name: acct.name,
         type: 'scatter',
         mode: 'Line Dash',
-        marker: { color: 'grey' }
       }
     })
 
@@ -123,15 +122,14 @@ class Graphs extends Component {
             }
             layout={
               {
-                title: 'Total Accounts and Balances', 
+                title: 'Total Account Balances', 
                 autosize: true, 
                 legend: {
                   x: 1,
                   y: 1,
                   font: {
                     family: 'sans-serif',
-                    size: 12,
-                    color: 'black',
+                    size: 12
                   },
                 },
 
