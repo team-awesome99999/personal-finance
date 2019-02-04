@@ -55,7 +55,7 @@ class Login extends Component {
             <FormControl
               value={ this.state.password }
               onChange={ (e) => this.setState({ password: e.target.value, passwordValidation: null }) }  
-              type="text"
+              type="password"
               onKeyUp={event => {
                 if (event.key === 'Enter') {
                   this.login()
