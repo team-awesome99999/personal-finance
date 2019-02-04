@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+
 body{
     /* background: linear-gradient(to bottom, #ffffff 0%, #d6d6d6 100%); */ 
     /* background-attachment: fixed */
@@ -24,6 +27,7 @@ input{
     height: 100%;
     min-height: 100vh;
     margin-left: 10%;
+    font-family: 'Raleway', sans-serif;
     box-shadow: 0px 0px 10px 10px rgba(165, 165, 165, 0.048);
 }
 .account{
@@ -52,11 +56,12 @@ input{
     margin: 0;
     color: #5cb85c;
     font-size: 30px;
-    justify-self: right
+    justify-self: right;
+    font-family: 'Varela Round', sans-serif;
 }
 .trashIcon{
     position: relative;
-    left: 40%;
+    left: 35%;
     bottom: 100px;
     display: block;
     opacity: 0;
@@ -149,7 +154,8 @@ input{
     justify-self: left;
     margin: 0;
     font-size: 20px;
-    margin-left: 50px
+    margin-left: 50px;
+    font-family: 'Varela Round', sans-serif;
 }
 .iconbuttons{
     grid-column: 8;
