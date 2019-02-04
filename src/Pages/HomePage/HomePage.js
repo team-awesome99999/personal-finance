@@ -24,7 +24,7 @@ class HomePage extends Component {
   render() {
     let {userAccount} = this.props
     return (
-      <div>
+      <div className='landing-main'>
         {this.state.loading ? <Loading /> :
             userAccount.accounts==false ? (
               <div className='homepage-truthy'>
