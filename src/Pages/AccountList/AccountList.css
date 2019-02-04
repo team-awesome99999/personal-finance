@@ -20,11 +20,11 @@ input{
     flex-direction: column;
     align-items: center;
     background: rgb(255, 255, 255);
-    width: 90%;
+    width: 80%;
     height: 100%;
     min-height: 100vh;
-    margin-left: 5%;
-    box-shadow: 0px 0px 5px 5px rgba(165, 165, 165, 0.048);
+    margin-left: 10%;
+    box-shadow: 0px 0px 10px 10px rgba(165, 165, 165, 0.048);
 }
 .account{
     display: grid;
@@ -34,8 +34,8 @@ input{
     justify-content: space-between;
     background: rgb(255, 255, 255);
     flex-direction: row;
-    width: 80%;
-    margin-top: 40px;
+    width: 70%;
+    margin-top: 50px;
     border-bottom-style: solid;
     border-bottom-color: #d6d6d6;
     border-bottom-width: 1px;
@@ -105,7 +105,7 @@ input{
     background: white;
     transition: .5s;
     color: black;
-    width: 80%;
+    width: 70%;
     display: flex;
     flex-direction: column
 }
@@ -126,7 +126,10 @@ input{
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-gap: 10px;
-    grid-auto-rows: minmax(50px, auto);
+    grid-auto-rows: minmax(30px, auto);
+}
+.historydisplay:hover{
+    background: rgb(238, 238, 238)
 }
 .numbers{
     align-items: unset;
@@ -142,9 +145,11 @@ input{
     color: rgb(172, 172, 172);
 }
 .historyBalance{
-    grid-column: 4/6;
+    grid-column: 6/8;
     justify-self: left;
     margin: 0;
+    font-size: 20px;
+    margin-left: 50px
 }
 .iconbuttons{
     grid-column: 8;
@@ -174,11 +179,17 @@ h2{
 }
 
 .icon {
-  position: absolute;
-  top: 40px;
-  left: 130px;
+    position: absolute;
+    top: 40px;
+    left: 130px;
 }
 
 .icon-list-view {
-  display: flex;
+    display: flex;
+}
+.trassetLogo{
+    height: 40px;
+    position: absolute;
+    left: 300px;
+    top: 10px
 }
