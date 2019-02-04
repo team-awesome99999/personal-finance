@@ -112,7 +112,7 @@ class Graphs extends Component {
         mode: 'Line Dash',
       }
     })
-
+console.log(groupOfAccounts)
     let grandMasterTotal =
       <Carousel.Item>
         <div className='c-item'>
