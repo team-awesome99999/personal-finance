@@ -1,6 +1,6 @@
 body{
-    background: linear-gradient(to bottom, #ffffff 0%, #d6d6d6 100%);
-    background-attachment: fixed
+    /* background: linear-gradient(to bottom, #ffffff 0%, #d6d6d6 100%); */ 
+    /* background-attachment: fixed */
 }
 button{
     border-radius: 50%;
@@ -24,7 +24,7 @@ input{
     height: 100%;
     min-height: 100vh;
     margin-left: 5%;
-    box-shadow: 0px 0px 10px 10px rgba(165, 165, 165, 0.048);
+    box-shadow: 0px 0px 5px 5px rgba(165, 165, 165, 0.048);
 }
 .account{
     display: grid;
@@ -35,7 +35,7 @@ input{
     background: rgb(255, 255, 255);
     flex-direction: row;
     width: 80%;
-    margin-top: 50px;
+    margin-top: 40px;
     border-bottom-style: solid;
     border-bottom-color: #d6d6d6;
     border-bottom-width: 1px;

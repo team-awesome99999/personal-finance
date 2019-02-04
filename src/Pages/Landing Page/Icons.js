@@ -17,7 +17,7 @@ function Icons() {
       </div>
       <div className='icon-square'>
         <i className="icons icons-green fas fa-check"></i>
-        <h4>Success!</h4>
+        <h4>Enjoy Success!</h4>
       </div>
     </div>
   )
