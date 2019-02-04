@@ -97,9 +97,10 @@ class Graphs extends Component{
                             x: x_axis.reverse(),
                             //specified value from mapped array
                             y: y_axis,
-                            type: 'scatter',
+                            type: 'line',
                             mode: 'lines+points',
-                            marker: {color: 'green'}
+                            marker: {color: 'green,yellow,blue,orange'},
+                            // colors: axios.get('http://www.colr.org/color/random')
                           }
               })
 
