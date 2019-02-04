@@ -83,5 +83,13 @@
   border: none;
   color: white;
 }
+.addnewbutt{
+  background-color: #5cb85c;
+}
+.greenplus{
+  color: #5cb85c;
+  background: transparent;
+  box-shadow: none
+}
 
 

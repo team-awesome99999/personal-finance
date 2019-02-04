@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { getCurrentUser } from '../dux/reducer';
+import logo from "./../ProjectLogo.png"
 
 class Header extends Component {
 
@@ -56,12 +57,13 @@ class Header extends Component {
         : 
         // Navbar if user IS logged in
         <Navbar className='header'>
-          <Navbar.Header>
             <Navbar.Brand
               onClick={ () => this.props.history.push('/home') }  
               className='site-name'>
+              <img className="trassetLogo" alt="logo" src={logo}></img>
               Trassets
             </Navbar.Brand>
+          <Navbar.Header>
           </Navbar.Header>
           <Nav pullRight>
             <NavItem onClick={ () => this.props.history.push('/accounts') }  >Accounts</NavItem>
