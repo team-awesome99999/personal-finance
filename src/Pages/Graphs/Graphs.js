@@ -12,13 +12,13 @@ class Graphs extends Component {
     balances: [],
     index: 0,
     direction: null,
-    total: []
+    total: [],
   }
 
   //grab two arrays from db
   //one is for account balance, other is for accountDate
 
-  componentDidMount() {
+  componentDidMount = async () => {
     axios.get(`/accounts`)
       .then(res => {
         this.setState({ accounts: res.data.accounts, balances: res.data.balances })
@@ -32,8 +32,6 @@ class Graphs extends Component {
       direction: e.direction,
     });
   }
-
-
 
   render() {
 
@@ -55,24 +53,34 @@ class Graphs extends Component {
       // console.log("new balances", newBalances)
 
       return (
-        <div className='c-item' key={id}>
-          <Plot
-            data={[
-              {
-                //date value from mapped array inside of x
-                x: x_axis.reverse(),
-                //specified value from mapped array
-                y: y_axis,
-                type: 'scatter',
-                mode: 'lines+points',
-                marker: { color: 'green' },
-              },
-            ]}
-            layout={{ title: acct.name, autosize: true }}
-            useResizeHandle={true}
-            style={{ width: "80%", height: "100%" }}
-            config={{ responsive: true }}
+        <div>
+          <div className='c-item' key={id}>
+            <Plot
+              data={[
+                {
+                  //date value from mapped array inside of x
+                  x: x_axis.reverse(),
+                  //specified value from mapped array
+                  y: y_axis.reverse(),
+                  type: 'scatter',
+                  mode: 'Line Dash',
+                  marker: {
+                    line: {
+                      color: 'rgb(231, 99, 250)',
+                      width: '20px'
+                    }, size: 7
+                  },
+                },
+              ]}
+              layout={{ title: acct.name, autosize: true }}
+              useResizeHandle={true}
+              style={{ width: "80%", height: "100%" }}
+              config={{ responsive: true }}
             />
+          </div>
+          <div className='graph-add-bal'>
+            <AddBalance accountid={acct.id} />
+          </div>
         </div>
       )
     })
@@ -98,10 +106,10 @@ class Graphs extends Component {
         //date value from mapped array inside of x
         x: x_axis.reverse(),
         //specified value from mapped array
-        y: y_axis,
+        y: y_axis.reverse(),
+        name: acct.name,
         type: 'scatter',
-        mode: 'lines+points',
-        marker: { color: 'green' }
+        mode: 'Line Dash',
       }
     })
 
@@ -112,7 +120,21 @@ class Graphs extends Component {
             data={
               groupOfAccounts
             }
-            layout={{ title: 'Total Accounts and Balances', autosize: true }}
+            layout={
+              {
+                title: 'Total Account Balances', 
+                autosize: true, 
+                legend: {
+                  x: 1,
+                  y: 1,
+                  font: {
+                    family: 'sans-serif',
+                    size: 12
+                  },
+                },
+
+              }
+            }
             useResizeHandle={true}
             style={{ width: "80%", height: "100%" }}
             config={{ responsive: true }}
@@ -139,12 +161,12 @@ class Graphs extends Component {
             activeIndex={index}
             direction={direction}
             onSelect={this.handleSelect}
-            >
+          >
             {grandMasterTotal}
             {carouselItems}
           </Carousel>
         </div>
-        <AddBalance />
+
       </div>
     )
   }

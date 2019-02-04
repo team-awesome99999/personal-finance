@@ -9,7 +9,6 @@ class AddBalance extends Component {
   state = {
     newBalance: '',
     date: moment(new Date()).format('YYYY-MM-DD'),
-    switch: true,
     validateBalance: null,
     validateDate: null
   }
@@ -31,31 +30,29 @@ class AddBalance extends Component {
 
   render() {
     return (
-      <div className={this.state.switch ? "history notvisible" : "history"}>
-          <Form inline>
-            <FormGroup validationState={this.state.validateBalance}>
-              <FormControl
-                autoFocus
-                onChange={(e) => this.setState({ newBalance: e.target.value, validateBalance: null })}
-                value={this.state.newBalance}
-                placeholder="New Balance"
-                className="newbalanceinput"
-                />
-              <FormControl.Feedback />
-            </FormGroup>{' '}
-            <FormGroup validationState={this.state.validateDate}>
-              <FormControl
-                type='date'
-                onChange={(e) => this.setState({ date: e.target.value, validateDate: null })}
-                value={this.state.date}
-                placeholder="Date of new balance"
-                className="newbalanceinput"
-              />
-              <FormControl.Feedback />
-            </FormGroup>{' '}
-            <Button className='btn btn-success' onClick={() => this.addBalance(this.props.accountid)}>Add</Button>
-          </Form>
-      </div>
+      <Form inline>
+        <FormGroup validationState={this.state.validateBalance}>
+          <FormControl
+            autoFocus
+            onChange={(e) => this.setState({ newBalance: e.target.value, validateBalance: null })}
+            value={this.state.newBalance}
+            placeholder="New Balance"
+            className="newbalanceinput"
+            />
+          <FormControl.Feedback />
+        </FormGroup>{' '}
+        <FormGroup validationState={this.state.validateDate}>
+          <FormControl
+            type='date'
+            onChange={(e) => this.setState({ date: e.target.value, validateDate: null })}
+            value={this.state.date}
+            placeholder="Date of new balance"
+            className="newbalanceinput"
+          />
+          <FormControl.Feedback />
+        </FormGroup>{' '}
+        <Button className='btn btn-success' onClick={() => this.addBalance(this.props.accountid)}>Add</Button>
+      </Form>
     );
   }
 }
