@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Form, FormGroup, FormControl, Button } from 'react-bootstrap';
 import '../NewUser/NewUser.css'
 import { withRouter } from 'react-router-dom';
+import './AccountList.css'
 
 class AddAccount extends Component {
   state = {
@@ -32,7 +33,7 @@ class AddAccount extends Component {
     return (
       <div className='new-account'>
         { !this.state.openForm ? 
-        <button onClick={ () => this.setState({ openForm: !this.state.openForm }) } className="new-account-icon"><i className="fas fa-plus"></i></button>
+        <button onClick={ () => this.setState({ openForm: !this.state.openForm }) } className="new-account-icon greenplus"><i className="fas fa-plus"></i></button>
         :
         <div className='icon-list-view'>
           <button onClick={ () => this.setState({ openForm: !this.state.openForm }) } className="new-account-icon"><i className="fas fa-plus"></i></button>
@@ -58,7 +59,7 @@ class AddAccount extends Component {
                   />
                 <FormControl.Feedback/>
               </FormGroup>{' '}
-              <Button className='newaccountbutton' onClick={ () => this.addAccount() }>Save</Button>
+              <Button className='newaccountbutton addnewbutt' onClick={ () => this.addAccount() }>Save</Button>
             </Form>
           </div>
         </div>
