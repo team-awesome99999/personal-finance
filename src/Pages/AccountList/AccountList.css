@@ -172,3 +172,13 @@ input{
 h2{
     font-size: 25px
 }
+
+.icon {
+  position: absolute;
+  top: 40px;
+  left: 130px;
+}
+
+.icon-list-view {
+  display: flex;
+}

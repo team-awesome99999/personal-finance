@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import AccountComponent from './AccountComponent'
 import Header from '../Header';
-import DeleteAccount from '../AccountList/DeleteAccount';
+import NewAccountIcon from './NewAccountIcon';
 
 export default class AccountList extends Component {
   state = {
@@ -54,6 +54,9 @@ export default class AccountList extends Component {
     return (
       <div>
         <Header />
+        <div className='icon'>
+          <NewAccountIcon />
+        </div>
         <div className="all-accounts">
           <h1>Your accounts</h1>
           {accounts}
@@ -62,7 +65,3 @@ export default class AccountList extends Component {
     )
   }
 }
-
-
-// SELECT * FROM balances
-// WHERE accountid = $1

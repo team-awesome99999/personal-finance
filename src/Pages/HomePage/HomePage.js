@@ -6,31 +6,37 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 import {getAccount} from '../../dux/reducer.js';
 import NewUserHeader from '../NewUserHeader';
+import Loading from '../Loading';
 
 class HomePage extends Component {
-  state={}
+  state = {
+    loading: true
+  }
 
   async componentDidMount(){
     let res = await axios.get(`/accounts`)
-    this.props.getAccount(res.data)
+    this.props.getAccount(res.data);
+    this.setState({
+      loading: false
+    })
   }
   
   render() {
     let {userAccount} = this.props
     return (
       <div>
-        {
-          userAccount.accounts==false ? (
-            <div className='homepage-truthy'>
-              <NewUserHeader />
-              <NewUser />
-            </div>
-          ):(
-            <div className='homepage-falsy'>
-            <Header/>
-            <Graphs />
-            </div>
-          )
+        {this.state.loading ? <Loading /> :
+            userAccount.accounts==false ? (
+              <div className='homepage-truthy'>
+                <NewUserHeader />
+                <NewUser />
+              </div>
+            ):(
+              <div className='homepage-falsy'>
+              <Header/>
+              <Graphs />
+              </div>
+            )
         }
       </div>
     );

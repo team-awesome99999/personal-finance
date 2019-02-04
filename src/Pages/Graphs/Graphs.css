@@ -4,3 +4,28 @@
 .carousel-control.right {
   background-image: none;
 }
+
+.graphs-parent {
+  display: flex;
+  justify-content: center;
+}
+
+.c-item {
+  display: flex;
+  justify-content: center;
+  height: 50em;
+  margin: 0;
+}
+
+.carousel {
+  width: 100%;
+}
+
+.graph-add-bal {
+  display: flex;
+  justify-content: center;
+}
+
+svg {
+  stroke: none;
+}

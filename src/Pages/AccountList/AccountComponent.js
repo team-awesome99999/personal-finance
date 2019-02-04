@@ -25,7 +25,7 @@ export default class AccountComponent extends Component {
             return (
                 <div key={balance.id} className="accounthistory">
                     <div className="historydisplay" key={index + balance}>
-                        <h2 className="dateTime">{moment(balance.entrydate).subtract(6, 'days').calendar()}</h2>
+                        <h2 className="dateTime">{moment(balance.entrydate).format('l')}</h2>
                         <h2 className="historyBalance">${balance.balance}</h2>
                         <div className="iconbuttons">
                             <EditButton
