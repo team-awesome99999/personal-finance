@@ -82,6 +82,7 @@ class Signup extends Component {
           </FormGroup>{' '}
           <FormGroup validationState={this.state.validatePass}>
             <FormControl
+              type='password'
               onChange={ (e) => this.setState({ password: e.target.value, fieldsRequired: false, validatePass: null}) }
               value={this.state.password}
               placeholder="Password"
