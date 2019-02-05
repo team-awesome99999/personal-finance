@@ -26,6 +26,13 @@ class Graphs extends Component {
       })
   }
 
+  componentDidUpdate = async () =>{
+    axios.get(`/accounts`)
+    .then(res => {
+      this.setState({ accounts: res.data.accounts, balances: res.data.balances })
+    })
+  }
+
 
   handleSelect = (selectedIndex, e) => {
     this.setState({
