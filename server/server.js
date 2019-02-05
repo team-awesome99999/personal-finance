@@ -35,6 +35,7 @@ app.put('/api/editbalance', ctrl.editBalance);
 app.delete('/api/deletebalance/:id', ctrl.deleteBalance);
 app.delete('/api/deleteaccount/:id', ctrl.deleteAccount);
 app.get('/getmonthlybalances/:id', ctrl.getMonthlyBalances); //for the monthly changes function
+app.put('/api/editname', ctrl.editName); //in accountComponent for editing account names
 
 
 app.listen(SERVER_PORT,()=>{
