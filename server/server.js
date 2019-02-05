@@ -34,6 +34,7 @@ app.post('/api/newbalance', ctrl.newBalance);
 app.put('/api/editbalance', ctrl.editBalance);
 app.delete('/api/deletebalance/:id', ctrl.deleteBalance);
 app.delete('/api/deleteaccount/:id', ctrl.deleteAccount);
+app.get('/getmonthlybalances/:id', ctrl.getMonthlyBalances); //for the monthly changes function
 
 
 app.listen(SERVER_PORT,()=>{

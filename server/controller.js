@@ -126,5 +126,16 @@ module.exports = {
       } else {
         return res.status(200).send('success deleting account!')
       }
+  },
+  getMonthlyBalances: async (req, res) => {
+    const { id } = req.params;
+    const db = req.app.get('db');
+    if(req.session.user) {
+      let all_account_balances = await db.get_account_balances([ req.session.user.id ]);
+      let single_account_balances = all_account_balances.filter(balance => balance.accountid === +id);
+      res.status(200).send(single_account_balances);
+    }
   }
 }
+
+//need current balance on current account - userid, accountid, and a month back. 

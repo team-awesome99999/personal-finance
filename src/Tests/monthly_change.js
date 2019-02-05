@@ -1,5 +1,5 @@
 
-export function monthlyChange(balanceChanges) {
+export function changes(balanceChanges) {
   const { thisMonth, lastMonth } = balanceChanges;
   if(!lastMonth) {
     return "-";

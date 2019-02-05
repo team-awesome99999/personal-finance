@@ -5,6 +5,7 @@ import Plot from 'react-plotly.js';
 import moment from 'moment';
 import { Carousel } from 'react-bootstrap';
 import AddBalance from '../HomePage/AddBalance';
+import MonthlyChanges from './MonthlyChanges';
 
 class Graphs extends Component {
   state = {
@@ -54,7 +55,7 @@ class Graphs extends Component {
 
       return (
         <div>
-          <div className='c-item' key={id}>
+          <div className='c-item' key={acct.id}>
             <Plot
               data={[
                 {
@@ -80,6 +81,7 @@ class Graphs extends Component {
           </div>
           <div className='graph-add-bal'>
             <AddBalance accountid={acct.id} />
+            <MonthlyChanges accountid={acct.id} />
           </div>
         </div>
       )
@@ -151,13 +153,13 @@ console.log(groupOfAccounts)
     })
 
 
-
     const { index, direction } = this.state;
 
     return (
       <div>
         <div className='graphs-parent'>
           <Carousel
+            indicators={false}
             activeIndex={index}
             direction={direction}
             onSelect={this.handleSelect}
@@ -166,7 +168,6 @@ console.log(groupOfAccounts)
             {carouselItems}
           </Carousel>
         </div>
-
       </div>
     )
   }

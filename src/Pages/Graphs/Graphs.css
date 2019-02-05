@@ -7,6 +7,7 @@
 
 .graphs-parent {
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -23,7 +24,13 @@
 
 .graph-add-bal {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.monthly-changes {
+  margin: 10px;
+  color: rgb(170, 170, 170);
 }
 
 svg {

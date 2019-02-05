@@ -40,7 +40,7 @@ class Header extends Component {
       <div>
         {/* navbar if user is NOT logged in */}
         {!this.state.loggedIn ?
-          <Navbar bg="dark" variant="dark">
+          <Navbar>
             <Navbar.Header>
               <Navbar.Brand>
                 <img className="trassetLogo" alt="logo" src={logo}></img>
