@@ -5,6 +5,7 @@ import moment from 'moment'
 import EditButton from '../AccountList/EditButton';
 import DeleteBalance from './DeleteBalance'
 import DeleteAccount from './DeleteAccount'
+import currencyFormatter from 'currency-formatter'
 
 export default class AccountComponent extends Component {
     state = {
@@ -26,11 +27,11 @@ export default class AccountComponent extends Component {
                 <div key={balance.id} className="accounthistory">
                     <div className="historydisplay" key={index + balance}>
                         <h2 className="dateTime">{moment(balance.entrydate).format('l')}</h2>
-                        <h2 className="historyBalance">${balance.balance}</h2>
+                        <h2 className="historyBalance">{currencyFormatter.format(balance.balance, {code: 'USD'})}</h2>
                         <div className="iconbuttons">
                             <EditButton
                                 balanceid={balance.id}
-                                date={balance.entrydate}
+                                date={moment(balance.entrydate).format('l')}
                                 balance={balance.balance} />
                             <DeleteBalance
                                 balanceid={balance.id}
@@ -46,7 +47,7 @@ export default class AccountComponent extends Component {
             <div className="everyAccount">
                 <div className="account">
                     <h2 className="accountName">{this.props.name}</h2>
-                    <h2 className="accountBalance">{currentBalance ? `$ ${currentBalance.balance}` : null}</h2>
+                    <h2 className="accountBalance">{currentBalance ? `${currencyFormatter.format(currentBalance.balance, {code: 'USD'})}` : null}</h2>
                 </div>
                 <DeleteAccount accountid={this.props.accountid} />
                 <div className={this.state.switch ? "history notvisible" : "history"}>
