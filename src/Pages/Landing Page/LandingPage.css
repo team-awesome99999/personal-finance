@@ -67,3 +67,13 @@
   display: flex;
 }
 
+.btn2{
+ background: none;
+ border: 0;
+ box-shadow: none;
+ 
+}
+
+.btn2:hover{
+  background: none; 
+}
