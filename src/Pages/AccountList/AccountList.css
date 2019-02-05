@@ -199,3 +199,7 @@ h2{
     left: 300px;
     top: 10px
 }
+.editname {
+  cursor: pointer;
+  margin-right: 10px;
+}
