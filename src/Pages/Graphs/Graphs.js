@@ -45,7 +45,7 @@ class Graphs extends Component {
 
 
     let displayBalance = this.state.accounts.map((acct, id) => {
-      let newBalances = this.state.balances.filter((bal, id) => {
+      let newBalances = this.state.balances.filter((bal, id) => { 
         if (acct.id === bal.accountid) {
           return true
         } else {
