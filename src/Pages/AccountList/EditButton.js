@@ -21,7 +21,7 @@ class EditButton extends Component {
     return (
       <div className="editButton">
         { this.state.editing ? 
-          <Form>
+          <Form className="editform">
             <FormGroup>
               <FormControl
                 autoFocus

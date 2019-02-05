@@ -193,9 +193,8 @@ h2{
 .icon-list-view {
     display: flex;
 }
-.trassetLogo{
+.navbar-brand{
+    padding: 0;
     height: 40px;
-    position: absolute;
-    left: 300px;
-    top: 10px
+    margin-top: 10px
 }

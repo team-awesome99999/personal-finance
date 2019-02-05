@@ -42,9 +42,13 @@ class Header extends Component {
         {!this.state.loggedIn ?
           <Navbar>
             <Navbar.Header>
-              <Navbar.Brand>
-                <img className="trassetLogo" alt="logo" src={logo}></img>
-                Trassets
+              <Navbar.Brand onClick={() => this.props.history.push('/home')} href="#home">
+                <img
+                  alt="logo"
+               
+                  src={logo}
+                />
+                {/* {' Trassets'} */}
               </Navbar.Brand>
             </Navbar.Header>
             {this.state.showLogin ?
@@ -58,12 +62,14 @@ class Header extends Component {
           :
           // Navbar if user IS logged in
           <Navbar className='header'>
-            <Navbar.Brand
-              onClick={() => this.props.history.push('/home')}
-              className='site-name'>
-              <img className="trassetLogo" alt="logo" src={logo}></img>
-              Trassets
-            </Navbar.Brand>
+            <Navbar.Brand onClick={() => this.props.history.push('/home')} href="#home">
+                <img
+                  alt="logo"
+                 
+                  src={logo}
+                />
+                {/* {' Trassets'} */}
+              </Navbar.Brand>
             <Navbar.Header>
             </Navbar.Header>
             <Nav pullRight>
