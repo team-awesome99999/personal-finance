@@ -8,7 +8,7 @@ export default class AccountList extends Component {
   state = {
     accounts: [],
     balances: [],
-    switch: true
+    
   }
   componentDidMount() {
     axios.get('/accounts').then((res) => {
@@ -29,7 +29,6 @@ export default class AccountList extends Component {
   }
 
   render() {
-
     let accounts = this.state.accounts.map((account, index) => {
       let balances = this.state.balances.filter((balance) => {
         if (balance.accountid === account.id) {

@@ -193,13 +193,28 @@ h2{
 .icon-list-view {
     display: flex;
 }
-.trassetLogo{
+.navbar-brand{
+    padding: 0;
     height: 40px;
-    position: absolute;
-    left: 300px;
-    top: 10px
+    margin-top: 10px
 }
 .editname {
   cursor: pointer;
   margin-right: 10px;
+}
+.listinput{
+    height: 25px;
+    width: 100px;
+    color: rgb(172, 172, 172);
+    font-size: 15px
+}
+.buttonstuff{
+    display: flex;
+    flex-direction: row
+}
+.listbutton{
+    background: none;
+    height: 25px;
+    border: none;
+    width: 70px
 }
