@@ -159,6 +159,7 @@ console.log(groupOfAccounts)
       <div>
         <div className='graphs-parent'>
           <Carousel
+            indicators={false}
             activeIndex={index}
             direction={direction}
             onSelect={this.handleSelect}

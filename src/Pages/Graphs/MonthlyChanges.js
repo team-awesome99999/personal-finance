@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { changes } from '../../Tests/monthly_change';
 import moment from 'moment';
+import currencyFormatter from 'currency-formatter';
 
 class MonthlyChanges extends Component {
 
@@ -36,8 +37,8 @@ class MonthlyChanges extends Component {
   
   render() {
     return (
-      <div>
-        Balance change since last month: {this.state.balanceChange}
+      <div className='monthly-changes'>
+        Balance change in last month: {currencyFormatter.format(this.state.balanceChange, { locale: 'en-US' })}
       </div>
     );
   }
