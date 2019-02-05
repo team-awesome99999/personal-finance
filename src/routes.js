@@ -12,6 +12,6 @@ export default (
     <Route path='/accounts' component={AccountList}/>
     <Route path='/home' component={HomePage}/>
     <Route path='/graphs' component={Graphs} />
-    <Route path='/calculator' component={Calculator} />
+    <Route path='/calculator' component={Calculator} /> 
   </Switch>
 )

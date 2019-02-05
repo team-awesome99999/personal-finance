@@ -55,7 +55,7 @@ class Calculator extends Component{
                         <div>
                             <h1> Monthly Payment: ${this.state.arr[0]}</h1>
                             <h1> Total Loan Amount: ${this.state.arr[1]}</h1>
-                            <h1> Total Interest: ${this.state.arr[2]}</h1>
+                            <h1> Total Interest: ${this.state.arr[2]}</h1> 
                         </div>
                         ):(
                         <div>
