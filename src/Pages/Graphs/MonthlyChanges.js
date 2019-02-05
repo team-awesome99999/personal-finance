@@ -14,29 +14,24 @@ class MonthlyChanges extends Component {
   }
 
   getMonthlyBalances = async () => {
-    let changeDates = {  };
+    let changeDates = { };
     let res = await axios.get(`/getmonthlybalances/${this.props.accountid}`);
-    let firstDate = res.data[0].entrydate;
-    var d = new Date(firstDate);
-    let lastDate = moment(d.setDate(30)).format();
+
+    // TODO: Test below this line - can move into its own function
+    let currentMonth = res.data[0].entrydate;
+    var d = new Date(currentMonth);
+    let previousMonth = moment(d).subtract(30, 'days').format();
     for(let i=0; i<res.data.length; i++) {
-      console.log(res.data[i], firstDate)
-      if(res.data[i].entrydate === firstDate) {
-        changeDates.firstMonth = res.data[i].balance;
-      } else if(res.data[i].entrydate === lastDate) {
+      if(res.data[i].entrydate === currentMonth) {
+        changeDates.thisMonth = res.data[i].balance;
+      } else if (moment(res.data[i].entrydate).isSameOrBefore(previousMonth)) {
         changeDates.lastMonth = res.data[i].balance;
-      } else if (Date.parse(res.data[i].entrydate) > Date.parse(lastDate)) {
-        console.log('true')
-        changeDates.lastMonth = res.data[i].balance;
-        return;
+        break;
       }
     }
-    console.log("change dates", changeDates)
-    console.log("Balance change data", res.data, "firstDate", firstDate, "lastDate", lastDate);
-    // let result = changes(res.data);
-    // console.log(result);
-
-    // this.setState({ balanceChange: result });
+    //Test above this line
+    let result = changes(changeDates);
+    this.setState({ balanceChange: result });
   }
   
   render() {
