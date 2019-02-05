@@ -68,6 +68,7 @@ class Login extends Component {
             <FormControl.Feedback/>
           </FormGroup>{' '}
           <Button
+            className='btn2' 
             onClick={ () => this.login() }
             type='submit'>Login</Button>
           <Button
