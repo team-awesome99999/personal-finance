@@ -3,8 +3,39 @@ const express = require('express');
 const session = require('express-session');
 const massive = require('massive');
 const ctrl = require('./controller.js');
+let {SERVER_PORT,CONNECTION_STRING,SESSION_SECRET, TEST_PASS} = process.env;
 
-let {SERVER_PORT,CONNECTION_STRING,SESSION_SECRET} = process.env;
+//Testing nodemailer
+const nodemailer = require('nodemailer');
+let transporter = nodemailer.createTransport({
+  service: 'gmail',
+  secure: false,
+  port: 25,
+  auth: {
+    user: 'thetester999999@gmail.com',
+    pass: TEST_PASS
+  },
+  tls: {
+    rejectUnauthorized: false
+  }
+})
+
+let HelperOptions = {
+  from: '"Trassets" <thetester999999@gmail.com',
+  to: 'thetester999999@gmail.com',
+  subject: 'Scheduled reminder',
+  text: 'Reminder: update your balances!'
+}
+
+transporter.sendMail(HelperOptions, (error, info) => {
+  if(error) {
+    return console.log("You have an error", error)
+  } else {
+    console.log("Message sent!", info);
+  }
+})
+// -------------------------
+
 
 const app = express();
 
