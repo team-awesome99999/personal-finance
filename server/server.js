@@ -7,6 +7,10 @@ let {SERVER_PORT,CONNECTION_STRING,SESSION_SECRET, TEST_PASS} = process.env;
 
 //Testing nodemailer
 const nodemailer = require('nodemailer');
+const ical = require('ical-generator');
+const cal = ical();
+const moment = require('moment');
+
 let transporter = nodemailer.createTransport({
   service: 'gmail',
   secure: false,
@@ -20,18 +24,24 @@ let transporter = nodemailer.createTransport({
   }
 })
 
+let event = cal.createEvent({ timestamp: new Date(), summary: 'My Event'}).toString();
+
+//nodemailer message
 let HelperOptions = {
-  from: '"Trassets" <thetester999999@gmail.com',
+  from: '"Trassets" <thetester999999@gmail.com>',
   to: 'thetester999999@gmail.com',
-  subject: 'Scheduled reminder',
-  text: 'Reminder: update your balances!'
+  subject: 'Calendar invite',
+  text: 'For best results, remember to update your balances often!',
+  icalEvent: {
+    content: event
+  }
 }
 
 transporter.sendMail(HelperOptions, (error, info) => {
   if(error) {
     return console.log("You have an error", error)
   } else {
-    console.log("Message sent!", info);
+    console.log("Message sent again?!", info, "Event: ", event.data);
   }
 })
 // -------------------------
@@ -70,5 +80,5 @@ app.put('/api/editname', ctrl.editName); //in accountComponent for editing accou
 
 
 app.listen(SERVER_PORT,()=>{
-    console.log(`${SERVER_PORT} tiny robots doing your bidding.`)
+    console.log(`${SERVER_PORT} tiny snowbots doing your bidding.`)
 })
