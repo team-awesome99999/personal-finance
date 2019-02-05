@@ -26,6 +26,13 @@ class Graphs extends Component {
       })
   }
 
+  componentDidUpdate = async () =>{
+    axios.get(`/accounts`)
+    .then(res => {
+      this.setState({ accounts: res.data.accounts, balances: res.data.balances })
+    })
+  }
+
 
   handleSelect = (selectedIndex, e) => {
     this.setState({
@@ -38,7 +45,7 @@ class Graphs extends Component {
 
 
     let displayBalance = this.state.accounts.map((acct, id) => {
-      let newBalances = this.state.balances.filter((bal, id) => {
+      let newBalances = this.state.balances.filter((bal, id) => { 
         if (acct.id === bal.accountid) {
           return true
         } else {
