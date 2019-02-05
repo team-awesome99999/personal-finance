@@ -6,15 +6,26 @@ import EditButton from '../AccountList/EditButton';
 import DeleteBalance from './DeleteBalance'
 import DeleteAccount from './DeleteAccount'
 import currencyFormatter from 'currency-formatter'
+import axios from 'axios';
+import { Tooltip, ButtonToolbar, OverlayTrigger } from 'react-bootstrap';
 
 export default class AccountComponent extends Component {
     state = {
-        switch: true
+        switch: true,
+        editName: false,
+        newName: ''
     }
+
     switch() {
         this.setState({
             switch: !this.state.switch
         })
+    }
+
+    saveNameChange = async () => {
+      console.log('running?')
+      await axios.put('/api/editname', { name: this.state.newName, accountid: this.props.accountid })
+      this.setState({ editName: false, newName: '' })
     }
 
 
@@ -46,7 +57,29 @@ export default class AccountComponent extends Component {
         return (
             <div className="everyAccount">
                 <div className="account">
-                    <h2 className="accountName">{this.props.name}</h2>
+                    { !this.state.editName ?
+                      <ButtonToolbar>
+                          <OverlayTrigger
+                            placement="left"
+                            overlay={
+                              <Tooltip>
+                                Click to edit!
+                              </Tooltip>
+                            }
+                          >
+                            <h2 onClick={ () => this.setState({ editName: !this.state.editName }) } className="accountName">{this.props.name}</h2>
+                          </OverlayTrigger>
+                      </ButtonToolbar>
+                    :
+                    <div>
+                      <input
+                        onChange={ (e) => this.setState({ newName: e.target.value }) } 
+                        type="text" 
+                        value={this.props.newName}/>
+                      <span className='savename' onClick={ () => this.saveNameChange() }>Save  </span>
+                      <span className='savename' onClick={ () => this.setState({ editName: false}) }>Cancel</span>
+                    </div>
+                    }
                     <h2 className="accountBalance">{currentBalance ? `${currencyFormatter.format(currentBalance.balance, {code: 'USD'})}` : null}</h2>
                 </div>
                 <DeleteAccount accountid={this.props.accountid} />

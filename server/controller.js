@@ -135,7 +135,14 @@ module.exports = {
       let single_account_balances = all_account_balances.filter(balance => balance.accountid === +id);
       res.status(200).send(single_account_balances);
     }
+  },
+  editName: async (req, res) => {
+    const db = req.app.get('db');
+    const { name, accountid } = req.body;
+    let newName = await db.update_acct_name([ name, accountid ]);
+    console.log(newName)
+    res.status(200).send(newName);
   }
 }
 
-//need current balance on current account - userid, accountid, and a month back. 
+//need current balance on current account - userid, accountid, and a month back 
