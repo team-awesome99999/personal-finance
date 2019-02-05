@@ -3,7 +3,6 @@ import axios from 'axios'
 import AccountComponent from './AccountComponent'
 import Header from '../Header';
 import NewAccountIcon from './NewAccountIcon';
-import {currencyFormatter} from 'currency-formatter'
 
 export default class AccountList extends Component {
   state = {
@@ -59,7 +58,7 @@ export default class AccountList extends Component {
           <NewAccountIcon />
         </div>
         <div className="all-accounts">
-          <h1>Your accounts</h1>
+          <h1>Your Accounts</h1>
           {accounts}
         </div>
       </div>
