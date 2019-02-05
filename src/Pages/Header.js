@@ -45,7 +45,6 @@ class Header extends Component {
               <Navbar.Brand onClick={() => this.props.history.push('/home')} href="#home">
                 <img
                   alt="logo"
-               
                   src={logo}
                 />
                 {/* {' Trassets'} */}
@@ -65,7 +64,6 @@ class Header extends Component {
             <Navbar.Brand onClick={() => this.props.history.push('/home')} href="#home">
                 <img
                   alt="logo"
-                 
                   src={logo}
                 />
                 {/* {' Trassets'} */}
