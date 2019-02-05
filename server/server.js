@@ -41,7 +41,7 @@ transporter.sendMail(HelperOptions, (error, info) => {
   if(error) {
     return console.log("You have an error", error)
   } else {
-    console.log("Message sent again?!", info, "Event: ", event.data);
+    console.log("Message sent again?!", info, "Event: ", event.summary);
   }
 })
 // -------------------------
