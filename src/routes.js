@@ -4,7 +4,6 @@ import Landing from './Pages/Landing Page/Landing';
 import AccountList from './Pages/AccountList/AccountList';
 import Graphs from './Pages/Graphs/Graphs.js';
 import HomePage from './Pages/HomePage/HomePage';
-import Calculator from './Pages/Calculator/Calculator';
 import Savings from './Pages/Savings/Savings.js';
 
 export default (

@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
 import './AccountList.css'
 import AddBalance from '../HomePage/AddBalance';
-import moment from 'moment'
-import EditButton from '../AccountList/EditButton';
-import DeleteBalance from './DeleteBalance'
 import DeleteAccount from './DeleteAccount'
 import currencyFormatter from 'currency-formatter'
 import axios from 'axios';
-import { Tooltip, ButtonToolbar, OverlayTrigger, Button } from 'react-bootstrap';
+import { Tooltip, ButtonToolbar, OverlayTrigger } from 'react-bootstrap';
 import BalanceComponent from './BalanceComponent';
 
 export default class AccountComponent extends Component {
@@ -30,8 +27,6 @@ export default class AccountComponent extends Component {
         await axios.put('/api/editname', { name: this.state.newName, accountid: this.props.accountid })
         this.setState({ editName: false, newName: '' })
     }
-
-    
 
     render() {
         

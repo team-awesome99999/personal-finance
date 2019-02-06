@@ -11,7 +11,10 @@ class Header extends Component {
 
   state = {
     showLogin: false,
-    loggedIn: false
+    loggedIn: false,
+    graphsActive: true,
+    accountsActive: false,
+    goalsActive: false
   }
 
   async componentDidMount() {
@@ -33,6 +36,31 @@ class Header extends Component {
   logout = () => {
     axios.get('/auth/logout');
     this.props.history.push('/');
+  }
+
+  accountsNavigation = () => {
+    this.props.history.push('/accounts');
+    this.setState({
+      accountsActive: true,
+      graphsActive: false,
+      goalsActive: false
+    })
+  }
+  graphsNavigation = () => {
+    this.props.history.push('/home');
+    this.setState({
+      accountsActive: false,
+      graphsActive: true,
+      goalsActive: false
+    })
+  }
+  goalsNavigation = () => {
+    this.props.history.push('/plans');
+    this.setState({
+      accountsActive: false,
+      graphsActive: false,
+      goalsActive: true
+    })
   }
 
   render() {
@@ -71,9 +99,9 @@ class Header extends Component {
             <Navbar.Header>
             </Navbar.Header>
             <Nav pullRight>
-              <NavItem onClick={() => this.props.history.push('/accounts')}  >Accounts</NavItem>
-              <NavItem onClick={() => this.props.history.push('/home')}  >Graphs</NavItem>
-              <NavItem onClick={() => this.props.history.push('/plans')}  >Goals</NavItem>
+              <NavItem className={ this.state.graphsActive ? 'active' : null } onClick={() => this.graphsNavigation() }  >Graphs</NavItem>
+              <NavItem className={ this.state.accountsActive ? 'active' : null } onClick={() => this.accountsNavigation() }  >Accounts</NavItem>
+              <NavItem className={ this.state.goalsActive ? 'active' : null } onClick={() => this.goalsNavigation() }  >Goals</NavItem>
               <NavItem onClick={() => this.logout()}>Logout</NavItem>
             </Nav>
           </Navbar>

@@ -13,3 +13,7 @@ body {
   border-radius: 50%;
   border: green;
 }
+
+.active-nav {
+  color: red;
+}
