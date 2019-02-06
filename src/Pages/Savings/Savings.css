@@ -1,0 +1,27 @@
+.header {
+  margin-bottom: 0;
+}
+
+.subheader {
+  display: flex;
+  border-bottom: 1px solid rgb(236, 236, 236);
+  background-color: #5cb85c;
+}
+
+.subheader-items {
+  margin: 10px 25px 10px 25px;
+  color: white;
+  cursor: pointer;
+}
+
+.calculator-parent {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+.debt-btn {
+  width: 70px;
+  height: 30px;
+  border-radius: 5px;
+  font-size: 12px;
+}
