@@ -5,6 +5,7 @@ import AccountList from './Pages/AccountList/AccountList';
 import Graphs from './Pages/Graphs/Graphs.js';
 import HomePage from './Pages/HomePage/HomePage';
 import Calculator from './Pages/Calculator/Calculator';
+import Savings from './Pages/Savings/Savings.js';
 
 export default (
   <Switch>
@@ -13,5 +14,6 @@ export default (
     <Route path='/home' component={HomePage}/>
     <Route path='/graphs' component={Graphs} />
     <Route path='/calculator' component={Calculator} />
+    <Route path='/plans' component={Savings} />
   </Switch>
 )
