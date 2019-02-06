@@ -40,8 +40,10 @@ text{
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-bottom-color: rgb(221, 221, 221);
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    outline: none
 }
+
 .cardwrap{
     display: flex;
     flex-direction: row;
