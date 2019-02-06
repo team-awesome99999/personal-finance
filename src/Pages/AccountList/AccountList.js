@@ -8,7 +8,7 @@ export default class AccountList extends Component {
   state = {
     accounts: [],
     balances: [],
-    
+
   }
   componentDidMount() {
     axios.get('/accounts').then((res) => {
@@ -18,15 +18,20 @@ export default class AccountList extends Component {
       })
     })
   }
-  componentDidUpdate(){
-    axios.get(`/accounts`)
-         .then(res=>{
-           this.setState({
-             accounts: res.data.accounts,
-             balances: res.data.balances
-           })
-         })
-  }
+
+  //IS CONTINUALLY RUNNING RENDERS, NEEDS TO BE REWRITTEN
+  // componentDidUpdate(prevProps, prevState) {
+  //   if(prevState.balances !== this.state.balances) {
+  //   axios.get(`/accounts`)
+  //     .then(res => {
+  //       this.setState({
+  //         accounts: res.data.accounts,
+  //         balances: res.data.balances
+  //       })
+  //     })
+  //   }
+  // }
+  // -------------------------------------------------------
 
   render() {
     let accounts = this.state.accounts.map((account, index) => {
@@ -45,7 +50,7 @@ export default class AccountList extends Component {
             accountid={account.id}
             balances={balances}
           />
-          
+
 
         </div>
       )

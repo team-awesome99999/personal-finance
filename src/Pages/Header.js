@@ -6,6 +6,7 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { getCurrentUser } from '../dux/reducer';
 import logo from "./../ProjectLogo.png"
+import '../App.css'
 
 class Header extends Component {
 
