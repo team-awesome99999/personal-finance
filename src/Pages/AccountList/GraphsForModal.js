@@ -23,13 +23,15 @@ class GraphsForModal extends Component {
               x: x_axis,
               y: y_axis,
               type: 'scatter',
-              mode: 'Line Dash',
+              mode: 'lines+markers',
+              line: { shape: 'spline' },
               marker: {
                 size: 7
               },
             },
           ]}
           layout={{ title: this.props.accountname, width: '900', height: '500' }}
+          config={{ displayModeBar: false }}
         />
       </div>
     );
