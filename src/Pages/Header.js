@@ -6,6 +6,7 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { getCurrentUser } from '../dux/reducer';
 import logo from "./../ProjectLogo.png"
+import '../App.css'
 
 class Header extends Component {
 
@@ -36,6 +37,7 @@ class Header extends Component {
   }
 
   render() {
+
     return (
       <div>
         {/* navbar if user is NOT logged in */}
@@ -71,9 +73,9 @@ class Header extends Component {
             <Navbar.Header>
             </Navbar.Header>
             <Nav pullRight>
-              <NavItem onClick={() => this.props.history.push('/accounts')}  >Accounts</NavItem>
-              <NavItem onClick={() => this.props.history.push('/home')}  >Graphs</NavItem>
-              <NavItem onClick={() => this.props.history.push('/plans')}  >Goals</NavItem>
+              <NavItem className={ this.props.history.location.pathname === '/home' ? 'active' : null } onClick={() => this.props.history.push('/home') }  >Graphs</NavItem>
+              <NavItem className={ this.props.history.location.pathname === '/accounts' ? 'active' : null } onClick={() => this.props.history.push('/accounts') }  >Accounts</NavItem>
+              <NavItem className={ this.props.history.location.pathname === '/plans' ? 'active' : null } onClick={() => this.props.history.push('/plans') }  >Goals</NavItem>
               <NavItem onClick={() => this.logout()}>Logout</NavItem>
             </Nav>
           </Navbar>

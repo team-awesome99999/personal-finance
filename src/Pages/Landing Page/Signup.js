@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Form, FormGroup, FormControl, HelpBlock, Tooltip, InputGroup, Button } from 'react-bootstrap'
+import { FormGroup, FormControl, Tooltip } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
 import { getCurrentUser } from '../../dux/reducer';
 import { connect } from 'react-redux'; 

@@ -217,3 +217,22 @@ h2{
     border: none;
     width: 70px
 }
+
+//graph modal
+.modal-btn {
+  cursor: pointer;
+}
+
+.modal-dialog {
+  width: 70vw;
+  height: 100vh;
+}
+
+.modal-header {
+  padding-bottom: 0;
+}
+
+.modal-graph {
+  display: flex;
+  justify-content: center;
+}

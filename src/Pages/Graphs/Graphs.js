@@ -52,7 +52,7 @@ class Graphs extends Component {
         return parseFloat(val.balance)
       })
       const reducer = (accumulator, currentValue) => accumulator + currentValue;
-      const grandTotalMasterNumberOfSecrets = this.state.balances.map((balance)=>{
+      const grandTotalMasterNumberOfSecrets = this.state.balances.map((balance) => {
         const total = balance.balance
         return parseInt(total)
       })
@@ -94,7 +94,7 @@ class Graphs extends Component {
         </div>
       )
     })
-    
+
     let groupOfAccounts = this.state.accounts.map((acct, id) => {
       let newBalances = this.state.balances.filter((bal, id) => {
         if (acct.id === bal.accountid) {
@@ -110,9 +110,9 @@ class Graphs extends Component {
         return parseFloat(val.balance)
       })
       // console.log("new balances", newBalances)
-      
+
       return {
-        
+
         //date value from mapped array inside of x
         x: x_axis.reverse(),
         //specified value from mapped array
@@ -122,9 +122,9 @@ class Graphs extends Component {
         mode: 'Line Dash',
       }
     })
-    
+
     let grandMasterTotal =
-    <Carousel.Item>
+      <Carousel.Item>
         <div className='c-item'>
           <Plot
             data={
@@ -132,8 +132,8 @@ class Graphs extends Component {
             }
             layout={
               {
-                title: 'Total Account Balances', 
-                autosize: true, 
+                title: 'Total Account Balances',
+                autosize: true,
                 legend: {
                   x: 1,
                   y: 1,
@@ -142,7 +142,7 @@ class Graphs extends Component {
                     size: 12
                   },
                 },
-                
+
               }
             }
             useResizeHandle={true}
@@ -166,7 +166,7 @@ class Graphs extends Component {
     return (
       <div>
         <div className='graphs-parent'>
-        <h1 className="superTotal">{this.state.total}</h1>
+          <h1 className="superTotal">{this.state.total}</h1>
           <Carousel
             indicators={false}
             activeIndex={index}
