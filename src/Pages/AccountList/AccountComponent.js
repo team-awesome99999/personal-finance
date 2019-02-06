@@ -23,7 +23,6 @@ export default class AccountComponent extends Component {
     }
     
     saveNameChange = async () => {
-        console.log('running?')
         await axios.put('/api/editname', { name: this.state.newName, accountid: this.props.accountid })
         this.setState({ editName: false, newName: '' })
     }
@@ -36,11 +35,12 @@ export default class AccountComponent extends Component {
         let history = balances.map((balance, index) => {
             return (
                 <BalanceComponent
-                    entrydate = {balance.entrydate}
-                    balance={balance.balance}
-                    balanceid={balance.id}
-                    index = {index}
-                    accountid={balance.accountid}
+                  key={balance.id}
+                  entrydate = {balance.entrydate}
+                  balance={balance.balance}
+                  balanceid={balance.id}
+                  index = {index}
+                  accountid={balance.accountid}
                 />
             )
         })
@@ -54,9 +54,9 @@ export default class AccountComponent extends Component {
                             <OverlayTrigger
                                 placement="left"
                                 overlay={
-                                    <Tooltip>
-                                        Click to edit!
-                              </Tooltip>
+                                <Tooltip id='tooltip'>
+                                  Click to edit!
+                                </Tooltip>
                                 }
                             >
                                 <h2 onClick={() => this.setState({ editName: !this.state.editName })} className="accountName">{this.props.name}</h2>

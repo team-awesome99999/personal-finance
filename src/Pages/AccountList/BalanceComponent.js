@@ -24,7 +24,7 @@ export default class BalanceComponent extends Component {
 
   render() {
     return (
-        <div key={this.props.balance.id} className="accounthistory">
+        <div key={this.props.balanceid} className="accounthistory">
         <div className="historydisplay" key={this.props.index + this.props.balance}>
             {this.state.editing ?
                 <input className="listinput" onChange={(e)=> this.setState({date: e.target.value})} value={this.state.date} placeholder="Date"></input>
@@ -44,7 +44,7 @@ export default class BalanceComponent extends Component {
                         : 
                         null}
                 <DeleteBalance
-                    balanceid={this.props.balance.id}
+                    balanceid={this.props.balanceid}
                     />
             </div>
         </div>

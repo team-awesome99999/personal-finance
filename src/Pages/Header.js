@@ -11,10 +11,7 @@ class Header extends Component {
 
   state = {
     showLogin: false,
-    loggedIn: false,
-    graphsActive: true,
-    accountsActive: false,
-    goalsActive: false
+    loggedIn: false
   }
 
   async componentDidMount() {
@@ -38,32 +35,8 @@ class Header extends Component {
     this.props.history.push('/');
   }
 
-  accountsNavigation = () => {
-    this.props.history.push('/accounts');
-    this.setState({
-      accountsActive: true,
-      graphsActive: false,
-      goalsActive: false
-    })
-  }
-  graphsNavigation = () => {
-    this.props.history.push('/home');
-    this.setState({
-      accountsActive: false,
-      graphsActive: true,
-      goalsActive: false
-    })
-  }
-  goalsNavigation = () => {
-    this.props.history.push('/plans');
-    this.setState({
-      accountsActive: false,
-      graphsActive: false,
-      goalsActive: true
-    })
-  }
-
   render() {
+
     return (
       <div>
         {/* navbar if user is NOT logged in */}
@@ -99,9 +72,9 @@ class Header extends Component {
             <Navbar.Header>
             </Navbar.Header>
             <Nav pullRight>
-              <NavItem className={ this.state.graphsActive ? 'active' : null } onClick={() => this.graphsNavigation() }  >Graphs</NavItem>
-              <NavItem className={ this.state.accountsActive ? 'active' : null } onClick={() => this.accountsNavigation() }  >Accounts</NavItem>
-              <NavItem className={ this.state.goalsActive ? 'active' : null } onClick={() => this.goalsNavigation() }  >Goals</NavItem>
+              <NavItem className={ this.props.history.location.pathname === '/home' ? 'active' : null } onClick={() => this.props.history.push('/home') }  >Graphs</NavItem>
+              <NavItem className={ this.props.history.location.pathname === '/accounts' ? 'active' : null } onClick={() => this.props.history.push('/accounts') }  >Accounts</NavItem>
+              <NavItem className={ this.props.history.location.pathname === '/plans' ? 'active' : null } onClick={() => this.props.history.push('/plans') }  >Goals</NavItem>
               <NavItem onClick={() => this.logout()}>Logout</NavItem>
             </Nav>
           </Navbar>
