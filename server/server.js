@@ -24,8 +24,8 @@ let transporter = nodemailer.createTransport({
   }
 })
 
-let event = cal.createEvent({ timestamp: new Date(), summary: 'My Event'}).toString();
-
+let event = cal.createEvent().toString();
+event.start = moment();
 //nodemailer message
 let HelperOptions = {
   from: '"Trassets" <thetester999999@gmail.com>',
@@ -36,15 +36,17 @@ let HelperOptions = {
     content: event
   }
 }
+//I WILL TURN THIS BACK ON WHEN I AM WORKING ON IT AGAIN - COMMENTING OUT SO I DON'T GET EMAIL SPAM//
+// transporter.sendMail(HelperOptions, (error, info) => {
+//   if(error) {
+//     return console.log("You have an error", error)
+//   } else {
+//     console.log("Message sent again?!", info, "Event: ", HelperOptions.icalEvent.content);
+//   }
+// })
 
-transporter.sendMail(HelperOptions, (error, info) => {
-  if(error) {
-    return console.log("You have an error", error)
-  } else {
-    console.log("Message sent again?!", info, "Event: ", event.summary);
-  }
-})
-// -------------------------
+//FYI for Meg, email says "unable to load event data"
+// -------------------------------------------------------------------------------
 
 
 const app = express();
