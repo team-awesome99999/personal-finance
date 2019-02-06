@@ -47,9 +47,9 @@ export default class Card extends Component {
                     <div key="front">
                         <div className="card">
                             <h1 className="cardTitle">{this.props.name}</h1>
-                            <div onClick={this.handleClick}  className="progressLoader" style={{ width: '250px' }}>
+                            <div onClick={this.handleClick} className="progressLoader" style={{ width: '250px' }}>
                                 <CircularProgressbar
-                                    onClick={this.handleClick} 
+                                    onClick={this.handleClick}
                                     percentage={percentage}
                                     text={`${percentage}%`}
                                     background
@@ -71,8 +71,16 @@ export default class Card extends Component {
                                 <h3 className="percentage">{percentage}%</h3>
                             </div>
                             <div>
-                                <input value={this.state.inputVal} className="input" type="text" onChange={(e) => this.setState({ inputVal: e.target.value })}></input>
-                                <div onClick={this.addValue}>+</div>
+                                <input 
+                                onKeyUp={event => {
+                                    if (event.key === 'Enter') {
+                                        this.addValue()
+                                    }
+                                }} 
+                                value={this.state.inputVal} 
+                                className="input" 
+                                type="text" 
+                                onChange={(e) => this.setState({ inputVal: e.target.value })}></input>
 
 
                             </div>
@@ -84,7 +92,7 @@ export default class Card extends Component {
                             <h2 className="cardTitle">Goal</h2>
                             <h3 className="cardNumber">{currencyFormatter.format(this.props.goal, { code: 'USD' })}</h3>
                             <h2 className="cardTitle">Current</h2>
-                            <h3 className="cardNumber">{currencyFormatter.format(this.state.total,{code: 'USD'})}</h3>
+                            <h3 className="cardNumber">{currencyFormatter.format(this.state.total, { code: 'USD' })}</h3>
                             <h2 className="cardTitle">End Date</h2>
                             <h3 className="cardNumber">{this.props.endDate}</h3>
                         </div>
