@@ -11,7 +11,7 @@ const ical = require('ical-generator');
 const cal = ical();
 const moment = require('moment');
 
-let transporter = nodemailer.createTransport({
+let transporter = nodemailer.createTransport({ 
   service: 'gmail',
   secure: false,
   port: 25,

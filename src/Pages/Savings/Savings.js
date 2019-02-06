@@ -23,7 +23,7 @@ class Savings extends Component{
               <Header />
               <SubHeader openCalculator={ this.openCalculator }/>
               { this.state.openCalculator ?
-              <Calculator />
+              <Calculator /> 
               : null }       
             </div>
         )
