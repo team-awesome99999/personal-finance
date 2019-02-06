@@ -8,7 +8,7 @@ import './Savings.css';
 class Savings extends Component{
 
   state={
-    openCalculator: true
+    openCalculator: false
   }
 
   openCalculator = () => {
