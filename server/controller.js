@@ -141,6 +141,17 @@ module.exports = {
     const { name, accountid } = req.body;
     let newName = await db.update_acct_name([ name, accountid ]);
     res.status(200).send(newName);
+  },
+  addSavingsAccount: async (req,res)=>{
+    const db = req.app.get('db');
+    const user = req.session.user
+    const {name,endAmount,currentAmount,endDate} = req.body
+    if(user){
+      let newSavingsAccount = await db.add_goal([name,endAmount,currentAmount,endDate,user.id])
+      res.status(200).send(newSavingsAccount)
+    } else {
+      res.status(401).send('No user found, please register or login')
+    }
   }
 }
 

@@ -13,7 +13,7 @@ class Graphs extends Component {
     balances: [],
     index: 0,
     direction: null,
-    total: [],
+    total: '',
   }
 
   //grab two arrays from db
@@ -24,13 +24,6 @@ class Graphs extends Component {
       .then(res => {
         this.setState({ accounts: res.data.accounts, balances: res.data.balances })
       })
-  }
-
-  componentDidUpdate = async () =>{
-    axios.get(`/accounts`)
-    .then(res => {
-      this.setState({ accounts: res.data.accounts, balances: res.data.balances })
-    })
   }
 
 
@@ -45,7 +38,7 @@ class Graphs extends Component {
 
 
     let displayBalance = this.state.accounts.map((acct, id) => {
-      let newBalances = this.state.balances.filter((bal, id) => { 
+      let newBalances = this.state.balances.filter((bal, id) => {
         if (acct.id === bal.accountid) {
           return true
         } else {
@@ -58,8 +51,16 @@ class Graphs extends Component {
       const y_axis = newBalances.map((val, id) => {
         return parseFloat(val.balance)
       })
+      const reducer = (accumulator, currentValue) => accumulator + currentValue;
+      const grandTotalMasterNumberOfSecrets = this.state.balances.map((balance)=>{
+        const total = balance.balance
+        return parseInt(total)
+      })
+      // ************************************************************************************************************************************************************************//
+      const theRealDealGrandMasterTotalNumberOfSecrets = grandTotalMasterNumberOfSecrets.reduce(reducer)
+      // this.setState({total: theRealDealGrandMasterTotalNumberOfSecrets})
+      // console.log('total', this.state.total)
       // console.log("new balances", newBalances)
-
       return (
         <div>
           <div className='c-item' key={acct.id}>
@@ -93,7 +94,7 @@ class Graphs extends Component {
         </div>
       )
     })
-
+    
     let groupOfAccounts = this.state.accounts.map((acct, id) => {
       let newBalances = this.state.balances.filter((bal, id) => {
         if (acct.id === bal.accountid) {
@@ -109,9 +110,9 @@ class Graphs extends Component {
         return parseFloat(val.balance)
       })
       // console.log("new balances", newBalances)
-
+      
       return {
-
+        
         //date value from mapped array inside of x
         x: x_axis.reverse(),
         //specified value from mapped array
@@ -121,9 +122,9 @@ class Graphs extends Component {
         mode: 'Line Dash',
       }
     })
-
+    
     let grandMasterTotal =
-      <Carousel.Item>
+    <Carousel.Item>
         <div className='c-item'>
           <Plot
             data={
@@ -141,7 +142,7 @@ class Graphs extends Component {
                     size: 12
                   },
                 },
-
+                
               }
             }
             useResizeHandle={true}
@@ -165,6 +166,7 @@ class Graphs extends Component {
     return (
       <div>
         <div className='graphs-parent'>
+        <h1 className="superTotal">{this.state.total}</h1>
           <Carousel
             indicators={false}
             activeIndex={index}
