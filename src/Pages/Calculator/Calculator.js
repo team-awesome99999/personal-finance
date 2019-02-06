@@ -45,17 +45,24 @@ class Calculator extends Component{
     render(){
       return(
         <div className='calculator-parent'>
-          <input type="number" placeholder='Loan Amount($)' onChange={(e)=>this.setState({amount: e.target.value})} />
-          <input type="number" placeholder='Interest Rate(%)' onChange={(e)=>this.setState({apr: e.target.value})} />
-          <input type="number" placeholder='Loan Length(years)' onChange={(e)=>this.setState({years: e.target.value})} />
+          <input className='debt-inputs debt-currency' type="number" placeholder='Loan Amount($)' onChange={(e)=>this.setState({amount: e.target.value})} />
+          <input className='debt-inputs debt-currency' type="number" placeholder='Interest Rate(%)' onChange={(e)=>this.setState({apr: e.target.value})} />
+          <input className='debt-inputs debt-currency' type="number" placeholder='Loan Length(years)' onChange={(e)=>this.setState({years: e.target.value})} />
           <button className='debt-btn' onClick={()=>this.calculate()}>Calculate</button>
           {
             this.state.arr[0] ?
               (
               <div>
-                <div> Monthly Payment: {currencyFormatter.format(this.state.arr[0], { locale: 'en-US' })}</div>
-                <div> Total Loan Amount: {currencyFormatter.format(this.state.arr[1], { locale: 'en-US' })}</div>
-                <div> Total Interest: {currencyFormatter.format(this.state.arr[2], { locale: 'en-US' })}</div>
+                <div>
+                  <div> Monthly Payment: <span className='debt-currency'>{currencyFormatter.format(this.state.arr[0], { locale: 'en-US' })}</span></div>
+                  <div> Total Loan Amount:  
+                    <span className='debt-currency'> {currencyFormatter.format(this.state.arr[1], { locale: 'en-US' })}</span>
+                  </div>
+                  <div> Total Interest:  
+                    <span className='debt-currency'> {currencyFormatter.format(this.state.arr[2], { locale: 'en-US' })}</span>
+                  </div>
+                </div>
+                <div className='save-debt-goal'><div>Save to goal</div></div>
               </div>
               ):(
               <div>
