@@ -140,7 +140,6 @@ module.exports = {
     const db = req.app.get('db');
     const { name, accountid } = req.body;
     let newName = await db.update_acct_name([ name, accountid ]);
-    console.log(newName)
     res.status(200).send(newName);
   }
 }

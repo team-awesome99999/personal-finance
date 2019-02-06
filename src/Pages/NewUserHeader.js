@@ -41,7 +41,7 @@ class Header extends Component {
             <Navbar.Brand
               onClick={ () => this.props.history.push('/home') }  
               className='site-name'>
-              <img className={logo}></img>
+              <img alt='logo' className={logo}></img>
               Trassets
             </Navbar.Brand>
           </Navbar.Header>

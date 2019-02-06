@@ -73,6 +73,7 @@ class Header extends Component {
             <Nav pullRight>
               <NavItem onClick={() => this.props.history.push('/accounts')}  >Accounts</NavItem>
               <NavItem onClick={() => this.props.history.push('/home')}  >Graphs</NavItem>
+              <NavItem onClick={() => this.props.history.push('/plans')}  >Goals</NavItem>
               <NavItem onClick={() => this.logout()}>Logout</NavItem>
             </Nav>
           </Navbar>
