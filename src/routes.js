@@ -6,6 +6,7 @@ import Graphs from './Pages/Graphs/Graphs.js';
 import HomePage from './Pages/HomePage/HomePage';
 import Calculator from './Pages/Calculator/Calculator';
 import Plans from './Pages/Plans/Plans'
+import Savings from './Pages/Savings/Savings.js';
 
 export default (
   <Switch>
@@ -15,5 +16,6 @@ export default (
     <Route path='/graphs' component={Graphs} />
     <Route path='/calculator' component={Calculator} />
     <Route path='/goals' component={Plans}/>
+    <Route path='/plans' component={Savings} />
   </Switch>
 )
