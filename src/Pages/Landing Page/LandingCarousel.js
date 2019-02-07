@@ -10,27 +10,12 @@ function LandingCarousel() {
       <Carousel>
         <Carousel.Item>
           <img className='landing-carousel' width={900} height={500} alt="900x500" src={goldeye} />
-          <Carousel.Caption>
-            <div className='text-box'>
-              <h3>When is the last time you looked into your finances?</h3>
-            </div>
-          </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img className='landing-carousel' width={900} height={500} alt="900x500" src={finance} />
-          <Carousel.Caption>
-            <div className='text-box'>
-              <h3>Do you have a financial plan?</h3>
-            </div>
-          </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img className='landing-carousel' width={900} height={500} alt="900x500" src={money} />
-          <Carousel.Caption>
-            <div className='text-box'>
-              <h3>Do you have the money to do the things you enjoy?</h3>
-            </div>
-          </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
     </div>

@@ -18,13 +18,11 @@ class Login extends Component {
     const { email, password } = this.state;
     try {
       let res = await axios.post('/auth/login', { email, password })
-      console.log(res.data.id)
       this.setState({
         email: '',
         password: ''
       })
       this.props.getCurrentUser({ userid: res.data.id })
-      //ONCE HOME PAGE IS BUILT, THE LOGIN CAN PUSH USER THERE WITH COMMENT BELOW
       this.props.history.push('/home');
     } catch(error) {
       if(error.response.data.message === 'Email not found') {
