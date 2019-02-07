@@ -84,10 +84,26 @@ class Graphs extends Component {
         </div>
       )
     })
-    const grandTotal = this.state.accounts.map((acct, id)=>{
-      return acct
-    })
+    
+    let newGroupOfAccounts = this.state.accounts.map((acct, id) => {
+      let newBalances = this.state.balances.filter((bal, id) => {
+        if (acct.id === bal.accountid) {
+          return true
+        } else {
+          return false
+        }
+      })
+      const allBalances = newBalances.map((val, id) => {
+        return parseFloat(val.balance)
+      })
+      // console.log("new balances", newBalances)
 
+      return allBalances
+    
+    })
+    console.log(newGroupOfAccounts)
+
+  
     let groupOfAccounts = this.state.accounts.map((acct, id) => {
       let newBalances = this.state.balances.filter((bal, id) => {
         if (acct.id === bal.accountid) {
@@ -120,6 +136,9 @@ class Graphs extends Component {
     let grandMasterTotal =
 
       <Carousel.Item>
+        <Totals
+        total={newGroupOfAccounts}
+        />
         <div className='c-item'>
 
           <Plot
