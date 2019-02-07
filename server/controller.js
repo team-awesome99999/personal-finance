@@ -145,9 +145,11 @@ module.exports = {
   addSavingsAccount: async (req,res)=>{ //add a new savings account
     const db = req.app.get('db');
     const user = req.session.user
-    const {name,endAmount,currentAmount,endDate} = req.body
+    const {goalName,savingsGoal,currentSaved,endDate} = req.body
+    console.log(req.body)
     if(user){
-      let newSavingsAccount = await db.add_goal([name,endAmount,currentAmount,endDate,user.id])
+      let newSavingsAccount = await db.add_goal([goalName,+savingsGoal,+currentSaved,endDate,user.id])
+      console.log(newSavingsAccount)
       res.status(200).send(newSavingsAccount)
     } else {
       res.status(401).send('No user found, please register or login')

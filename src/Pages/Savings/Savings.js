@@ -26,6 +26,19 @@ class Savings extends Component{
            })
     }
 
+    componentDidUpdate(prevState){
+      if(prevState !== this.state.savingsAccounts){
+        axios.get(`/api/savings`)
+        .then(res=>{
+          console.log(res,'line 20')
+          this.setState({savingsAccounts: res.data})
+          console.log(this.state.savingsAccounts,'line 22')
+        })
+      } else {
+        
+      }
+    }
+
     async editSavingsGoal(){ //allows user to modify their current savings amount
       await axios.put()
                  .then()
