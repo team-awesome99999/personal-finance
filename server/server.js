@@ -5,7 +5,7 @@ const massive = require('massive');
 const ctrl = require('./controller.js');
 let {SERVER_PORT,CONNECTION_STRING,SESSION_SECRET, TEST_PASS} = process.env;
 
-//Testing nodemailer
+//nodemailer and ical calendar events
 const nodemailer = require('nodemailer');
 const ical = require('ical-generator');
 const cal = ical();
@@ -24,14 +24,15 @@ let transporter = nodemailer.createTransport({
   }
 })
 
-let event = cal.createEvent({
+cal.createEvent({
   start: new Date(),
   end: moment(new Date()).add(1, 'hour'),
   summary: 'Update Trasset Balances',
   organizer: 'Trassets <thetester999999@gmail.com>',
 });
 
-let content = cal.toString();
+let content = cal.toString(); //generates ical string for the ical event
+
 //nodemailer message
 let HelperOptions = {
   from: '"Trassets" <thetester999999@gmail.com>',
@@ -43,17 +44,11 @@ let HelperOptions = {
   }
 }
 
-
-//I WILL TURN THIS BACK ON WHEN I AM WORKING ON IT AGAIN - COMMENTING OUT SO I DON'T GET EMAIL SPAM//
 transporter.sendMail(HelperOptions, (error, info) => {
   if(error) {
-    return console.log("You have an error", error)
-  } else {
-    console.log("Message sent again!", info, "Event: ", HelperOptions.icalEvent.content);
+    return console.log(error)
   }
 })
-// -------------------------------------------------------------------------------
-
 
 const app = express();
 

@@ -7,6 +7,8 @@ import {connect} from 'react-redux';
 import {getAccount} from '../../dux/reducer.js';
 import NewUserHeader from '../NewUserHeader';
 import Loading from '../Loading';
+import Calendar from './Calendar';
+import './HomePage.css';
 
 class HomePage extends Component {
   state = {
@@ -34,6 +36,7 @@ class HomePage extends Component {
             ):(
               <div className='homepage-falsy'>
               <Header/>
+              <Calendar />
               <Graphs />
               </div>
             )
