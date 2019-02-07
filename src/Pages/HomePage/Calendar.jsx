@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
 import { Popover, OverlayTrigger } from 'react-bootstrap';
+import axios from 'axios';
 
 class Calendar extends Component {
 
   state = {
-    email: ''
+    email: '',
+    sent: false
+  }
+
+  sendInvite = async () => {
+    let res = await axios.post('/sendemail', { email: this.state.email });
+    if(res.data === 'Message Sent!') {
+      this.setState({ email: '', sent: true })
+    }
   }
 
   render() {
@@ -14,31 +23,20 @@ class Calendar extends Component {
         To help you remember to update your balances often, add reminders to your calendar as recurring events. Enter your email below to have a calendar event sent right to you!
         <div className='invite'>
           <input
+            value={ this.state.email }
             className='invite-input' 
             onChange={ (e) => this.setState({ email: e.target.value }) }type="text"/>
-          <div className='send-invite'>Send</div>
+          { this.state.sent ? <i className="sent-true fas fa-check"></i>  : <div onClick={ () => this.sendInvite() } className='send-invite'>Send</div>}
         </div>
       </Popover>
     )
 
     return (
       <OverlayTrigger trigger='click' placement='right' overlay={ popover }>
-        <i className="calendar far fa-calendar-alt"></i>
+        <i onClick={ () => this.setState({ sent: false })} className="calendar far fa-calendar-alt"></i>
       </OverlayTrigger>
     );
   }
 }
 
 export default Calendar;
-
-// const popover = (
-//   <Popover id="popover-basic" title="Popover right">
-//     And here's some <strong>amazing</strong> content. It's very engaging. right?
-//   </Popover>
-// );
-
-// const Example = () => (
-//   <OverlayTrigger trigger="click" placement="right" overlay={popover}>
-//     <Button variant="success">Click me to see</Button>
-//   </OverlayTrigger>
-// );

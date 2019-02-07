@@ -11,19 +11,6 @@ const ical = require('ical-generator');
 const cal = ical();
 const moment = require('moment');
 
-let transporter = nodemailer.createTransport({
-  service: 'gmail',
-  secure: false,
-  port: 25,
-  auth: {
-    user: 'thetester999999@gmail.com',
-    pass: TEST_PASS
-  },
-  tls: {
-    rejectUnauthorized: false
-  }
-})
-
 cal.createEvent({
   start: new Date(),
   end: moment(new Date()).add(1, 'hour'),
@@ -32,23 +19,6 @@ cal.createEvent({
 });
 
 let content = cal.toString(); //generates ical string for the ical event
-
-//nodemailer message
-let HelperOptions = {
-  from: '"Trassets" <thetester999999@gmail.com>',
-  to: 'steadmegan@gmail.com',
-  subject: 'Calendar Reminder',
-  text: 'For best results, add this as a repeating event to your calendar to help you remember to update your balances often!',
-  icalEvent: {
-    content: content
-  }
-}
-
-transporter.sendMail(HelperOptions, (error, info) => {
-  if(error) {
-    return console.log(error)
-  }
-})
 
 const app = express();
 
@@ -65,7 +35,39 @@ massive(CONNECTION_STRING).then(db=>{
     app.set('db',db)
     console.log(`db connected using massive`)
 }) 
-//test
+
+//Nodemailer reminder
+app.post('/sendemail', function(req, res) {
+  const { email } = req.body;
+  let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    secure: false,
+    port: 25,
+    auth: {
+      user: 'thetester999999@gmail.com',
+      pass: TEST_PASS
+    },
+    tls: {
+      rejectUnauthorized: false
+    }
+  })
+  //email message 
+  let message = {
+    from: '"Trassets" <thetester999999@gmail.com>',
+    to: `${email}`,
+    subject: 'Calendar Reminder',
+    text: 'For best results, add this as a repeating event to your calendar to help you remember to update your balances often!',
+    icalEvent: {
+      content: content
+    }
+  }
+  transporter.sendMail(message, (error, info) => {
+    if(error) {
+      return console.log(error)
+    }
+  })
+  res.status(200).send('Message Sent!')
+});
 
 app.post('/auth/signup', ctrl.signup);
 app.post('/auth/login', ctrl.login);
@@ -81,7 +83,6 @@ app.delete('/api/deleteaccount/:id', ctrl.deleteAccount);
 app.get('/getmonthlybalances/:id', ctrl.getMonthlyBalances); //for the monthly changes function
 app.put('/api/editname', ctrl.editName); //in accountComponent for editing account names
 app.post(`/api/savings`,ctrl.addSavingsAccount); //add a new savings account to the db based on session user
-
 
 app.listen(SERVER_PORT,()=>{
     console.log(`${SERVER_PORT} tiny snowbots doing your bidding.`)
