@@ -20,17 +20,15 @@ export default class AccountList extends Component {
   }
 
   //IS CONTINUALLY RUNNING RENDERS, NEEDS TO BE REWRITTEN
-  // componentDidUpdate(prevProps, prevState) {
-  //   if(prevState.balances !== this.state.balances) {
-  //   axios.get(`/accounts`)
-  //     .then(res => {
-  //       this.setState({
-  //         accounts: res.data.accounts,
-  //         balances: res.data.balances
-  //       })
-  //     })
-  //   }
-  // }
+  componentDidUpdate(prevProps, prevState) {
+    axios.get(`/accounts`)
+      .then(res => {
+        this.setState({
+          accounts: res.data.accounts,
+          balances: res.data.balances
+        })
+      })
+  }
   // -------------------------------------------------------
 
   render() {
