@@ -24,28 +24,34 @@ let transporter = nodemailer.createTransport({
   }
 })
 
-let event = cal.createEvent().toString();
-event.start = moment();
+let event = cal.createEvent({
+  start: new Date(),
+  end: moment(new Date()).add(1, 'hour'),
+  summary: 'Update Trasset Balances',
+  organizer: 'Trassets <thetester999999@gmail.com>',
+});
+
+let content = cal.toString();
 //nodemailer message
 let HelperOptions = {
   from: '"Trassets" <thetester999999@gmail.com>',
-  to: 'thetester999999@gmail.com',
-  subject: 'Calendar invite',
-  text: 'For best results, remember to update your balances often!',
+  to: 'steadmegan@gmail.com',
+  subject: 'Calendar Reminder',
+  text: 'For best results, add this as a repeating event to your calendar to help you remember to update your balances often!',
   icalEvent: {
-    content: event
+    content: content
   }
 }
-//I WILL TURN THIS BACK ON WHEN I AM WORKING ON IT AGAIN - COMMENTING OUT SO I DON'T GET EMAIL SPAM//
-// transporter.sendMail(HelperOptions, (error, info) => {
-//   if(error) {
-//     return console.log("You have an error", error)
-//   } else {
-//     console.log("Message sent again?!", info, "Event: ", HelperOptions.icalEvent.content);
-//   }
-// })
 
-//FYI for Meg, email says "unable to load event data"
+
+//I WILL TURN THIS BACK ON WHEN I AM WORKING ON IT AGAIN - COMMENTING OUT SO I DON'T GET EMAIL SPAM//
+transporter.sendMail(HelperOptions, (error, info) => {
+  if(error) {
+    return console.log("You have an error", error)
+  } else {
+    console.log("Message sent again!", info, "Event: ", HelperOptions.icalEvent.content);
+  }
+})
 // -------------------------------------------------------------------------------
 
 

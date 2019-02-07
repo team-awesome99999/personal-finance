@@ -5,7 +5,6 @@ import moment from 'moment';
 class GraphsForModal extends Component {
   
   render() {
-    // console.log(this.props.accountsarray, this.props.balancesarray, this.props.accountid)
     let account = this.props.accountsarray.filter(account => this.props.accountid === account.id)
     let balances = this.props.balancesarray.filter(balance => balance.accountid === account[0].id);
     const x_axis = balances.map(balance => {
@@ -20,11 +19,11 @@ class GraphsForModal extends Component {
         <Plot
           data={[
             {
-              x: x_axis,
-              y: y_axis,
+              x: x_axis.reverse(),
+              y: y_axis.reverse(),
               type: 'scatter',
               mode: 'lines+markers',
-              line: { shape: 'spline' },
+              fill: 'tonexty',
               marker: {
                 size: 7
               },

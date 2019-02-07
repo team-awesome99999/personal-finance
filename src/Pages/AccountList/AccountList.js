@@ -19,18 +19,16 @@ export default class AccountList extends Component {
     })
   }
 
-  //IS CONTINUALLY RUNNING RENDERS, NEEDS TO BE REWRITTEN
-  // componentDidUpdate(prevProps, prevState) {
-  //   if(prevState.balances !== this.state.balances) {
-  //   axios.get(`/accounts`)
-  //     .then(res => {
-  //       this.setState({
-  //         accounts: res.data.accounts,
-  //         balances: res.data.balances
-  //       })
-  //     })
-  //   }
-  // }
+  //BUG - needs to be rewritten to check if there needs to be an update with an if statement or something - is rerendering constantly
+  componentDidUpdate() {
+    axios.get(`/accounts`)
+      .then(res => {
+        this.setState({
+          accounts: res.data.accounts,
+          balances: res.data.balances
+        })
+    })
+  }
   // -------------------------------------------------------
 
   render() {
@@ -62,7 +60,7 @@ export default class AccountList extends Component {
           <NewAccountIcon />
         </div>
         <div className="all-accounts">
-          <h1>Your Accounts</h1>
+          <h2>Your Accounts</h2>
           {accounts}
         </div>
       </div>

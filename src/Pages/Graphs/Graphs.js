@@ -36,7 +36,6 @@ class Graphs extends Component {
 
   render() {
 
-
     let displayBalance = this.state.accounts.map((acct, id) => {
       let newBalances = this.state.balances.filter((bal, id) => {
         if (acct.id === bal.accountid) {
@@ -73,7 +72,7 @@ class Graphs extends Component {
                   y: y_axis.reverse(),
                   type: 'scatter',
                   mode: 'lines+markers',
-                  line: { shape: 'spline' },
+                  connectgaps: true,
                   marker: {size: 7}
                 }
               ]}
@@ -116,7 +115,6 @@ class Graphs extends Component {
         name: acct.name,
         type: 'scatter',
         mode: 'lines+markers',
-        line: { shape: 'spline' },
         marker: {size: 7}
       }
     })

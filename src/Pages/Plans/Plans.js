@@ -9,10 +9,11 @@ export default class Plans extends Component {
         info: [{ goal: 1000, current: 100, endDate: '2/5/19', name: 'Tesla' }, { goal: 5000, current: 1500, endDate: '3/6/19', name: 'House' }]
     }
     render() {
-        let card = this.state.info.map((plan) => {
+        let card = this.state.info.map((plan, index) => {
 
             return (
                 <Card
+                    key={plan + index}
                     goal={plan.goal}
                     current={plan.current}
                     endDate={plan.endDate}
