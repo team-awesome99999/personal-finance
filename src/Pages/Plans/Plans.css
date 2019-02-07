@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+
+.card{
+    background: rgb(255, 255, 255);
+    width: 300px;
+    text-align: center;
+    box-shadow: 1px 1px 20px 1px rgb(179, 179, 179);
+    margin: 20px;
+    height: 450px
+}
+.progressLoader{
+    margin: 0;
+    margin-left: 20px
+}
+text{
+    font-size: 20px;
+    margin: 0;
+}
+.CircularProgressbar{
+    text-align: center;
+
+}
+.CircularProgressbar-path{
+    transition: .5s
+}
+.percentage{
+    position: relative;
+    left: 10px;
+    bottom: 170px;
+    font-size: 30px;
+    font-family: 'Varela Round', sans-serif;
+}
+.cardNumber{
+    font-family: 'Varela Round', sans-serif;
+    color: #5cb85c
+}
+.input{
+    border: none;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(221, 221, 221);
+    margin-bottom: 10px;
+    outline: none
+}
+
+.cardwrap{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap
+}
+.cardTitle{
+    font-family: 'Raleway', sans-serif;
+}

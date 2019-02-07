@@ -28,7 +28,6 @@ input{
     min-height: 100vh;
     margin-left: 10%;
     font-family: 'Raleway', sans-serif;
-    box-shadow: 0px 0px 10px 10px rgba(165, 165, 165, 0.048);
 }
 .account{
     display: grid;
@@ -217,4 +216,23 @@ h2{
     height: 25px;
     border: none;
     width: 70px
+}
+
+//graph modal
+.modal-btn {
+  cursor: pointer;
+}
+
+.modal-dialog {
+  width: 70vw;
+  height: 100vh;
+}
+
+.modal-header {
+  padding-bottom: 0;
+}
+
+.modal-graph {
+  display: flex;
+  justify-content: center;
 }
