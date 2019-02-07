@@ -9,6 +9,7 @@ import MonthlyChanges from './MonthlyChanges';
 import {accountTotal, accountBalance} from './../../Tests/chartTotal'
 import Totals from './Totals';
 
+
 class Graphs extends Component {
   state = {
     accounts: [],
@@ -181,7 +182,6 @@ class Graphs extends Component {
     return (
       <div>
         <div className='graphs-parent'>
-          <h1 className="superTotal">{this.state.total}</h1>
           <Carousel
             indicators={false}
             activeIndex={index}

@@ -39,3 +39,11 @@ svg {
 .superTotal{
   font-size: 50px
 }
+.grandTotalMasterOfSecrets{
+  position: absolute;
+  font-size: 80px;
+  color: rgb(0, 0, 0);
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.295);
+  margin-left: 300px
+}
