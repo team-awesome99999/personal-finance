@@ -19,7 +19,6 @@ export default class AccountList extends Component {
     })
   }
 
-  //BUG - needs to be rewritten to check if there needs to be an update with an if statement or something - is rerendering constantly
   componentDidUpdate() {
     axios.get(`/accounts`)
       .then(res => {
@@ -27,9 +26,8 @@ export default class AccountList extends Component {
           accounts: res.data.accounts,
           balances: res.data.balances
         })
-    })
+      })
   }
-  // -------------------------------------------------------
 
   render() {
     let accounts = this.state.accounts.map((account, index) => {

@@ -142,17 +142,27 @@ module.exports = {
     let newName = await db.update_acct_name([ name, accountid ]);
     res.status(200).send(newName);
   },
-  addSavingsAccount: async (req,res)=>{
+  addSavingsAccount: async (req,res)=>{ //add a new savings account
     const db = req.app.get('db');
     const user = req.session.user
-    const {name,endAmount,currentAmount,endDate} = req.body
+    const {goalName,savingsGoal,currentSaved,endDate} = req.body
+    console.log(req.body)
     if(user){
-      let newSavingsAccount = await db.add_goal([name,endAmount,currentAmount,endDate,user.id])
+      let newSavingsAccount = await db.add_goal([goalName,+savingsGoal,+currentSaved,endDate,user.id])
+      console.log(newSavingsAccount)
       res.status(200).send(newSavingsAccount)
     } else {
       res.status(401).send('No user found, please register or login')
     }
-  }
+  },
+  getSavingsAccounts: async(req,res)=>{ //get all savings accounts for the specified user
+    const db = req.app.get('db')
+    const user = req.session.user
+    if(user){
+      let getAllSavings = await db.get_users_savings_tables([user.id])
+        res.status(200).send(getAllSavings)
+    } else {
+      res.status(401).send('No accounts found for this user.')
+    }
+  },
 }
-
-//need current balance on current account - userid, accountid, and a month back 

@@ -82,7 +82,8 @@ app.delete('/api/deletebalance/:id', ctrl.deleteBalance);
 app.delete('/api/deleteaccount/:id', ctrl.deleteAccount);
 app.get('/getmonthlybalances/:id', ctrl.getMonthlyBalances); //for the monthly changes function
 app.put('/api/editname', ctrl.editName); //in accountComponent for editing account names
-app.post(`/api/savings`,ctrl.addSavingsAccount); //add a new savings account to the db based on session user
+app.post(`/api/newsavings`,ctrl.addSavingsAccount); //add a new savings account to the db based on session user
+app.get(`/api/savings`, ctrl.getSavingsAccounts); //get all savings accounts for the session user
 
 app.listen(SERVER_PORT,()=>{
     console.log(`${SERVER_PORT} tiny snowbots doing your bidding.`)
