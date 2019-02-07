@@ -26,7 +26,7 @@ export default class AccountList extends Component {
           accounts: res.data.accounts,
           balances: res.data.balances
         })
-    })
+      })
   }
 
   render() {
