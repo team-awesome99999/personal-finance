@@ -13,7 +13,6 @@ export default (
     <Route path='/accounts' component={AccountList}/>
     <Route path='/home' component={HomePage}/>
     <Route path='/graphs' component={Graphs} />
-    <Route path='/goals' component={Plans}/>
     <Route path='/plans' component={Savings} />
   </Switch>
 )
