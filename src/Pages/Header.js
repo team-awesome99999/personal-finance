@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom';
 import { getCurrentUser } from '../dux/reducer';
 import logo from "./../ProjectLogo.png"
 import '../App.css'
+import Calendar from './HomePage/Calendar';
 
 class Header extends Component {
 
@@ -63,6 +64,7 @@ class Header extends Component {
           :
           // Navbar if user IS logged in
           <Navbar className='header'>
+            <Calendar />
             <Navbar.Brand onClick={() => this.props.history.push('/home')} href="#home">
                 <img
                   alt="logo"

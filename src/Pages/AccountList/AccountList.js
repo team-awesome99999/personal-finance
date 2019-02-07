@@ -19,8 +19,8 @@ export default class AccountList extends Component {
     })
   }
 
-  //IS CONTINUALLY RUNNING RENDERS, NEEDS TO BE REWRITTEN
-  componentDidUpdate(prevProps, prevState) {
+
+  componentDidUpdate() {
     axios.get(`/accounts`)
       .then(res => {
         this.setState({
@@ -29,7 +29,7 @@ export default class AccountList extends Component {
         })
       })
   }
-  // -------------------------------------------------------
+
 
   render() {
     let accounts = this.state.accounts.map((account, index) => {
@@ -60,7 +60,7 @@ export default class AccountList extends Component {
           <NewAccountIcon />
         </div>
         <div className="all-accounts">
-          <h1>Your Accounts</h1>
+          <h2>Your Accounts</h2>
           {accounts}
         </div>
       </div>

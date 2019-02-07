@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+
 .navbar-default {
   background-color: white;
   border-top: 4px solid #5cb85c;
@@ -7,6 +10,7 @@
 .landing-main {
   background-color: white;
   height: 100vh;
+  font-family: 'Raleway', sans-serif;
 }
 /* //Landing Carousel Page */
 .landing-carousel {

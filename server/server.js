@@ -5,49 +5,20 @@ const massive = require('massive');
 const ctrl = require('./controller.js');
 let {SERVER_PORT,CONNECTION_STRING,SESSION_SECRET, TEST_PASS} = process.env;
 
-//Testing nodemailer
+//nodemailer and ical calendar events
 const nodemailer = require('nodemailer');
 const ical = require('ical-generator');
 const cal = ical();
 const moment = require('moment');
 
-let transporter = nodemailer.createTransport({ 
-  service: 'gmail',
-  secure: false,
-  port: 25,
-  auth: {
-    user: 'thetester999999@gmail.com',
-    pass: TEST_PASS
-  },
-  tls: {
-    rejectUnauthorized: false
-  }
-})
+cal.createEvent({
+  start: new Date(),
+  end: moment(new Date()).add(1, 'hour'),
+  summary: 'Update Trasset Balances',
+  organizer: 'Trassets <thetester999999@gmail.com>',
+});
 
-let event = cal.createEvent().toString();
-event.start = moment();
-//nodemailer message
-let HelperOptions = {
-  from: '"Trassets" <thetester999999@gmail.com>',
-  to: 'thetester999999@gmail.com',
-  subject: 'Calendar invite',
-  text: 'For best results, remember to update your balances often!',
-  icalEvent: {
-    content: event
-  }
-}
-//I WILL TURN THIS BACK ON WHEN I AM WORKING ON IT AGAIN - COMMENTING OUT SO I DON'T GET EMAIL SPAM//
-// transporter.sendMail(HelperOptions, (error, info) => {
-//   if(error) {
-//     return console.log("You have an error", error)
-//   } else {
-//     console.log("Message sent again?!", info, "Event: ", HelperOptions.icalEvent.content);
-//   }
-// })
-
-//FYI for Meg, email says "unable to load event data"
-// -------------------------------------------------------------------------------
-
+let content = cal.toString(); //generates ical string for the ical event
 
 const app = express();
 
@@ -64,7 +35,39 @@ massive(CONNECTION_STRING).then(db=>{
     app.set('db',db)
     console.log(`db connected using massive`)
 }) 
-//test
+
+//Nodemailer reminder
+app.post('/sendemail', function(req, res) {
+  const { email } = req.body;
+  let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    secure: false,
+    port: 25,
+    auth: {
+      user: 'thetester999999@gmail.com',
+      pass: TEST_PASS
+    },
+    tls: {
+      rejectUnauthorized: false
+    }
+  })
+  //email message 
+  let message = {
+    from: '"Trassets" <thetester999999@gmail.com>',
+    to: `${email}`,
+    subject: 'Calendar Reminder',
+    text: 'For best results, add this as a repeating event to your calendar to help you remember to update your balances often!',
+    icalEvent: {
+      content: content
+    }
+  }
+  transporter.sendMail(message, (error, info) => {
+    if(error) {
+      return console.log(error)
+    }
+  })
+  res.status(200).send('Message Sent!')
+});
 
 app.post('/auth/signup', ctrl.signup);
 app.post('/auth/login', ctrl.login);
@@ -81,7 +84,6 @@ app.get('/getmonthlybalances/:id', ctrl.getMonthlyBalances); //for the monthly c
 app.put('/api/editname', ctrl.editName); //in accountComponent for editing account names
 app.post(`/api/newsavings`,ctrl.addSavingsAccount); //add a new savings account to the db based on session user
 app.get(`/api/savings`, ctrl.getSavingsAccounts); //get all savings accounts for the session user
-
 
 app.listen(SERVER_PORT,()=>{
     console.log(`${SERVER_PORT} tiny snowbots doing your bidding.`)
