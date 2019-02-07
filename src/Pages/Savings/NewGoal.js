@@ -19,11 +19,11 @@ class NewGoal extends Component{
     render(){
         return(
             <div className='newgoal-parent'>
-                <input placeholder='Goal Name' type="text" onChange={(e)=>this.setState({goalName: e.target.value})} />
-                <input placeholder='Amount Currently Saved($)' type="number" onChange={(e)=>this.setState({currentSaved: e.target.value})} />
-                <input placeholder='Savings Goal($)' type="number" onChange={(e)=>this.setState({savingsGoal: e.target.value})} />
-                <input placeholder='End Date' type="date" onChange={(e)=>this.setState({endDate:e.target.value})} />
-                <button onClick={()=>this.newSavingsGoal()}>Add Goal</button>
+                <input className='debt-inputs' placeholder='Goal Name' type="text" onChange={(e)=>this.setState({goalName: e.target.value})} />
+                <input className='debt-inputs' placeholder='Amount Currently Saved($)' type="number" onChange={(e)=>this.setState({currentSaved: e.target.value})} />
+                <input className='debt-inputs' placeholder='Savings Goal($)' type="number" onChange={(e)=>this.setState({savingsGoal: e.target.value})} />
+                <input className='debt-inputs' placeholder='End Date' type="date" onChange={(e)=>this.setState({endDate:e.target.value})} />
+                <button className='debt-btn' onClick={()=>this.newSavingsGoal()}>Add Goal</button>
             </div>
         )
     }
