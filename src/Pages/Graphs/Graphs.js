@@ -6,6 +6,8 @@ import moment from 'moment';
 import { Carousel } from 'react-bootstrap';
 import AddBalance from '../HomePage/AddBalance';
 import MonthlyChanges from './MonthlyChanges';
+import {accountTotal, accountBalance} from './../../Tests/chartTotal'
+import Totals from './Totals';
 
 class Graphs extends Component {
   state = {
@@ -35,8 +37,10 @@ class Graphs extends Component {
   }
 
   render() {
-
-
+    let something = this.state.balances.map((acct, id)=>{
+      return acct
+    })
+    console.log("balances", something)
     let displayBalance = this.state.accounts.map((acct, id) => {
       let newBalances = this.state.balances.filter((bal, id) => {
         if (acct.id === bal.accountid) {
@@ -51,16 +55,10 @@ class Graphs extends Component {
       const y_axis = newBalances.map((val, id) => {
         return parseFloat(val.balance)
       })
-      const reducer = (accumulator, currentValue) => accumulator + currentValue;
-      const grandTotalMasterNumberOfSecrets = this.state.balances.map((balance) => {
-        const total = balance.balance
-        return parseInt(total)
-      })
+      
       // ************************************************************************************************************************************************************************//
-      const theRealDealGrandMasterTotalNumberOfSecrets = grandTotalMasterNumberOfSecrets.reduce(reducer)
-      // this.setState({total: theRealDealGrandMasterTotalNumberOfSecrets})
-      // console.log('total', this.state.total)
-      // console.log("new balances", newBalances)
+      
+      
       return (
         <div>
           <div className='c-item' key={acct.id}>
@@ -94,6 +92,9 @@ class Graphs extends Component {
         </div>
       )
     })
+    const grandTotal = this.state.accounts.map((acct, id)=>{
+      return acct
+    })
 
     let groupOfAccounts = this.state.accounts.map((acct, id) => {
       let newBalances = this.state.balances.filter((bal, id) => {
@@ -124,8 +125,10 @@ class Graphs extends Component {
     })
 
     let grandMasterTotal =
+
       <Carousel.Item>
         <div className='c-item'>
+
           <Plot
             data={
               groupOfAccounts
