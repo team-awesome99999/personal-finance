@@ -52,23 +52,27 @@ class Signup extends Component {
     return (
       //validation not currently working, TO DO
       <div className='signup-box'>
-        <FormGroup validationState={this.state.validateFirst}>
-          <FormControl 
-            autoFocus
-            onChange={ (e) => this.setState({ firstname: e.target.value, fieldsRequired: false, validateFirst: null}) }
-            value={this.state.firstname}
-            placeholder="First Name"
-            />
-            <FormControl.Feedback/>
-        </FormGroup>{' '}
-        <FormGroup validationState={this.state.validateLast}>
-          <FormControl
-            onChange={ (e) => this.setState({ lastname: e.target.value, fieldsRequired: false, validateLast: null}) }
-            value={this.state.lastname}
-            placeholder="Last Name"
-            />
-            <FormControl.Feedback/>
-        </FormGroup>{' '}
+        <h4 className='signup-prompt'>Sign up now for your free Trassets account</h4>
+        <div className='username'>
+          <FormGroup validationState={this.state.validateFirst}>
+            <FormControl
+              className='input-spacing'
+              autoFocus
+              onChange={ (e) => this.setState({ firstname: e.target.value, fieldsRequired: false, validateFirst: null}) }
+              value={this.state.firstname}
+              placeholder="First Name"
+              />
+              <FormControl.Feedback/>
+          </FormGroup>{'   '}
+          <FormGroup validationState={this.state.validateLast}>
+            <FormControl
+              onChange={ (e) => this.setState({ lastname: e.target.value, fieldsRequired: false, validateLast: null}) }
+              value={this.state.lastname}
+              placeholder="Last Name"
+              />
+              <FormControl.Feedback/>
+          </FormGroup>{' '}
+        </div>
         <FormGroup validationState={this.state.validateEmail}>
           <FormControl
             value={ this.state.email }
