@@ -154,5 +154,3 @@ module.exports = {
     }
   }
 }
-
-//need current balance on current account - userid, accountid, and a month back 
