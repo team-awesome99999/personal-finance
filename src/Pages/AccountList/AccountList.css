@@ -2,13 +2,6 @@
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
 
 
-svg{
-    stroke: red;
-    fill: red
-}
-input{
-    margin-right: 10px;
-}
 .all-accounts{
     display: flex;
     flex-direction: column;
@@ -209,6 +202,7 @@ h2{
     width: 70px
 }
 
+/* //graph modal */
 .modal-btn {
   cursor: pointer;
 }

@@ -19,7 +19,6 @@ export default class AccountList extends Component {
     })
   }
 
-
   componentDidUpdate() {
     axios.get(`/accounts`)
       .then(res => {
@@ -29,7 +28,6 @@ export default class AccountList extends Component {
         })
       })
   }
-
 
   render() {
     let accounts = this.state.accounts.map((account, index) => {

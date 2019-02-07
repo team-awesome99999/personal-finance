@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './LandingPage.css';
 import Header from '../Header';
 import Signup from '../Landing Page/Signup';
-import Icons from '../Landing Page/Icons';
 import LandingCarousel from '../Landing Page/LandingCarousel';
+import Icons from './Icons';
 
 class Landing extends Component {
 
@@ -11,9 +11,15 @@ class Landing extends Component {
     return (
       <div className='landing-main'>
         <Header/>
+        <div><h1 className='trassets'>Trassets</h1></div>
         <LandingCarousel/>
-        <Signup/>
-        <Icons/>
+        <div className='landing-prompts'>
+          <div>
+            <h1 className='prompt'>Get insights into your finances</h1>
+          </div>
+          <Signup/>
+        </div>
+        <Icons />
       </div>
     );
   }
