@@ -37,10 +37,6 @@ class Graphs extends Component {
   }
 
   render() {
-    let something = this.state.balances.map((acct, id)=>{
-      return acct
-    })
-    console.log("balances", something)
     let displayBalance = this.state.accounts.map((acct, id) => {
       let newBalances = this.state.balances.filter((bal, id) => {
         if (acct.id === bal.accountid) {
@@ -70,19 +66,15 @@ class Graphs extends Component {
                   //specified value from mapped array
                   y: y_axis.reverse(),
                   type: 'scatter',
-                  mode: 'Line Dash',
-                  marker: {
-                    line: {
-                      color: 'rgb(231, 99, 250)',
-                      width: '20px'
-                    }, size: 7
-                  },
-                },
+                  mode: 'lines+markers',
+                  connectgaps: true,
+                  marker: {size: 7}
+                }
               ]}
               layout={{ title: acct.name, autosize: true }}
               useResizeHandle={true}
               style={{ width: "80%", height: "100%" }}
-              config={{ responsive: true }}
+              config={{ responsive: true, displayModeBar: false }}
             />
           </div>
           <div className='graph-add-bal'>
@@ -120,7 +112,8 @@ class Graphs extends Component {
         y: y_axis.reverse(),
         name: acct.name,
         type: 'scatter',
-        mode: 'Line Dash',
+        mode: 'lines+markers',
+        marker: {size: 7}
       }
     })
 
@@ -150,7 +143,7 @@ class Graphs extends Component {
             }
             useResizeHandle={true}
             style={{ width: "80%", height: "100%" }}
-            config={{ responsive: true }}
+            config={{ responsive: true, displayModeBar: false }}
           />
         </div>
       </Carousel.Item>

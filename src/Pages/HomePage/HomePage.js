@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import {getAccount} from '../../dux/reducer.js';
 import NewUserHeader from '../NewUserHeader';
 import Loading from '../Loading';
+import './HomePage.css';
 
 class HomePage extends Component {
   state = {
