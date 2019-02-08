@@ -20,8 +20,10 @@ export default class Plans extends Component {
           name={goal.name}
           id={goal.user_id}
           deleteOptions={ this.props.deleteOptions }
+          editOptions={ this.props.editOptions }
           goalid={goal.id}
           deleteGoal={ this.props.deleteGoal }
+          editGoal={ this.props.editGoal }
         />
       )
 

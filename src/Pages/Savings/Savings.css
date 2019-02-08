@@ -27,6 +27,11 @@
   color: white;
   cursor: pointer;
 }
+.calc-box {
+  position: absolute;
+  width: 70%;
+  z-index: 1;
+}
 
 .calculator-parent {
   display: flex;
@@ -37,6 +42,7 @@
   width: 25%;
   box-shadow: 3px 3px 11px 0px rgba(189,189,189,0.65);
   font-family: 'Raleway', sans-serif;
+  background-color: white;
 }
 .debt-btn {
   width: 80px;
@@ -72,7 +78,8 @@
   flex-direction: column;
   width: 25%;
   box-shadow: 3px 3px 11px 0px rgba(189,189,189,0.65);
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Varela Round', sans-serif;
+  background-color: white;
 }
 
 .completedgoals {
@@ -99,4 +106,8 @@
 
 .option-detail {
   margin-right: 20px;
+}
+
+.op-black {
+  color: black;
 }

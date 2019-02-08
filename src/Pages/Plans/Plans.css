@@ -13,7 +13,7 @@
 }
 .progressLoader{
   margin: 0;
-  margin-left: 5px;
+  margin-left: 4px;
 }
 text {
     font-size: 20px;
@@ -61,4 +61,12 @@ text {
   left: 288px;
   color: rgb(196, 43, 43);
   cursor: pointer
+}
+
+.edit {
+  position: fixed;
+  left: 288px;
+  color: rgb(194, 43, 43);
+  cursor: pointer;
+  font-size: 15px;
 }

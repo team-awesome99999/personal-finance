@@ -14,6 +14,8 @@ class Savings extends Component {
     openCalculator: false,
     newGoalDisplay: false,
     goalInfo: [],
+    deleteOptions: false,
+    editOptions: false
   }
 
   componentDidMount() { //get savings account for the session user
@@ -32,11 +34,11 @@ class Savings extends Component {
     let res = await axios.get(`/api/savings`)
     this.setState({ goalInfo: res.data })
     } catch(error) {
-      console.log(error);
+      return error;
     }
   }
 
-  async editSavingsGoal() { //allows user to modify their current savings amount
+  async editGoal() { //allows user to modify their current savings amount - is being passed down to Card through Plans
     await axios.put()
       .then()
   }
@@ -49,16 +51,12 @@ class Savings extends Component {
   }
 
   openCalculator = () => {
-    this.setState({ openCalculator: !this.state.openCalculator })
+    this.setState({ openCalculator: !this.state.openCalculator, newGoalDisplay: false })
   }
 
   displayNewGoal = () => {
-    this.setState({ newGoalDisplay: !this.state.newGoalDisplay })
+    this.setState({ newGoalDisplay: !this.state.newGoalDisplay, openCalculator: false })
   }
-
-  // getSavingsGoals = (data) => {
-  //   this.setState({ savingsAccounts: data });
-  // }
 
   render() {
     return ( 
@@ -73,12 +71,23 @@ class Savings extends Component {
 {/* ----- Dropdowns from subheader */}
 
         <div className='options'>
-          <span className='option-detail'>Edit options</span>
-          <span onClick={ () => this.setState({ deleteOptions: !this.state.deleteOptions }) }>Delete options</span>
+          <span 
+            className={ this.state.editOptions ? 'option-detail op-black' : 'option-detail'}
+            onClick={ () => this.setState({ editOptions: !this.state.editOptions, deleteOptions: false })}
+            >Edit options</span>
+          <span 
+            className={ this.state.deleteOptions ? 'option-detail op-black' : 'option-detail'} 
+            onClick={ () => this.setState({ deleteOptions: !this.state.deleteOptions, editOptions: false }) }
+            >Delete options</span>
         </div>
         <div className='savings-parent'>
           <div className='savings-wrapper'>
-            <Plans goalInfo={ this.state.goalInfo } deleteOptions={ this.state.deleteOptions } deleteGoal={ this.deleteGoal }/>
+            <Plans 
+              goalInfo={ this.state.goalInfo } 
+              deleteOptions={ this.state.deleteOptions } 
+              editOptions={ this.state.editOptions} 
+              deleteGoal={ this.deleteGoal } 
+              editGoal={ this.editGoal } />
           </div>
         </div>
       </div>
