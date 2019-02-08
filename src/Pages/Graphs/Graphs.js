@@ -59,10 +59,7 @@ class Graphs extends Component {
       const y_axis = newBalances.map((val, id) => {
         return parseFloat(val.balance)
       })
-      
-      // ************************************************************************************************************************************************************************//
-      
-      
+
       return (
         <div>
           <div className='c-item' key={acct.id}>
@@ -104,13 +101,10 @@ class Graphs extends Component {
       const allBalances = newBalances.map((val, id) => {
         return parseFloat(val.balance)
       })
-      // console.log("new balances", newBalances)
 
       return allBalances
     
     })
-    console.log(newGroupOfAccounts)
-
   
     let groupOfAccounts = this.state.accounts.map((acct, id) => {
       let newBalances = this.state.balances.filter((bal, id) => {
@@ -126,7 +120,6 @@ class Graphs extends Component {
       const y_axis = newBalances.map((val, id) => {
         return parseFloat(val.balance)
       })
-      // console.log("new balances", newBalances)
 
       return {
 

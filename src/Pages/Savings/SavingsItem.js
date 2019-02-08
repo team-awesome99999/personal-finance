@@ -1,23 +1,24 @@
-import React,{Component} from 'react';
-import axios from 'axios'
+// takes in props from card component
+import React, { Component } from 'react';
+import currencyFormatter from 'currency-formatter'
+import moment from 'moment';
+import '../Plans/Plans.css'
 
-class SavingsItem extends Component{
-    state={}
-    
+class SavingsItem extends Component {
 
-    render(){
-        console.log(this.props)
-        return(
-            <div className='savingsitem-parent' key={this.props.id}>
-                <h1>Name: {this.props.account.name}</h1>
-                <h3>Current Saved: ${this.props.account.current_amount}</h3>
-                <h3>Savings Goal: ${this.props.account.end_amount}</h3>
-                <h5>End Date: {this.props.account.end_date}</h5>
-                <button>Edit</button>
-                <button>Delete Goal</button>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div onClick={this.props.handleClick} className='card' key={this.props.id}>
+        <h1 className='cardTitle'>{this.props.name}</h1>
+        <h5>Savings Goal: </h5>
+        <h3 className='cardNumber'>{currencyFormatter.format(this.props.goal, { code: 'USD' })}</h3>
+        <h5>Saved: </h5>
+        <h3 className='cardNumber'>{currencyFormatter.format(this.props.current, { code: 'USD' })}</h3>
+        <h5>Projected End Date:</h5>
+        <h5 className='cardNumber'>{moment(this.props.endDate).format('l')}</h5>
+      </div>
+    )
+  }
 }
 
 export default SavingsItem

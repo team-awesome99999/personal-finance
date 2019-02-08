@@ -5,6 +5,17 @@
   margin-bottom: 0;
 }
 
+.savings-parent {
+  margin-top: 18px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.savings-wrapper {
+  width: 75%;
+}
+
 .subheader {
   display: flex;
   border-bottom: 1px solid rgb(236, 236, 236);
@@ -16,6 +27,11 @@
   color: white;
   cursor: pointer;
 }
+.calc-box {
+  position: absolute;
+  width: 70%;
+  z-index: 1;
+}
 
 .calculator-parent {
   display: flex;
@@ -26,6 +42,7 @@
   width: 25%;
   box-shadow: 3px 3px 11px 0px rgba(189,189,189,0.65);
   font-family: 'Raleway', sans-serif;
+  background-color: white;
 }
 .debt-btn {
   width: 80px;
@@ -61,5 +78,51 @@
   flex-direction: column;
   width: 25%;
   box-shadow: 3px 3px 11px 0px rgba(189,189,189,0.65);
+  font-family: 'Varela Round', sans-serif;
+  background-color: white;
+}
+
+.completedgoals {
+  text-decoration: none;
+}
+
+.newgoal-flex {
+  display: flex;
+}
+
+.enddate {
+  align-self: flex-end;
+  padding-right: 6px;
+}
+
+.options {
+  display: flex;
+  justify-content: flex-end;
+  color: rgb(153, 153, 153);
+  margin: 20px;
+  margin-right: 80px;
+  cursor: pointer;
+}
+
+.option-detail {
+  margin-right: 20px;
+  margin-left: 4px;
+}
+
+.op-black {
+  color: black;
+}
+
+.hide {
+  display: none;
+}
+.start-title {
+  margin-bottom: 20px;
+  font-size: 40px;
+}
+.start-goals {
   font-family: 'Raleway', sans-serif;
+}
+.first-goal {
+  margin: 40px 0 0 0;
 }
