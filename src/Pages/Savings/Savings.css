@@ -5,6 +5,17 @@
   margin-bottom: 0;
 }
 
+.savings-parent {
+  margin-top: 18px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.savings-wrapper {
+  width: 75%;
+}
+
 .subheader {
   display: flex;
   border-bottom: 1px solid rgb(236, 236, 236);
@@ -75,4 +86,17 @@
 .enddate {
   align-self: flex-end;
   padding-right: 6px;
+}
+
+.options {
+  display: flex;
+  justify-content: flex-end;
+  color: rgb(153, 153, 153);
+  margin: 20px;
+  margin-right: 80px;
+  cursor: pointer;
+}
+
+.option-detail {
+  margin-right: 20px;
 }

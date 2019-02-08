@@ -24,14 +24,14 @@ class Savings extends Component {
     })
   }
 
-  // componentDidUpdate(prevState) {
-  //   if (prevState !== this.state.savingsAccounts) {
-  //     axios.get(`/api/savings`)
-  //       .then(res => {
-  //         this.setState({ savingsAccounts: res.data })
-  //       })
-  //   }
-  // }
+  componentDidUpdate(prevState) {
+    if (prevState !== this.state.savingsAccounts) {
+      axios.get(`/api/savings`)
+        .then(res => {
+          this.setState({ savingsAccounts: res.data })
+        })
+    }
+  }
 
   async editSavingsGoal() { //allows user to modify their current savings amount
     await axios.put()
@@ -57,16 +57,24 @@ class Savings extends Component {
 
   render() {
     return ( 
-      <div className='savings-parent'>
+      <div>
         <Header />
         <SubHeader openCalculator={this.openCalculator} displayNewGoal={this.displayNewGoal} />
 {/* ----- Dropdowns from subheader */}
         {this.state.openCalculator ?
           <Calculator />
           : null}
-        {this.state.newGoalDisplay ? <NewGoal getSavingsGoals={this.getSavingsGoals} /> : null}
+        {this.state.newGoalDisplay ? <NewGoal getSavingsGoals={this.getSavingsGoals} displayNewGoal={this.displayNewGoal} /> : null}
 {/* ----- Dropdowns from subheader */}
-        <Plans goalInfo={ this.state.goalInfo }/>
+        <div className='options'>
+          <span className='option-detail'>Edit options</span>
+          <span>Delete options</span>
+        </div>
+        <div className='savings-parent'>
+          <div className='savings-wrapper'>
+            <Plans goalInfo={ this.state.goalInfo }/>
+          </div>
+        </div>
       </div>
     )
   }

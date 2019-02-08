@@ -15,7 +15,8 @@ class NewGoal extends Component {
     axios.post(`/api/newsavings`, { goalName, currentSaved, savingsGoal, endDate })
       .then(res => {
         this.props.getSavingsGoals(res.data);
-      })
+    })
+    this.props.displayNewGoal();
   }
 
   render() {
@@ -34,4 +35,4 @@ class NewGoal extends Component {
   }
 }
 
-export default NewGoal
+export default NewGoal;
