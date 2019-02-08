@@ -36,9 +36,9 @@ export default class Card extends Component {
 
   render() {
 
-    const percentage = ((( this.props.current ? this.props.current : this.state.total) / this.props.goal) * 100).toFixed(1)
+    const percentage = ((( this.props.current ? this.props.current : this.state.total) / this.props.goal) * 100).toFixed(1);
+    
     return (
-
       <div>
         <ReactCardFlip infinite={true} isFlipped={this.state.isFlipped}>
           <div key="front">

@@ -14,7 +14,15 @@ class NewGoal extends Component {
     let { goalName, currentSaved, savingsGoal, endDate } = this.state
     let res = await axios.post(`/api/newsavings`, { goalName, currentSaved, savingsGoal, endDate })
     this.props.getGoals(res.data);
+    if(this.props.displayNewGoal) {
     this.props.displayNewGoal();
+    } 
+    this.setState({
+      goalName: '',
+      currentSaved: null,
+      savingsGoal: null,
+      endDate: ''
+    })
   }
 
   render() {

@@ -166,7 +166,7 @@ module.exports = {
   deleteGoal: async (req,res) => {
     const db = req.app.get('db')
     const { id } = req.params;
-    await db.delete_goal([ id ]);
+    await db.delete_goal([ +id ]);
     if(req.session.user){
       let getAllSavings = await db.get_users_savings_tables([ req.session.user.id ])
       res.status(200).send(getAllSavings);

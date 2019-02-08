@@ -5,7 +5,8 @@ import SubHeader from './SubHeader';
 import Header from '../Header';
 import './Savings.css';
 import NewGoal from './NewGoal.js';
-import Plans from '../Plans/Plans'
+import Plans from '../Plans/Plans';
+import Loading from '../Loading';
 
 class Savings extends Component {
   state = {
@@ -16,11 +17,13 @@ class Savings extends Component {
     goalInfo: [],
     deleteOptions: false,
     editOptions: false,
-    show: false
+    show: false,
+    loading: true
   }
 
-  componentDidMount() { //get savings account for the session user
-    this.getGoals();
+  async componentDidMount() { //get savings account for the session user
+    await this.getGoals();
+    this.setState({ loading: false })
   }
 
   async componentDidUpdate(prevProps, prevState) {
@@ -87,15 +90,17 @@ class Savings extends Component {
             >Delete options</span>
         </div>
         <div className='savings-parent'>
+        { this.state.loading ? <Loading /> : 
           <div className='savings-wrapper'>
-            <Plans 
+            <Plans
+              getGoals={ this.getGoals }
               goalInfo={ this.state.goalInfo } 
               deleteOptions={ this.state.deleteOptions } 
               editOptions={ this.state.editOptions} 
               deleteGoal={ this.deleteGoal } 
               editGoal={ this.editGoal }
               show={ this.state.show } />
-          </div>
+          </div> } 
         </div>
       </div>
     )

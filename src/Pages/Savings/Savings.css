@@ -116,3 +116,13 @@
 .hide {
   display: none;
 }
+.start-title {
+  margin-bottom: 20px;
+  font-size: 40px;
+}
+.start-goals {
+  font-family: 'Raleway', sans-serif;
+}
+.first-goal {
+  margin: 40px 0 0 0;
+}
