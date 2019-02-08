@@ -21,8 +21,8 @@ class Savings extends Component {
     loading: true
   }
 
-  async componentDidMount() { //get savings account for the session user
-    await this.getGoals();
+  componentDidMount() { //get savings account for the session user
+    this.getGoals();
     this.setState({ loading: false })
   }
 

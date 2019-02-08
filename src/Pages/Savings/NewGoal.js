@@ -33,7 +33,7 @@ class NewGoal extends Component {
           <input className='debt-inputs' placeholder='Savings Goal($)' type="number" onChange={(e) => this.setState({ savingsGoal: e.target.value })} />
           <input className='debt-inputs' placeholder='Amount Currently Saved($)' type="number" onChange={(e) => this.setState({ currentSaved: e.target.value })} />
           <div className='newgoal-flex'>
-            <div className='enddate'>Desired end date: </div>
+            <div className='enddate'>Save by: </div>
             <input className='debt-inputs' placeholder='End Date' type="date" onChange={(e) => this.setState({ endDate: e.target.value })} />
           </div>
           <button className='debt-btn' onClick={() => this.newSavingsGoal()}>Add Goal</button>

@@ -43,7 +43,6 @@ export default class Card extends Component {
   }
 
   render() {
-
     const percentage = ((( this.props.current ? this.props.current : this.state.total) / this.props.goal) * 100).toFixed(1);
     
     return (
