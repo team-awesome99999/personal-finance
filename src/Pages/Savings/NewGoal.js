@@ -10,12 +10,10 @@ class NewGoal extends Component {
     endDate: ''
   }
 
-  newSavingsGoal = () => { //add savings account to backend
+  newSavingsGoal = async () => { //add savings account to backend
     let { goalName, currentSaved, savingsGoal, endDate } = this.state
-    axios.post(`/api/newsavings`, { goalName, currentSaved, savingsGoal, endDate })
-      .then(res => {
-        this.props.getSavingsGoals(res.data);
-    })
+    let res = await axios.post(`/api/newsavings`, { goalName, currentSaved, savingsGoal, endDate })
+    this.props.getGoals(res.data);
     this.props.displayNewGoal();
   }
 

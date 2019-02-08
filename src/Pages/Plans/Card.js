@@ -43,6 +43,7 @@ export default class Card extends Component {
         <ReactCardFlip infinite={true} isFlipped={this.state.isFlipped}>
           <div key="front">
             <div className="card">
+            { this.props.deleteOptions ? <i onClick={ () => this.props.deleteGoal(this.props.goalid) } className="delete fas fa-times"></i> : null }
               <h1 className="cardTitle">{this.props.name}</h1>
               <div onClick={this.handleClick} className="progressLoader" style={{ width: '250px' }}>
                 <CircularProgressbar

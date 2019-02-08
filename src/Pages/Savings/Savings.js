@@ -4,7 +4,6 @@ import Calculator from '../Calculator/Calculator';
 import SubHeader from './SubHeader';
 import Header from '../Header';
 import './Savings.css';
-import SavingsItem from './SavingsItem';
 import NewGoal from './NewGoal.js';
 import Plans from '../Plans/Plans'
 
@@ -18,18 +17,22 @@ class Savings extends Component {
   }
 
   componentDidMount() { //get savings account for the session user
-    axios.get(`/api/savings`)
-      .then(res => {
-        this.setState({ goalInfo: res.data })
-    })
+    this.getGoals();
   }
 
-  componentDidUpdate(prevState) {
-    if (prevState !== this.state.savingsAccounts) {
-      axios.get(`/api/savings`)
-        .then(res => {
-          this.setState({ savingsAccounts: res.data })
-        })
+  async componentDidUpdate(prevProps, prevState) {
+    if (prevState.goalInfo.length !== this.state.goalInfo.length) {
+      let res = await axios.get(`/api/savings`);
+      this.setState({ goalInfo: res.data })
+    }
+  }
+
+  getGoals = async () => {
+    try {
+    let res = await axios.get(`/api/savings`)
+    this.setState({ goalInfo: res.data })
+    } catch(error) {
+      console.log(error);
     }
   }
 
@@ -38,9 +41,11 @@ class Savings extends Component {
       .then()
   }
 
-  async deleteSavingsGoal() { //allows end user to delete the current savings goal
-    axios.delete()
-      .then()
+  deleteGoal = async (id) => { //allows end user to delete the current savings goal
+    let res = await axios.delete(`/deletegoal/${id}`);
+    if(res.data) {
+      this.setState({ goalInfo: res.data })
+    }
   }
 
   openCalculator = () => {
@@ -51,9 +56,9 @@ class Savings extends Component {
     this.setState({ newGoalDisplay: !this.state.newGoalDisplay })
   }
 
-  getSavingsGoals = (data) => {
-    this.setState({ savingsAccounts: data });
-  }
+  // getSavingsGoals = (data) => {
+  //   this.setState({ savingsAccounts: data });
+  // }
 
   render() {
     return ( 
@@ -64,15 +69,16 @@ class Savings extends Component {
         {this.state.openCalculator ?
           <Calculator />
           : null}
-        {this.state.newGoalDisplay ? <NewGoal getSavingsGoals={this.getSavingsGoals} displayNewGoal={this.displayNewGoal} /> : null}
+        {this.state.newGoalDisplay ? <NewGoal getGoals={this.getGoals} displayNewGoal={this.displayNewGoal} /> : null}
 {/* ----- Dropdowns from subheader */}
+
         <div className='options'>
           <span className='option-detail'>Edit options</span>
-          <span>Delete options</span>
+          <span onClick={ () => this.setState({ deleteOptions: !this.state.deleteOptions }) }>Delete options</span>
         </div>
         <div className='savings-parent'>
           <div className='savings-wrapper'>
-            <Plans goalInfo={ this.state.goalInfo }/>
+            <Plans goalInfo={ this.state.goalInfo } deleteOptions={ this.state.deleteOptions } deleteGoal={ this.deleteGoal }/>
           </div>
         </div>
       </div>

@@ -19,6 +19,9 @@ export default class Plans extends Component {
           endDate={goal.end_date}
           name={goal.name}
           id={goal.user_id}
+          deleteOptions={ this.props.deleteOptions }
+          goalid={goal.id}
+          deleteGoal={ this.props.deleteGoal }
         />
       )
 
