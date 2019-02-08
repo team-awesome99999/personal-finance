@@ -15,7 +15,8 @@ class Savings extends Component {
     newGoalDisplay: false,
     goalInfo: [],
     deleteOptions: false,
-    editOptions: false
+    editOptions: false,
+    show: false
   }
 
   componentDidMount() { //get savings account for the session user
@@ -71,6 +72,11 @@ class Savings extends Component {
 {/* ----- Dropdowns from subheader */}
 
         <div className='options'>
+          <input
+            onChange={ () => this.setState({ show: !this.state.show })}
+            type='checkbox' 
+            /> 
+          <span className='option-detail'> Show completed goals</span>
           <span 
             className={ this.state.editOptions ? 'option-detail op-black' : 'option-detail'}
             onClick={ () => this.setState({ editOptions: !this.state.editOptions, deleteOptions: false })}
@@ -87,7 +93,8 @@ class Savings extends Component {
               deleteOptions={ this.state.deleteOptions } 
               editOptions={ this.state.editOptions} 
               deleteGoal={ this.deleteGoal } 
-              editGoal={ this.editGoal } />
+              editGoal={ this.editGoal }
+              show={ this.state.show } />
           </div>
         </div>
       </div>

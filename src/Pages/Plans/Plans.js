@@ -9,11 +9,30 @@ export default class Plans extends Component {
     current: ''
   }
   render() {
-    let card = this.props.goalInfo.map((goal, index) => {
+    let filteredCards = this.props.goalInfo.map((goal) => {
+      if(goal.current_amount !== goal.end_amount) {
+        return (
+          <Card 
+            key={goal.id} 
+            goal={goal.end_amount}
+            current={goal.current_amount}
+            endDate={goal.end_date}
+            name={goal.name}
+            id={goal.user_id}
+            deleteOptions={ this.props.deleteOptions }
+            editOptions={ this.props.editOptions }
+            goalid={goal.id}
+            deleteGoal={ this.props.deleteGoal }
+            editGoal={ this.props.editGoal }
+          />
+        )  
+      }
+    })
 
+    let allCards = this.props.goalInfo.map((goal) => {
       return (
         <Card
-          key={goal + index}
+          key={goal.id}
           goal={goal.end_amount}
           current={goal.current_amount}
           endDate={goal.end_date}
@@ -26,13 +45,13 @@ export default class Plans extends Component {
           editGoal={ this.props.editGoal }
         />
       )
-
-
+      
     })
+
     return (
       <div>
-        <div className="cardwrap">
-          {card}
+        <div className='cardwrap'>
+          { this.props.show ? allCards : filteredCards}
         </div>
       </div>
     )

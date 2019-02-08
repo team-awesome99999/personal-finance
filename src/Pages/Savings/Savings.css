@@ -106,8 +106,13 @@
 
 .option-detail {
   margin-right: 20px;
+  margin-left: 4px;
 }
 
 .op-black {
   color: black;
+}
+
+.hide {
+  display: none;
 }
