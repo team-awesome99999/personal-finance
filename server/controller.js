@@ -173,5 +173,11 @@ module.exports = {
     } else {
       res.status(401).send('No accounts found for this user.')
     }
+  },
+  addValue: async (req, res) => {
+    const db = req.app.get('db')
+    const { newValue, goalId } = req.body;
+    let currentSaved = await db.new_value([ newValue, goalId ]);
+    res.status(200).send(currentSaved);
   }
 }

@@ -85,6 +85,7 @@ app.put('/api/editname', ctrl.editName); //in accountComponent for editing accou
 app.post(`/api/newsavings`,ctrl.addSavingsAccount); //add a new savings account to the db based on session user
 app.get(`/api/savings`, ctrl.getSavingsAccounts); //get all savings accounts for the session user
 app.delete('/deletegoal/:id', ctrl.deleteGoal); //delete goal
+app.put('/addvalue', ctrl.addValue) //triggered in Card component by the addValue function
 
 app.listen(SERVER_PORT,()=>{
     console.log(`${SERVER_PORT} tiny snowbots doing your bidding.`)

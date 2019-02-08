@@ -63,8 +63,6 @@ class Calculator extends Component{
                       <span className='debt-currency'> {currencyFormatter.format(this.state.arr[2], { locale: 'en-US' })}</span>
                     </div>
                   </div>
-                  {/* CAN UNCOMMENT ONCE THIS FEATURE IS WRITTEN */}
-                  {/* <div className='save-debt-goal'><div>Save to goal</div></div> */} 
                 </div>
                 ):(
                 <div>

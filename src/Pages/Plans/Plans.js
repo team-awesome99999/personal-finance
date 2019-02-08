@@ -26,6 +26,7 @@ export default class Plans extends Component {
             goalid={goal.id}
             deleteGoal={ this.props.deleteGoal }
             editGoal={ this.props.editGoal }
+            getGoals={ this.props.getGoals }
           />
         )  
       }

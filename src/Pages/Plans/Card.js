@@ -4,6 +4,7 @@ import './Plans.css';
 import CircularProgressbar from 'react-circular-progressbar';
 import ReactCardFlip from 'react-card-flip';
 import SavingsItem from '../Savings/SavingsItem';
+import axios from 'axios';
 
 export default class Card extends Component {
   constructor() {
@@ -17,6 +18,13 @@ export default class Card extends Component {
     }
     this.handleClick = this.handleClick.bind(this);
   }
+
+  componentDidUpdate = (prevProps, prevState) => {
+    if(prevState.total !== this.state.total) {
+      this.props.getGoals();
+    }
+  }
+
   handleClick(e) {
     e.preventDefault();
     this.setState(prevState => ({ isFlipped: !prevState.isFlipped }));
@@ -24,12 +32,12 @@ export default class Card extends Component {
   switcher = () => {
     this.setState({ switch: !this.state.switch })
   }
-  addValue = () => {
-    let total = this.state.total
+  addValue = async () => {
     let inputVal = Number(this.state.inputVal)
-    let number = total + inputVal
+    let number = +this.props.current + inputVal
+    let res = await axios.put('/addvalue', { newValue: number, goalId: this.props.goalid })
     this.setState({
-      total: number,
+      total: +res.data[0].current_amount,
       inputVal: ''
     })
   }
