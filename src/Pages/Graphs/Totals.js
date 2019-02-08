@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {accountTotal, accountBalance} from './../../Tests/chartTotal'
+import {accountTotal} from './../../Tests/chartTotal'
 import currencyFormatter from 'currency-formatter'
 
 class Totals extends Component {
@@ -12,8 +12,6 @@ class Totals extends Component {
 
     }
     render() {
-        console.log(this.props.total)
-
         // let theRealTotal = accountTotal(this.props.total)
         return (
             <div>

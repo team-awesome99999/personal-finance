@@ -67,3 +67,12 @@
 .completedgoals {
   text-decoration: none;
 }
+
+.newgoal-flex {
+  display: flex;
+}
+
+.enddate {
+  align-self: flex-end;
+  padding-right: 6px;
+}

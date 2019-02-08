@@ -1,34 +1,35 @@
+//takes in props from savings component
 import React, { Component } from 'react'
 import Card from './Card'
 import './Plans.css'
 
 export default class Plans extends Component {
-    state = {
-        total: '',
-        current: '',
-        info: [{ goal: 1000, current: 100, endDate: '2/5/19', name: 'Tesla' }, { goal: 5000, current: 1500, endDate: '3/6/19', name: 'House' }, { goal: 5000, current: 1500, endDate: '3/6/19', name: 'House' }, { goal: 5000, current: 1500, endDate: '3/6/19', name: 'House' }, { goal: 5000, current: 1500, endDate: '3/6/19', name: 'House' }, { goal: 5000, current: 1500, endDate: '3/6/19', name: 'House' }]
-    }
-    render() {
-        let card = this.state.info.map((plan, index) => {
+  state = {
+    total: '',
+    current: ''
+  }
+  render() {
+    let card = this.props.goalInfo.map((goal, index) => {
 
-            return (
-                <Card
-                    key={plan + index}
-                    goal={plan.goal}
-                    current={plan.current}
-                    endDate={plan.endDate}
-                    name={plan.name}
-                />
-            )
+      return (
+        <Card
+          key={goal + index}
+          goal={goal.end_amount}
+          current={goal.current_amount}
+          endDate={goal.end_date}
+          name={goal.name}
+          id={goal.user_id}
+        />
+      )
 
 
-        })
-        return (
-            <div>
-                <div className="cardwrap">
-                    {card}
-                </div>
-            </div>
-        )
-    }
+    })
+    return (
+      <div>
+        <div className="cardwrap">
+          {card}
+        </div>
+      </div>
+    )
+  }
 }

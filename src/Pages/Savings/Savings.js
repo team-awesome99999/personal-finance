@@ -6,6 +6,7 @@ import Header from '../Header';
 import './Savings.css';
 import SavingsItem from './SavingsItem';
 import NewGoal from './NewGoal.js';
+import Plans from '../Plans/Plans'
 
 class Savings extends Component {
   state = {
@@ -13,30 +14,24 @@ class Savings extends Component {
     current: null,
     openCalculator: false,
     newGoalDisplay: false,
-    savingsAccounts: [],
+    goalInfo: [],
   }
 
   componentDidMount() { //get savings account for the session user
     axios.get(`/api/savings`)
       .then(res => {
-        console.log(res, 'line 20')
-        this.setState({ savingsAccounts: res.data })
-        console.log(this.state.savingsAccounts, 'line 22')
-      })
+        this.setState({ goalInfo: res.data })
+    })
   }
 
-  componentDidUpdate(prevState) {
-    if (prevState !== this.state.savingsAccounts) {
-      axios.get(`/api/savings`)
-        .then(res => {
-          console.log(res, 'line 20')
-          this.setState({ savingsAccounts: res.data })
-          console.log(this.state.savingsAccounts, 'line 22')
-        })
-    } else {
-
-    }
-  }
+  // componentDidUpdate(prevState) {
+  //   if (prevState !== this.state.savingsAccounts) {
+  //     axios.get(`/api/savings`)
+  //       .then(res => {
+  //         this.setState({ savingsAccounts: res.data })
+  //       })
+  //   }
+  // }
 
   async editSavingsGoal() { //allows user to modify their current savings amount
     await axios.put()
@@ -56,23 +51,22 @@ class Savings extends Component {
     this.setState({ newGoalDisplay: !this.state.newGoalDisplay })
   }
 
+  getSavingsGoals = (data) => {
+    this.setState({ savingsAccounts: data });
+  }
+
   render() {
-    let displaySavings = this.state.savingsAccounts.map((account, id) => { //mapping over savingsAccounts on state to display all savings accounts for the user
-      console.log(account)
-      return ( //passing props down to SavingsItem component
-        <SavingsItem id={id} account={account} addSavingsAccount={this.addSavingsAccount} editSavingsGoal={this.editSavingsGoal} deleteSavingsGoal={this.deleteSavingsGoal} />
-      )
-    })
-    return (
+    return ( 
       <div className='savings-parent'>
         <Header />
         <SubHeader openCalculator={this.openCalculator} displayNewGoal={this.displayNewGoal} />
+{/* ----- Dropdowns from subheader */}
         {this.state.openCalculator ?
           <Calculator />
           : null}
-        {this.state.newGoalDisplay ? <NewGoal /> : null}
-
-        {displaySavings}
+        {this.state.newGoalDisplay ? <NewGoal getSavingsGoals={this.getSavingsGoals} /> : null}
+{/* ----- Dropdowns from subheader */}
+        <Plans goalInfo={ this.state.goalInfo }/>
       </div>
     )
   }
