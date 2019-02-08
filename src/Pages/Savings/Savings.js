@@ -17,7 +17,7 @@ class Savings extends Component {
     goalInfo: [],
     deleteOptions: false,
     editOptions: false,
-    show: false,
+    show: true,
     loading: true
   }
 
@@ -79,7 +79,7 @@ class Savings extends Component {
             onChange={ () => this.setState({ show: !this.state.show })}
             type='checkbox' 
             /> 
-          <span className='option-detail'> Show completed goals</span>
+          <span className='option-detail'> Hide completed goals</span>
           <span 
             className={ this.state.editOptions ? 'option-detail op-black' : 'option-detail'}
             onClick={ () => this.setState({ editOptions: !this.state.editOptions, deleteOptions: false })}
