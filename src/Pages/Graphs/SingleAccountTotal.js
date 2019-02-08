@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import {accountTotal, accountBalance} from './../../Tests/chartTotal'
-import currencyFormatter from 'currency-formatter'
 
-class Totals extends Component {
+class SingleAccountTotal extends Component {
     constructor(props){
         super(props)
 
@@ -17,10 +16,10 @@ class Totals extends Component {
         // let theRealTotal = accountTotal(this.props.total)
         return (
             <div>
-                {this.props.total.length ? <h1 className="grandTotalMasterOfSecrets">{currencyFormatter.format(accountTotal(this.props.total), { code: 'USD' })}</h1> : <h1>LOADING</h1>}
+                {this.props.total.length ? <h1>{accountBalance(this.props.total)}</h1> : <h1>LOADING</h1>}
             </div>
         );
     }
 }
 
-export default Totals;
+export default SingleAccountTotal;

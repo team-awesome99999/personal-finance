@@ -9,6 +9,7 @@ import MonthlyChanges from './MonthlyChanges';
 import {accountTotal, accountBalance} from './../../Tests/chartTotal'
 import Totals from './Totals';
 
+
 class Graphs extends Component {
   state = {
     accounts: [],
@@ -91,10 +92,26 @@ class Graphs extends Component {
         </div>
       )
     })
-    const grandTotal = this.state.accounts.map((acct, id)=>{
-      return acct
-    })
+    
+    let newGroupOfAccounts = this.state.accounts.map((acct, id) => {
+      let newBalances = this.state.balances.filter((bal, id) => {
+        if (acct.id === bal.accountid) {
+          return true
+        } else {
+          return false
+        }
+      })
+      const allBalances = newBalances.map((val, id) => {
+        return parseFloat(val.balance)
+      })
+      // console.log("new balances", newBalances)
 
+      return allBalances
+    
+    })
+    console.log(newGroupOfAccounts)
+
+  
     let groupOfAccounts = this.state.accounts.map((acct, id) => {
       let newBalances = this.state.balances.filter((bal, id) => {
         if (acct.id === bal.accountid) {
@@ -127,6 +144,9 @@ class Graphs extends Component {
     let grandMasterTotal =
 
       <Carousel.Item>
+        <Totals
+        total={newGroupOfAccounts}
+        />
         <div className='c-item'>
 
           <Plot
@@ -169,7 +189,6 @@ class Graphs extends Component {
     return (
       <div>
         <div className='graphs-parent'>
-          <h1 className="superTotal">{this.state.total}</h1>
           <Carousel
             indicators={false}
             activeIndex={index}
