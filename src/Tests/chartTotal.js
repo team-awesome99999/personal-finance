@@ -1,7 +1,7 @@
 // Jared's Testing
 import { isNumber, isArray } from "util";
 export function accountTotal(array){
-    console.log(array)
+    // console.log(array)
     if(isArray(array) && isNumber(array[0][0])){
         const arr = []
         let reducer = (total, newNumber)=>{return total + newNumber}
