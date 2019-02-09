@@ -78,12 +78,18 @@
 .newaccountbutton {
   cursor: pointer;
   background-image: none;
-  background-color: green;
+  background-color: #5cb85c;
   width: 80px;
   height: 40px;
   border: none;
   color: white;
 }
+
+.newaccountbutton:hover {
+  background-color: #438843;
+  color: white;
+}
+
 .addnewbutt{
   background-color: #5cb85c;
 }

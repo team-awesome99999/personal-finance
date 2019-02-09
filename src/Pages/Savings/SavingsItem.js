@@ -14,7 +14,7 @@ class SavingsItem extends Component {
         <h3 className='cardNumber'>{currencyFormatter.format(this.props.goal, { code: 'USD' })}</h3>
         <h5>Saved: </h5>
         <h3 className='cardNumber'>{currencyFormatter.format(this.props.current, { code: 'USD' })}</h3>
-        <h5>Projected End Date:</h5>
+        <h5>Save by:</h5>
         <h5 className='cardNumber'>{moment(this.props.endDate).format('l')}</h5>
       </div>
     )
