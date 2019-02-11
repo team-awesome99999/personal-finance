@@ -23,19 +23,17 @@ class Graphs extends Component {
   //one is for account balance, other is for accountDate
 
   componentDidMount = async () => {
-    axios.get(`/accounts`)
-      .then(res => {
-        this.setState({ accounts: res.data.accounts, balances: res.data.balances })
-      })
+    this.getAccountData();
   }
 
-  componentDidUpdate=()=>{
-    axios.get(`/accounts`)
-    .then(res => {
-      this.setState({ accounts: res.data.accounts, balances: res.data.balances })
+  getAccountData = () => {
+    axios.get('/accounts').then((res) => {
+      this.setState({
+        accounts: res.data.accounts,
+        balances: res.data.balances
+      })
     })
   }
-
 
   handleSelect = (selectedIndex, e) => {
     this.setState({
@@ -83,7 +81,7 @@ class Graphs extends Component {
             />
           </div>
           <div className='graph-add-bal'>
-            <AddBalance accountid={acct.id} />
+            <AddBalance accountid={acct.id} accountDataFn={ this.getAccountData } />
             <MonthlyChanges accountid={acct.id} />
           </div>
         </div>

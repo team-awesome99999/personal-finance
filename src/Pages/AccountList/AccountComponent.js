@@ -39,6 +39,12 @@ export default class AccountComponent extends Component {
     this.setState({ editName: false, newName: '' })
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if(prevState.editName !== this.state.editName) {
+      this.props.accountDataFn();
+    }
+  }
+
   render() {
     let modalClose = () => this.setState({ modalShow: false });
 
@@ -53,11 +59,11 @@ export default class AccountComponent extends Component {
           balance={balance.balance}
           balanceid={balance.id}
           index={index}
-          accountid={balance.accountid}
+          accountid={ balance.accountid }
+          accountDataFn={ this.props.accountDataFn }
         />
       )
     })
-
 
     return (
       <div className="everyAccount">
@@ -69,7 +75,7 @@ export default class AccountComponent extends Component {
                 overlay={
                   <Tooltip id='tooltip'>
                     Click to edit!
-                          </Tooltip>
+                  </Tooltip>
                 }
               >
                 <h2 onClick={() => this.setState({ editName: !this.state.editName })} className="accountName">{this.props.name}</h2>
@@ -100,11 +106,11 @@ export default class AccountComponent extends Component {
 
           <h2 className="accountBalance">{currentBalance ? `${currencyFormatter.format(currentBalance.balance, { code: 'USD' })}` : null}</h2>
         </div>
-        <DeleteAccount accountid={this.props.accountid} />
+        <DeleteAccount accountid={this.props.accountid} accountDataFn={ this.props.accountDataFn } />
         <div className={this.state.switch ? "history notvisible" : "history"}>
           <h3 className={this.state.switch ? "history hidden" : "history details numbers"} >{history}</h3>
           <div className={this.state.switch ? "history hidden" : "history details"}>
-            <AddBalance accountid={this.props.accountid} />
+            <AddBalance accountid={this.props.accountid} accountDataFn={ this.props.accountDataFn } />
           </div>
         </div>
         <div onClick={this.switch} className="circle">
