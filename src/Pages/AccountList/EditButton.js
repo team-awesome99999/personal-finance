@@ -14,7 +14,13 @@ class EditButton extends Component {
   saveEdits = async(id) => {
     const { date, balance } = this.state;
     await axios.put('/api/editbalance', { id, date, balance });
-    this.setState({ date: '', balance: '' });
+    this.setState({ date: '', balance: '', editing: false });
+  }
+
+  componentDidUpdate = (prevProps, prevState) => {
+    if(prevState.editing !== this.state.editing) {
+      this.props.accountDataFn();
+    }
   }
 
   render() {

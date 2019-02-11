@@ -28,6 +28,12 @@ class AddBalance extends Component {
     })
   }
 
+  componentDidUpdate = (prevProps, prevState) => {
+    if(prevState.newBalance !== this.state.newBalance) {
+      this.props.accountDataFn();
+    }
+  }
+
   render() {
     return (
       <Form inline>

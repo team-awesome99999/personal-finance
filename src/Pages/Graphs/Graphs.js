@@ -6,7 +6,6 @@ import moment from 'moment';
 import { Carousel } from 'react-bootstrap';
 import AddBalance from '../HomePage/AddBalance';
 import MonthlyChanges from './MonthlyChanges';
-import {accountTotal, accountBalance} from './../../Tests/chartTotal'
 import Totals from './Totals';
 
 
@@ -23,19 +22,17 @@ class Graphs extends Component {
   //one is for account balance, other is for accountDate
 
   componentDidMount = async () => {
-    axios.get(`/accounts`)
-      .then(res => {
-        this.setState({ accounts: res.data.accounts, balances: res.data.balances })
-      })
+    this.getAccountData();
   }
 
-  componentDidUpdate=()=>{
-    axios.get(`/accounts`)
-    .then(res => {
-      this.setState({ accounts: res.data.accounts, balances: res.data.balances })
+  getAccountData = () => {
+    axios.get('/accounts').then((res) => {
+      this.setState({
+        accounts: res.data.accounts,
+        balances: res.data.balances
+      })
     })
   }
-
 
   handleSelect = (selectedIndex, e) => {
     this.setState({
@@ -83,7 +80,7 @@ class Graphs extends Component {
             />
           </div>
           <div className='graph-add-bal'>
-            <AddBalance accountid={acct.id} />
+            <AddBalance accountid={acct.id} accountDataFn={ this.getAccountData } />
             <MonthlyChanges accountid={acct.id} />
           </div>
         </div>
@@ -101,9 +98,7 @@ class Graphs extends Component {
       const allBalances = newBalances.map((val, id) => {
         return parseFloat(val.balance)
       })
-
       return allBalances
-    
     })
   
     let groupOfAccounts = this.state.accounts.map((acct, id) => {
@@ -137,10 +132,10 @@ class Graphs extends Component {
     let grandMasterTotal =
 
       <Carousel.Item>
-        <Totals
-        total={newGroupOfAccounts}
-        />
         <div className='c-item'>
+          <Totals
+          total={newGroupOfAccounts}
+          />
 
           <Plot
             data={

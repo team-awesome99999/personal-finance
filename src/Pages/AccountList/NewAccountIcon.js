@@ -29,7 +29,14 @@ class AddAccount extends Component {
     })
   }
 
+  componentDidUpdate = (prevProps, prevState) => {
+    if(prevState.openForm !== this.state.openForm) {
+      this.props.accountDataFn();
+    }
+  }
+
   render() {
+    console.log('test')
     return (
       <div className='new-account'>
         { !this.state.openForm ? 

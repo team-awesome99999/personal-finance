@@ -11,22 +11,16 @@ export default class AccountList extends Component {
 
   }
   componentDidMount() {
+    this.getAccountData();
+  }
+
+  getAccountData = () => {
     axios.get('/accounts').then((res) => {
       this.setState({
         accounts: res.data.accounts,
         balances: res.data.balances
       })
     })
-  }
-
-  componentDidUpdate() {
-    axios.get(`/accounts`)
-      .then(res => {
-        this.setState({
-          accounts: res.data.accounts,
-          balances: res.data.balances
-        })
-      })
   }
 
   render() {
@@ -45,9 +39,8 @@ export default class AccountList extends Component {
             name={account.name}
             accountid={account.id}
             balances={balances}
+            accountDataFn={this.getAccountData}
           />
-
-
         </div>
       )
     })
@@ -55,7 +48,7 @@ export default class AccountList extends Component {
       <div>
         <Header />
         <div className='icon'>
-          <NewAccountIcon />
+          <NewAccountIcon accountDataFn={this.getAccountData }/>
         </div>
         <div className="all-accounts">
           <h2>Your Accounts</h2>
