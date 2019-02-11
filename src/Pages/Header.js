@@ -77,7 +77,7 @@ class Header extends Component {
             <Nav pullRight>
               <NavItem className={ this.props.history.location.pathname === '/home' ? 'active' : null } onClick={() => this.props.history.push('/home') }  >Graphs</NavItem>
               <NavItem className={ this.props.history.location.pathname === '/accounts' ? 'active' : null } onClick={() => this.props.history.push('/accounts') }  >Accounts</NavItem>
-              <NavItem className={ this.props.history.location.pathname === '/plans' ? 'active' : null } onClick={() => this.props.history.push('/plans') }  >Goals</NavItem>
+              <NavItem className={ this.props.history.location.pathname === '/goals' ? 'active' : null } onClick={() => this.props.history.push('/goals') }  >Goals</NavItem>
               <NavItem onClick={() => this.logout()}>Logout</NavItem>
             </Nav>
           </Navbar>
