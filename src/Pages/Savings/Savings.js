@@ -45,7 +45,7 @@ class Savings extends Component{
     }
 
     async deleteSavingsGoal(){ //allows end user to delete the current savings goal
-      axios.delete()
+      await axios.delete()
            .then()
     }
 
