@@ -6,7 +6,6 @@ import moment from 'moment';
 import { Carousel } from 'react-bootstrap';
 import AddBalance from '../HomePage/AddBalance';
 import MonthlyChanges from './MonthlyChanges';
-import {accountTotal, accountBalance} from './../../Tests/chartTotal'
 import Totals from './Totals';
 
 
@@ -99,9 +98,7 @@ class Graphs extends Component {
       const allBalances = newBalances.map((val, id) => {
         return parseFloat(val.balance)
       })
-
       return allBalances
-    
     })
   
     let groupOfAccounts = this.state.accounts.map((acct, id) => {
@@ -135,10 +132,10 @@ class Graphs extends Component {
     let grandMasterTotal =
 
       <Carousel.Item>
-        <Totals
-        total={newGroupOfAccounts}
-        />
         <div className='c-item'>
+          <Totals
+          total={newGroupOfAccounts}
+          />
 
           <Plot
             data={
