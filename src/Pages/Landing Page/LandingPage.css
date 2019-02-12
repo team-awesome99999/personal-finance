@@ -123,3 +123,42 @@
 .input-spacing {
   margin-right: 20px;
 }
+
+@media (max-width: 600px) {
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .navbar {
+    margin-bottom: 0;
+  }
+  .landing-prompts, .icon-box {
+    flex-direction: column;
+    width: 100vw;
+    padding: 0px;
+  }
+  .prompt {
+    width: 100%;
+    font-size: 60px;
+    padding: 0 10px 10px 20px;
+    letter-spacing: 0;
+  }
+  .register-btn {
+    width: 170px;
+    margin-top: 0;
+  }
+  .signup-box {
+    padding: 30px 45px 45px 45px;
+    border-left: none;
+    border-right: none;
+  }
+  .icon-box {
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .icon-square {
+    margin: 8px 0 4px 0;
+  }
+}

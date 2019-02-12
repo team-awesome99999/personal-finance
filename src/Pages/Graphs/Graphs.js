@@ -17,7 +17,6 @@ class Graphs extends Component {
     direction: null,
     total: '',
   }
-
   //grab two arrays from db
   //one is for account balance, other is for accountDate
 
