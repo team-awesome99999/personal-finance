@@ -99,4 +99,22 @@
   box-shadow: none
 }
 
+@media (max-width: 800px) {
+  .new-user {
+    flex-direction: column;
+    width: 100%;
+    padding: 25px;
+  }
+  .new-user-title {
+    margin-top: 10px;
+  }
+  .new-account-form {
+    padding: 20px 25px 20px 25px;
+  }
+  .happyman {
+    margin: 0;
+    height: 300px;
+  }
+}
+
 
