@@ -52,8 +52,12 @@ svg {
   top: 25px;
 }
 
+.mobile-graphs {
+  display: none;
+}
+
 @media (max-width: 800px) {
-  .grandTotalMasterOfSecrets {
+  .graphs-parent {
     display: none;
   }
   .c-item {
@@ -64,5 +68,16 @@ svg {
   }
   .btn.btn-success {
     width: 40%;
+  }
+  .mobile-graphs {
+    display: block;
+  }
+  .not-here-text {
+    padding: 25px;
+    font-size: 25px;
+  }
+  .not-here-image {
+    display: flex;
+    justify-content: center;
   }
 }

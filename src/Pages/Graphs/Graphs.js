@@ -175,6 +175,10 @@ class Graphs extends Component {
 
     return (
       <div>
+        <div className='not-here-text mobile-graphs'>Mobile is not yet optimized for viewing graphs. View on your desktop to access all of our features!</div>
+        <div className='mobile-graphs not-here-image'>
+          <img  src="https://nondualityamerica.files.wordpress.com/2010/10/nothing-here-neon-300x200.jpg?w=375&h=175" alt="graph"/>
+        </div>
         <div className='graphs-parent'>
           <Carousel
             indicators={false}
