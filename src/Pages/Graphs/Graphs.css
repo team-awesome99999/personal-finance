@@ -60,10 +60,9 @@ svg {
     height: 450px;
   }
   .form-inline {
-    margin-top: 40px;
     flex-direction: column;
   }
-  .btn {
+  .btn.btn-success {
     width: 40%;
   }
 }
