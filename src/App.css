@@ -6,3 +6,18 @@ body {
   display: flex;
   justify-content: center;
 }
+
+/* header  */
+
+@media (min-width: 800px) {
+  .hidden-nav {
+  display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .unhidden-nav {
+    display: none;
+  }
+}
+

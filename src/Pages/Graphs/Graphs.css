@@ -51,3 +51,19 @@ svg {
   left: 240px;
   top: 25px;
 }
+
+@media (max-width: 800px) {
+  .grandTotalMasterOfSecrets {
+    display: none;
+  }
+  .c-item {
+    height: 450px;
+  }
+  .form-inline {
+    margin-top: 40px;
+    flex-direction: column;
+  }
+  .btn {
+    width: 40%;
+  }
+}

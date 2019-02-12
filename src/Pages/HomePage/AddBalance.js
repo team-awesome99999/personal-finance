@@ -57,7 +57,7 @@ class AddBalance extends Component {
           />
           <FormControl.Feedback />
         </FormGroup>{' '}
-        <Button className='btn btn-success' onClick={() => this.addBalance(this.props.accountid)}>Add</Button>
+        <Button className='bal-btn btn btn-success' onClick={() => this.addBalance(this.props.accountid)}>Add</Button>
       </Form>
     );
   }
