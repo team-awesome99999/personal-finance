@@ -21,8 +21,8 @@ class Savings extends Component {
     loading: true
   }
 
-  componentDidMount() { //get savings account for the session user
-    this.getGoals();
+  async componentDidMount() { //get savings account for the session user
+    await this.getGoals();
     this.setState({ loading: false })
   }
 
@@ -90,7 +90,7 @@ class Savings extends Component {
             >Delete options</span>
         </div>
         <div className='savings-parent'>
-        { this.state.loading ? <Loading /> : 
+        { !this.state.loading ?
           <div className='savings-wrapper'>
             <Plans
               getGoals={ this.getGoals }
@@ -100,7 +100,8 @@ class Savings extends Component {
               deleteGoal={ this.deleteGoal } 
               editGoal={ this.editGoal }
               show={ this.state.show } />
-          </div> } 
+          </div>
+          : <Loading /> } 
         </div>
       </div>
     )
