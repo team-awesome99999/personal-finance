@@ -50,19 +50,19 @@ export default class Plans extends Component {
       })
       
     return (
-      <div>
+      <div className='cardwrap-parent'>
         <div className='cardwrap'>
-          { !allCards[0] ?
-            <div>
-              <h2 className='start-goals start-title'>Add your first goal!</h2>
-              <h4 className='start-goals'>Here it's easy to plan for future wants and needs. Fill out the form below to start seeing visible progress toward your financial goals.</h4>
-              <div className='first-goal'>
-                <NewGoal getGoals={this.props.getGoals} />
+            { !allCards[0] ?
+              <div>
+                <h2 className='start-goals start-title'>Add your first goal!</h2>
+                <h4 className='start-goals'>Here it's easy to plan for future wants and needs. Fill out the form below to start seeing visible progress toward your financial goals.</h4>
+                <div className='first-goal'>
+                  <NewGoal getGoals={this.props.getGoals} />
+                </div>
               </div>
-            </div>
-            : 
-            this.props.show ? allCards : filteredCards
-          }
+              : 
+              this.props.show ? allCards : filteredCards
+            }
         </div>
       </div>
     )

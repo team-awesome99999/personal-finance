@@ -45,11 +45,18 @@ text {
     outline: none
 }
 
+.cardwrap-parent {
+  display: flex;
+  justify-content: center;
+}
+
 .cardwrap{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: flex-start;
 }
+
 .cardTitle{
     font-family: 'Raleway', sans-serif;
     font-size: 25px;
