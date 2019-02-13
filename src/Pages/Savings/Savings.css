@@ -126,3 +126,25 @@
 .first-goal {
   margin: 40px 0 0 0;
 }
+
+@media (max-width: 800px) {
+  .calc-box {
+    width: 100%;
+    border: none;
+  }
+  .calculator-parent, .newgoal-parent {
+    width: 100%;
+    border: none;
+  }
+  .options {
+    margin-right: 0;
+    font-size: 12px;
+  }
+  .savings-wrapper {
+    width: 100%;
+    justify-content: center;
+  }
+  .start-title, .start-goals{
+    margin: 0 20px 10px 20px;
+  }
+}

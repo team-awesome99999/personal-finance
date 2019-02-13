@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, NavDropdown } from 'react-bootstrap';
 import Login from './Landing Page/Login'
 import { connect } from 'react-redux';
 import axios from 'axios';
@@ -70,11 +70,18 @@ class Header extends Component {
                   alt="logo"
                   src={logo}
                 />
-                {/* {' Trassets'} */}
               </Navbar.Brand>
-            <Navbar.Header>
-            </Navbar.Header>
-            <Nav pullRight>
+            {/* Nav on mobile */}
+            <Nav className='hidden-nav'>
+              <NavDropdown title="Menu" id="basic-nav-dropdown">
+                <div onClick={ () => this.props.history.push('/home') }>Graphs</div>
+                <div onClick={ () => this.props.history.push('/accounts') }>Accounts</div>
+                <div onClick={ () => this.props.history.push('/goals') }>Goals</div>
+                <div onClick={ () => this.logout() }>Logout</div>
+              </NavDropdown>
+            </Nav>
+            {/* full screen nav */}
+            <Nav className='unhidden-nav' pullRight>
               <NavItem className={ this.props.history.location.pathname === '/home' ? 'active' : null } onClick={() => this.props.history.push('/home') }  >Graphs</NavItem>
               <NavItem className={ this.props.history.location.pathname === '/accounts' ? 'active' : null } onClick={() => this.props.history.push('/accounts') }  >Accounts</NavItem>
               <NavItem className={ this.props.history.location.pathname === '/goals' ? 'active' : null } onClick={() => this.props.history.push('/goals') }  >Goals</NavItem>

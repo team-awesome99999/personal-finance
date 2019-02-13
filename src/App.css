@@ -5,4 +5,26 @@ body {
 .loading-page {
   display: flex;
   justify-content: center;
+  background-color: white;
+  width: 100%;
+  height: 100%;
 }
+
+.loading-icon {
+
+}
+
+/* header  */
+
+@media (min-width: 800px) {
+  .hidden-nav {
+  display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .unhidden-nav {
+    display: none;
+  }
+}
+

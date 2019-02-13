@@ -17,7 +17,7 @@
 
 .happyman {
   margin-top: 40px;
-  height: 700px;
+  height: 500px;
   border-radius: 5px;
   box-shadow: 3px 3px 11px 0px rgba(189,189,189,0.65);
 }
@@ -97,6 +97,37 @@
   color: #5cb85c;
   background: transparent;
   box-shadow: none
+}
+
+@media (max-width: 800px) {
+  .new-user {
+    flex-direction: column;
+    width: 100%;
+    padding: 25px;
+  }
+  .new-user-title {
+    margin-top: 10px;
+  }
+  .new-account-form {
+    padding: 20px 25px 20px 25px;
+  }
+  .happyman {
+    margin: 0;
+    height: 300px;
+  }
+  .icon {
+    top: 30px;
+    left: 40px;
+  }
+  .new-account-form {
+    width: 250px;
+     border: 1px solid rgba(189,189,189,0.65);
+  }
+  .new-account-icon {
+    background-color: white;
+    border: 1px solid rgba(189,189,189,0.65);
+    border-radius: 10px;
+  }
 }
 
 

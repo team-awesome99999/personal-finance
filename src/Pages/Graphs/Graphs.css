@@ -51,3 +51,33 @@ svg {
   left: 240px;
   top: 25px;
 }
+
+.mobile-graphs {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .graphs-parent {
+    display: none;
+  }
+  .c-item {
+    height: 450px;
+  }
+  .form-inline {
+    flex-direction: column;
+  }
+  .btn.btn-success {
+    width: 40%;
+  }
+  .mobile-graphs {
+    display: block;
+  }
+  .not-here-text {
+    padding: 25px;
+    font-size: 25px;
+  }
+  .not-here-image {
+    display: flex;
+    justify-content: center;
+  }
+}
