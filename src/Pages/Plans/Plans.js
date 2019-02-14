@@ -13,13 +13,13 @@ export default class Plans extends Component {
 
     //filtering out only UNCOMPLETED goals
     let filtered = this.props.goalInfo.filter(goal => {
-      if(goal.current_amount >= goal.end_amount) {
+      if(+goal.current_amount >= +goal.end_amount) {
         return false
       } else { 
         return true 
       }
     })
-    
+
     let filteredCards = filtered.map(goal => {
       return (
         <Card 
