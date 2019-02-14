@@ -36,7 +36,7 @@ class AddAccount extends Component {
   }
 
   render() {
-    console.log('test')
+
     return (
       <div className='new-account'>
         { !this.state.openForm ? 
