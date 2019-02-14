@@ -44,7 +44,8 @@ export default class Card extends Component {
 
   render() {
     const percentage = ((( this.props.current ? this.props.current : this.state.total) / this.props.goal) * 100).toFixed(1);
-    
+    let realPercentage = ( percentage >= 100 ? 100 : percentage );
+
     return (
       <div>
         <ReactCardFlip infinite={true} isFlipped={this.state.isFlipped}>
@@ -56,8 +57,8 @@ export default class Card extends Component {
               <div onClick={this.handleClick} className="progressLoader" style={{ width: '250px' }}>
                 <CircularProgressbar
                   onClick={this.handleClick}
-                  percentage={percentage}
-                  text={`${percentage}%`}
+                  percentage={realPercentage}
+                  text={`${realPercentage}%`}
                   background
                   backgroundPadding={6}
                   styles={{
@@ -74,7 +75,7 @@ export default class Card extends Component {
                     trail: { stroke: 'rgb(219, 219, 219)' },
                   }}
                 />
-                <h3 className="percentage">{percentage}%</h3>
+                <h3 className="percentage">{realPercentage}%</h3>
               </div>
               <div>
                 <input

@@ -1,3 +1,6 @@
+.background {
+  background-color: white;
+}
 .calendar {
   cursor: pointer;
   font-size: 20px;
