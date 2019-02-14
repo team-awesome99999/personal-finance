@@ -12,7 +12,7 @@ export default class BalanceComponent extends Component {
     editName: false,
     newName: '',
     editing: false,
-    date: moment(this.props.entrydate).format('l'),
+    date: this.props.entrydate,
     balance: this.props.balance
   }
 
@@ -29,7 +29,7 @@ export default class BalanceComponent extends Component {
           {this.state.editing ?
             <input className="listinput" onChange={(e) => this.setState({ date: e.target.value })} value={this.state.date} placeholder="Date"></input>
             :
-            <h2 className="dateTime">{this.state.date}</h2>}
+            <h2 className="dateTime" >{moment(this.state.date).format('l')}</h2>}
           {this.state.editing ?
             <input className="listinput historyBalance" onChange={(e) => this.setState({ balance: e.target.value })} value={this.state.balance} placeholder="Balance"></input>
             :
